@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $title = 'Docs script';
+    <?php $title = 'Docs language';
     include '../head.php'; ?>
 </head>
 

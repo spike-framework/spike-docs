@@ -846,6 +846,10 @@ flex-grow: 0;
     padding-left: 2rem;
 }
 
+.docs-menu li.sub2 {
+    padding-left: 4rem;
+}
+
 .docs-menu li:last-child {
     border-bottom: 0;
 }
