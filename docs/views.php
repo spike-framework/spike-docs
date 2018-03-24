@@ -35,6 +35,7 @@
             <li href="sp-while" class="sub star">sp-while</li>
             <li href="sp-template" class="sub star">sp-template</li>
             <li href="sp-element" class="sub star">sp-element</li>
+            <li href="sp-trigger" class="sub">sp-trigger</li>
             <li href="sp-params" class="sub star">sp-params</li>
             <li href="sp-js" class="sub star">sp-js</li>
             <li href="sp-href" class="sub star">sp-href</li>
@@ -66,6 +67,7 @@
         <?php include('views/sp-while.php') ?>
         <?php include('views/sp-template.php') ?>
         <?php include('views/sp-element.php') ?>
+        <?php include('views/sp-trigger.php') ?>
         <?php include('views/sp-params.php') ?>
         <?php include('views/sp-js.php') ?>
         <?php include('views/sp-href.php') ?>
