@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Service module</h2>
+
+            <p>
+                Spike Framework divide application into separately modules and one of them is <code>service</code>.
+            </p>
+            <p>
+                <code>service</code> should be used as storage for <code>business logic</code> and <code>business data</code>
+            </p>
+            <p>
+                Services are <code>singletons</code>
+            </p>
+
+            <p>
+                Services preferable directory structure should be as follows:
+            <ul>
+                <li>src/app (value from <code>app.config.rootPath</code>)
+                    <ul>
+                        <li>
+                            service
+                            <ul>
+                                <li>authorization.service.js</li>
+                                <li>customer.service.js</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+
+            <p>
+                Also naming convention should be keeped as:
+                <p>
+                    Service file name should be named <code>SERVICE_NAME.service.js</code>
+                </p>
+            </p>
+
+            <h5>Example declaration of service:</h5>
+            <pre class="brush: js;">
+
+                'import $this as app.service.Customer';
+
+                app.service.register("Customer", {
+
+                    __customers: [],
+
+                    getCustomers: function(){
+                        return $this.__customers;
+                    }
+
+                });
+
+            </pre>
+
+            <br/>
+            Then <code>service</code> can be used with <code>static reference</code> as well in <code>imports</code>
+            in any another modules:
+            <pre class="brush: js;">
+
+               'import $customerService as app.service.Customer'; //import way
+
+                app.service.Customer //static way
+
+            </pre>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

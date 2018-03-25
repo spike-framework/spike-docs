@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Spike Compiler</h2>
+
+            <p>
+                Spike Compiler was created to add some features as <code>Imports</code>, <code>GStrings</code>
+                and <code>powerful templates engine</code> and more in the future.
+                <br/>
+                Compiler is written in Groovy, so have to be executed with Java Virtual Machine.
+            </p>
+
+            <h5>Grunt shell integration</h5>
+
+            <p>
+                <b>Warning! Please be carefully with usage <code>grunt-shell</code> because it hangs very ofter</b>
+            </p>
+
+            <p>
+                With grunt, it's recommended to use <code>grunt-shell-spawn</code> plugin which offers synchronous execution
+                of shell tasks.
+            </p>
+
+            <p>
+               Example integration compiler in Gruntfile.js
+            </p>
+            <pre class="brush: js;">
+
+                ...
+
+                shell: {
+                    compileImportsAndGStrings: {
+                        command: 'java -jar bower_components/spike-compiler/build/libs/spike-compiler.jar imports-gstrings  dist/js/app.js dist/js/app.js'
+                    },
+                    compileTemplates: {
+                        command: 'java -jar bower_components/spike-compiler/build/libs/spike-compiler.jar templates  src/app dist/js/templates.js'
+                    }
+                },
+
+                ...
+
+
+            </pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Options</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">imports-gstrings</code>
+                </div>
+                <div class="col-sm-10">
+                    Compiler option to process imports and gstrings syntax
+                    in given file and output compiled file to given path
+
+                    Example:
+                    <pre class="brush: js;">
+                        java spike-compiler.jar -jar imports-gstrings dist/js/app.js dist/js/app.js
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">templates</code>
+                </div>
+                <div class="col-sm-10">
+                    Compiler option to find out and process whole templates files
+                    in given directory and output compiled templates into single file to given path
+
+                    Example:
+                    <pre class="brush: js;">
+                        java spike-compiler.jar -jar templates  src/app dist/js/templates.js
+                    </pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

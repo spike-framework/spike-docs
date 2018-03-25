@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Configuration file</h2>
+
+            <p>
+                Configuration file called config.js is designed to store custom parameters
+                used in whole application.
+            </p>
+            <p>
+                You can extend <code>app.config</code> with own Spike constants values
+                as well as own constants.
+            </p>
+
+            <pre class="brush: js;">
+                app.config.extend({
+                    mobileRun: true, //Spike owned
+                    debug: true, //Spike owned
+                    myOwnProperty: 'FACEBOOK_API_KEY' //User owned
+                });
+            </pre>
+            <h4>Spike constants</h4>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">routing</code>
+                </div>
+                <div class="col-sm-10">
+                    Contains routing object from router factory.
+                    If <code>routingEnabled</code> is <code>true</code>
+                    then routing should be defined.
+                    <br/>
+                    Default <code>NULL</code>
+                    <br/>
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                           routing: app.router.create()
+                            .path('/home', {
+                                controller: 'Home'
+                            })
+                            .other({
+                                controller: 'Home'
+                            })
+                        });
+                    </pre>
+
+                    For more info and examples see <a href="routing.html">routing page</a>
+                </div>
+            </div>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">routingEnabled</code>
+                </div>
+                <div class="col-sm-10">
+                    Enables or disables routing in Spike application.
+                    <br/>
+                    Default <code>TRUE</code>
+                    <br/>
+                    Spike application can work in two ways: with routing and without it.
+
+                    It's recommended to use routing because when it's not defined, when user
+                    reload page then application will start again. Of course it can be
+                    normal behaviour on mobile.
+
+                    For web development routing should be enabled and defined.
+                </div>
+            </div>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">mobileRun</code>
+                </div>
+                <div class="col-sm-10">
+                    Enables or disables running Spike application as on
+                    mobile device.
+
+                    If is <code>TRUE</code> then database initialization uses
+                    SQLLite Cordova plugin rather than WebSQL.
+
+                    If you testing application via Chrome Browser, then should be
+                    set to <code>FALSE</code>
+
+                    If you deploy application to the device, then should be set
+                    to <code>TRUE</code>
+                    <br/>
+                    Default <code>FALSE</code>
+                </div>
+            </div>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">showDebug</code>
+                </div>
+                <div class="col-sm-10">
+                    Enables or disables debug console output from Spike framework
+                    and application.
+
+                    Debug messages are created from <code>app.debug(msg)</code> command.
+                    For more info about debug see <a href="debug.html">debug page</a>
+                    <br/>
+                    Default <code>TRUE</code>
+                </div>
+            </div>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">showObj</code>
+                </div>
+                <div class="col-sm-10">
+                    Enables or disables debug console output from Spike framework
+                    and application.
+
+                    Debug messages are created from <code>app.obj(msg)</code> command.
+                    For more info about debug see <a href="debug.html">debug page</a>
+                    <br/>
+                    Default <code>TRUE</code>
+
+                </div>
+            </div>
+
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">showWarn</code>
+                </div>
+                <div class="col-sm-10">
+                    Enables or disables debug console output from Spike framework
+                    and application.
+
+                    Debug messages are created from <code>app.warn(msg)</code> command.
+                    For more info about debug see <a href="debug.html">debug page</a>
+                    <br/>
+                    Default <code>TRUE</code>
+
+                </div>
+            </div>
+
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">showError</code>
+                </div>
+                <div class="col-sm-10">
+                    Enables or disables debug console output from Spike framework
+                    and application.
+
+                    Debug messages are created from <code>app.error(msg)</code> command.
+                    For more info about debug see <a href="debug.html">debug page</a>
+                    <br/>
+                    Default <code>TRUE</code>
+
+                </div>
+            </div>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">showLog</code>
+                </div>
+                <div class="col-sm-10">
+                    Enables or disables debug console output from Spike framework
+                    and application.
+
+                    Debug messages are created from <code>app.log(msg)</code> command.
+                    For more info about debug see <a href="debug.html">debug page</a>
+                    <br/>
+                    Default <code>TRUE</code>
+
+                </div>
+            </div>
+
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">mainController</code>
+                </div>
+                <div class="col-sm-10">
+                    Stores name of main controller rendered when Spike application
+                    starting (when page is refreshed)
+                    <br/>
+                    Default <code>Home</code>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">initialView</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Sets plain (without Spike framework support) template name (path)
+                    before whole application start initializing
+
+                    Can be used as loading screen, splash screen etc.
+                    <br/>
+                    Default <code>NULL</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                            initialView: 'app/loading.html'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">rootPath</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines application main path (ex. project src/app)
+
+                    Also sets root templates path used to finding template
+                    in <code>templates.js</code>
+                    <br/>
+                    Default <code>app</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                            rootPath: 'src/app'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">lang</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines Spike application initial language
+                    <br/>
+                    Default <code>en</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                            lang: 'pl'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">dbMode</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines Spike application local SQLLite database mode.
+
+                    Available modes:
+                    'none' - database won't be created
+                    'create' - creates database once and never drop
+                    'create-drop' - drop and create database every time when application is reloaded (started again,
+                    browser reload etc)
+                    <br/>
+                    Default <code>create-drop</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                            dbMode: 'create'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">dbTestMode</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines if local database should be filled with test data
+                    defined in <code>dbTestScript</code>
+                    <br/>
+                    Default <code>TRUE</code>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">dbTestScript</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines SQL script containing TEST DATA with is executed on local database after it's creation.
+                    Script executes only when <code>dbTestMode</code> is setted to true
+                    <br/>
+                    Default <code>sql/test.sql</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                           dbTestScript: 'sql/testScript.sql'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">dbProductionScript</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines SQL script containing PRODUCTION DATA with is executed on local database after it's
+                    creation.
+                    <br/>
+                    Default <code>sql/production.sql</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                           dbTestScript: 'sql/productionScript.sql'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">dbName</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines local database name.
+                    <br/>
+                    Default <code>local_db</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                            dbName: 'local_db_version2'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">componentDirectory</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines main directory containing components directories structure
+                    Ex.
+                    <ul>
+                        <li>app/component
+                        <ul>
+                            <li>topNavbar</li>
+                            <li>bottomTabs</li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <br/>
+                    Default <code>component</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                             componentDirectory: 'components',
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">controllerDirectory</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines main directory containing controllers directories structure
+                    Ex.
+                    <ul>
+                        <li>app/controller
+                            <ul>
+                                <li>homePage</li>
+                                <li>personList</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <br/>
+                    Default <code>controller</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                             controllerDirectory: 'controllers',
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">modalDirectory</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines main directory containing modals directories structure
+                    Ex.
+                    <ul>
+                        <li>app/modal
+                            <ul>
+                                <li>loginModal</li>
+                                <li>confirmModal</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <br/>
+                    Default <code>modal</code>
+
+                    Example:
+                     <pre class="brush: js;">
+                        app.config.extend({
+                              modalDirectory: 'modals'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">partialDirectory</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines main directory containing partials directories structure
+                    Ex.
+                    <ul>
+                        <li>app/partial
+                            <ul>
+                                <li>menuItems</li>
+                                <li>loginForm</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <br/>
+                    Default <code>partial</code>
+
+                    Example:
+                    <pre class="brush: js;">
+                        app.config.extend({
+                              partialDirectory: 'partial'
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">transitions</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Defines if transitions between controllers should be enabled
+                    For default implementation of transitions see <a href="overriding_transitions.html">overriding transitions</a>
+                    <br/>
+                    Default <code>FALSE</code>
+
+                    Example:
+                    <pre class="brush: js;">
+                        app.config.extend({
+                              transitions: true
+                        });
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">transitionAnimation</code>
+                </div>
+                <div class="col-sm-10">
+
+                    Contains default implementation of transition function
+                    For overriding see <a href="overriding_transitions.html">overriding transitions</a>
+                    <br/>
+                    Default <code>FALSE</code>
+
+                    Example:
+                    <pre class="brush: js;">
+                        app.config.extend({
+                               transitionAnimation: function(oldViewSelector, newViewSelector, appStartup, fromController, toController, complete){
+                                    ...
+                               }
+                        });
+                    </pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

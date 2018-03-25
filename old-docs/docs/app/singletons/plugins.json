@@ -1,0 +1,198 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nPlugins module\nModule designed for usage as singleton during application lifecycle.\nCan be used in any other modules.\n\nOnly one active instance in time is available",
+        "visibility": "public",
+        "html": "<p>Plugins module<br />\nModule designed for usage as singleton during application lifecycle.<br />\nCan be used in any other modules.</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 15,
+    "code": "app.plugins = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "plugins",
+      "value": "{",
+      "string": "app.plugins"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginName",
+        "name": "pluginName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginName</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginWrapperFunction",
+        "name": "pluginWrapperFunction",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginWrapperFunction</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 17,
+    "codeStart": 25,
+    "code": "add: function(pluginName, pluginWrapperFunction){\n    this.register(pluginName, pluginWrapperFunction);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new wrapper for plugin",
+        "visibility": "public",
+        "html": "<p>Registering new wrapper for plugin</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginName",
+        "name": "pluginName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginName</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginWrapperFunction",
+        "name": "pluginWrapperFunction",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginWrapperFunction</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 29,
+    "codeStart": 37,
+    "code": "register: function(pluginName, pluginWrapperFunction){\n\n    app.plugins[pluginName] = pluginWrapperFunction;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering map of wrapper functions in application",
+        "visibility": "public",
+        "html": "<p>Registering map of wrapper functions in application</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginsWrapperFunctionsMap",
+        "name": "pluginsWrapperFunctionsMap",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginsWrapperFunctionsMap</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 43,
+    "codeStart": 50,
+    "code": "list: function(pluginsWrapperFunctionsMap){\n\n    $.each(pluginsWrapperFunctionsMap, function(pluginName, pluginWrapperFunction){\n        app.global.add(pluginName, pluginWrapperFunction);\n    });\n\n},\n\n\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "list",
+      "string": "list()"
+    }
+  }
+]

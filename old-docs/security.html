@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Security</h2>
+
+            <p>
+                Spike Framework offers security feature which can be used to block web page and mobile inspection
+                by warns user using console warnings and also blocking user after spending about 30 seconds with opened
+                console.
+            </p>
+            <p>
+                Also <code>securityReportFunction</code> function can be overridden and used to report attacks and inspecting to application server.
+            </p>
+
+            <h4>Example configuration to enable security:</h4>
+
+            <pre class="brush: js;">
+                app.config.extend({
+
+                    enableSecurity: true,
+                    securityWatchConsole: true,
+                    securityCheckConsoleInterval: 2000,
+
+                    securityReportFunction: function(cmd, ip){
+
+                        app.rest.post('https://myserver.com/error-report', {
+                            ip: ip,
+                            command: cmd
+                        });
+
+                    }
+
+                });
+            </pre>
+
+            <h4>Security configuration options:</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">create</code>
+                </div>
+                <div class="col-sm-10">
+                    Returns router promise object which construct
+                    routing endpoints with <code>path</code> and
+                    <code>other</code> functions
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">path</code>
+                </div>
+                <div class="col-sm-10">
+                    Function registers routing endpoint.
+                    Accepts arguments:
+                    <ul>
+                        <li>
+                            <code>pathValue</code>
+                            <p>
+                                Defines URI pattern and should be unique.
+                                Accepts <code>path params</code> prefixed with
+                                <code>:</code> sign
+                            </p>
+                        </li>
+                        <li>
+                            <code>pathObject</code>
+                            <p>
+                                Defines endpoint entry object.
+                            <ul>
+                                <li><code>controller</code>
+                                    property is required
+                                    and must be correct controller name.
+                                </li>
+                                <li>
+                                    <code>routingParams</code> property is optional
+                                    and can has constants passed to controller after it's
+                                    rendering.
+                                </li>
+                                <li>
+                                    <code>onRoute</code> property is optional and accepts
+                                    function which is executed after endpoint is entered
+                                </li>
+                            </ul>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">enableSecurity</code>
+                </div>
+                <div class="col-sm-10">
+                    Defines if security of JavaScript console should be enabled
+                    <br/>
+                    Default <code>false</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityWatchConsole</code>
+                </div>
+                <div class="col-sm-10">
+                    Defines if Spike should watch JavaScript console in intervals
+                    defined in <code>securityCheckConsoleInterval</code> and
+                    block user if console is open
+                    <br/>
+                    Default <code>false</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityAlertWarning</code>
+                </div>
+                <div class="col-sm-10">
+                    Defines alert message is user still use console
+                    <br/>
+                    Default <code>Close console otherwise site will be blocked in 30 seconds</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityCheckConsoleInterval</code>
+                </div>
+                <div class="col-sm-10">
+                    Defines interval in miliseconds between checking if developer console is opened
+                    <br/>
+                    Default <code>10000</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityClearReportsIfConsoleClosed</code>
+                </div>
+                <div class="col-sm-10">
+                    Defines if reports of attacks should be cleared if user closes console
+                    <br/>
+                    Default <code>true</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityReportFunction</code>
+                </div>
+                <div class="col-sm-10">
+                    Callback function to override which is executed during JavaScript console attack
+                    <br/>
+                    Default <code>null</code>
+
+                    <p>
+                        Exaple usage of <code>securityReportFunction</code>
+                    </p>
+                    <pre class="brush: js;">
+
+                        config.js
+
+                        ...
+
+                        securityReportFunction: function(cmd, ip){
+
+                            //cmd - command executed by user in console
+                            //ip - received user IP address
+
+                            // For example you can send report of attack to your server
+                            app.rest.post('https://myserver.com/error-report', {
+                                ip: ip,
+                                command: cmd
+                            });
+
+                        }
+
+                        ...
+
+                    </pre>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityPageBlockAttacks</code>
+                </div>
+                <div class="col-sm-10">
+                    Defines after which number of attacks in JavaScript console user will be blocked
+                    <br/>
+                    Default <code>2</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityHeaderWithIP</code>
+                </div>
+                <div class="col-sm-10">
+                    Security header text with IP param used for security blocking JavaScript console
+                    <br/>
+                    Default <code>IP USER_IP reported!</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityHeaderWithoutIP</code>
+                </div>
+                <div class="col-sm-10">
+                    Security header text without IP param used for security blocking JavaScript console
+                    <br/>
+                    Default <code>This IP is reported!</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">securityText</code>
+                </div>
+                <div class="col-sm-10">
+                    Security description text used for security blocking JavaScript console
+                    <br/>
+                    Default <code>Site is monitored to prevent attacks. Please leave, otherwise your IP will be blocked</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

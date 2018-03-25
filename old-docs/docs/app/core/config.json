@@ -1,0 +1,620 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nConfig object\nObject designed as storage for common and important variables for application\nCan be extended by custom configuration.\n\nCan be used in another modules.",
+        "visibility": "public",
+        "html": "<p>Config object<br />\nObject designed as storage for common and important variables for application<br />\nCan be extended by custom configuration.</p>\n<p>Can be used in another modules.</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{extend}",
+        "visibility": "public",
+        "html": "<p>{extend}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{mobileRun}",
+        "visibility": "public",
+        "html": "<p>{mobileRun}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{debug}",
+        "visibility": "public",
+        "html": "<p>{debug}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{mainController}",
+        "visibility": "public",
+        "html": "<p>{mainController}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{viewsPath}",
+        "visibility": "public",
+        "html": "<p>{viewsPath}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{lang}",
+        "visibility": "public",
+        "html": "<p>{lang}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbMode}",
+        "visibility": "public",
+        "html": "<p>{dbMode}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbTestMode}",
+        "visibility": "public",
+        "html": "<p>{dbTestMode}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbCreateDropFromScript}",
+        "visibility": "public",
+        "html": "<p>{dbCreateDropFromScript}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbCreateScript}",
+        "visibility": "public",
+        "html": "<p>{dbCreateScript}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbDropScript}",
+        "visibility": "public",
+        "html": "<p>{dbDropScript}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbTestScript}",
+        "visibility": "public",
+        "html": "<p>{dbTestScript}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbProductionScript}",
+        "visibility": "public",
+        "html": "<p>{dbProductionScript}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{dbName}",
+        "visibility": "public",
+        "html": "<p>{dbName}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{componentDirectory}",
+        "visibility": "public",
+        "html": "<p>{componentDirectory}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{controllerDirectory}",
+        "visibility": "public",
+        "html": "<p>{controllerDirectory}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{modalDirectory}",
+        "visibility": "public",
+        "html": "<p>{modalDirectory}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 32,
+    "code": "app.config = {\n\n    routing: null,",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "config",
+      "value": "{",
+      "string": "app.config"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines if router should be enabled",
+        "visibility": "public",
+        "html": "<p>Defines if router should be enabled</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 36,
+    "codeStart": 41,
+    "code": "routingEnabled: true,",
+    "ctx": {
+      "type": "property",
+      "name": "routingEnabled",
+      "value": "true,",
+      "string": "routingEnabled"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines if application runs locally (false) or on mobile device (true)",
+        "visibility": "public",
+        "html": "<p>Defines if application runs locally (false) or on mobile device (true)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 43,
+    "codeStart": 48,
+    "code": "mobileRun: false,",
+    "ctx": {
+      "type": "property",
+      "name": "mobileRun",
+      "value": "false,",
+      "string": "mobileRun"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines if debug logs shoud be printed in console",
+        "visibility": "public",
+        "html": "<p>Defines if debug logs shoud be printed in console</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 50,
+    "codeStart": 55,
+    "code": "debug: false,",
+    "ctx": {
+      "type": "property",
+      "name": "debug",
+      "value": "false,",
+      "string": "debug"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines controller name which one is rendered as first after application ready",
+        "visibility": "public",
+        "html": "<p>Defines controller name which one is rendered as first after application ready</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 57,
+    "codeStart": 62,
+    "code": "mainController: \"Home\",",
+    "ctx": {
+      "type": "property",
+      "name": "mainController",
+      "value": "\"Home\",",
+      "string": "mainController"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines application initial view (before Spike starts application initializing)",
+        "visibility": "public",
+        "html": "<p>Defines application initial view (before Spike starts application initializing)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 64,
+    "codeStart": 69,
+    "code": "initialView: '',",
+    "ctx": {
+      "type": "property",
+      "name": "initialView",
+      "value": "'',",
+      "string": "initialView"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines application main path (ex. project root/app)",
+        "visibility": "public",
+        "html": "<p>Defines application main path (ex. project root/app)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 71,
+    "codeStart": 76,
+    "code": "viewsPath: 'app',",
+    "ctx": {
+      "type": "property",
+      "name": "viewsPath",
+      "value": "'app',",
+      "string": "viewsPath"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines application default language",
+        "visibility": "public",
+        "html": "<p>Defines application default language</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 78,
+    "codeStart": 83,
+    "code": "lang: \"en\",",
+    "ctx": {
+      "type": "property",
+      "name": "lang",
+      "value": "\"en\",",
+      "string": "lang"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines application database mode\nModes:\n'none' - database won't be created\n'create' - creates database once and never drop\n'create-drop' - drop and create database every time when application is reloaded (started again)",
+        "visibility": "public",
+        "html": "<p>Defines application database mode<br />\nModes:<br />\n'none' - database won't be created<br />\n'create' - creates database once and never drop<br />\n'create-drop' - drop and create database every time when application is reloaded (started again)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 85,
+    "codeStart": 94,
+    "code": "dbMode: 'create-drop',",
+    "ctx": {
+      "type": "property",
+      "name": "dbMode",
+      "value": "'create-drop',",
+      "string": "dbMode"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines if database should be filled with test data defined in @dbTestScript",
+        "visibility": "public",
+        "html": "<p>Defines if database should be filled with test data defined in @dbTestScript</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 96,
+    "codeStart": 101,
+    "code": "dbTestMode: true,",
+    "ctx": {
+      "type": "property",
+      "name": "dbTestMode",
+      "value": "true,",
+      "string": "dbTestMode"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines SQL script with test data executed when @dbTestMode is setted to true",
+        "visibility": "public",
+        "html": "<p>Defines SQL script with test data executed when @dbTestMode is setted to true</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 103,
+    "codeStart": 108,
+    "code": "dbTestScript: 'sql/test.sql',",
+    "ctx": {
+      "type": "property",
+      "name": "dbTestScript",
+      "value": "'sql/test.sql',",
+      "string": "dbTestScript"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines SQL script with initial production data executed when @dbTestMode is setted to false",
+        "visibility": "public",
+        "html": "<p>Defines SQL script with initial production data executed when @dbTestMode is setted to false</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 110,
+    "codeStart": 115,
+    "code": "dbProductionScript: 'sql/production.sql',",
+    "ctx": {
+      "type": "property",
+      "name": "dbProductionScript",
+      "value": "'sql/production.sql',",
+      "string": "dbProductionScript"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines SQLLite database name",
+        "visibility": "public",
+        "html": "<p>Defines SQLLite database name</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 117,
+    "codeStart": 122,
+    "code": "dbName: 'local_db',",
+    "ctx": {
+      "type": "property",
+      "name": "dbName",
+      "value": "'local_db',",
+      "string": "dbName"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines main directory containing components directories structure\nEx.\n- app/component\n-- topNavbar\n-- bottomTabs",
+        "visibility": "public",
+        "html": "<p>Defines main directory containing components directories structure<br />\nEx.</p>\n<ul>\n<li>app/component<br />\n-- topNavbar<br />\n-- bottomTabs</li>\n</ul>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 124,
+    "codeStart": 133,
+    "code": "componentDirectory: 'component',",
+    "ctx": {
+      "type": "property",
+      "name": "componentDirectory",
+      "value": "'component',",
+      "string": "componentDirectory"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines main directory containing controllers directories structure\nEx.\n- app/controller\n-- homePage\n-- personList",
+        "visibility": "public",
+        "html": "<p>Defines main directory containing controllers directories structure<br />\nEx.</p>\n<ul>\n<li>app/controller<br />\n-- homePage<br />\n-- personList</li>\n</ul>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 135,
+    "codeStart": 144,
+    "code": "controllerDirectory: 'controller',",
+    "ctx": {
+      "type": "property",
+      "name": "controllerDirectory",
+      "value": "'controller',",
+      "string": "controllerDirectory"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nDefines main directory containing modals directories structure\nEx.\n- app/modal\n-- loginModal\n-- confirmModal",
+        "visibility": "public",
+        "html": "<p>Defines main directory containing modals directories structure<br />\nEx.</p>\n<ul>\n<li>app/modal<br />\n-- loginModal<br />\n-- confirmModal</li>\n</ul>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 146,
+    "codeStart": 155,
+    "code": "modalDirectory: 'modal',",
+    "ctx": {
+      "type": "property",
+      "name": "modalDirectory",
+      "value": "'modal',",
+      "string": "modalDirectory"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to extending and overriding default config @object with new properties defined by user",
+        "visibility": "public",
+        "html": "<p>Function to extending and overriding default config @object with new properties defined by user</p>"
+      },
+      {
+        "type": "param",
+        "string": "configObj",
+        "name": "configObj",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>configObj</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 157,
+    "codeStart": 164,
+    "code": "extend: function (configObj) {\n\n    for (var prop in configObj) {\n        app.config[prop] = configObj[prop];\n    }\n\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "extend",
+      "string": "extend()"
+    }
+  }
+]

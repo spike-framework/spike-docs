@@ -6,7 +6,7 @@
 
     <ul class="menu">
         <li>
-            <a href="/guide.php">Guide</a>
+            <a href="/guide">Guide</a>
         </li>
         <li>
             <a href="/download.php">Download</a>
@@ -27,6 +27,10 @@
         <form id="search">
             <input type="text" placeholder="Search"/>
         </form>
+    </div>
+
+    <div class="old">
+        <a href="/old-docs">Old version</a>
     </div>
 
 </div>

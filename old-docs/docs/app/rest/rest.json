@@ -1,0 +1,1346 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRest module\nModule designed for usage as REST execution provider\nCan be used in any other module.\n\nOnly one active instance in time is available",
+        "visibility": "public",
+        "html": "<p>Rest module<br />\nModule designed for usage as REST execution provider<br />\nCan be used in any other module.</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{list}",
+        "visibility": "public",
+        "html": "<p>{list}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{spinnerShow}",
+        "visibility": "public",
+        "html": "<p>{spinnerShow}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{spinnerHide}",
+        "visibility": "public",
+        "html": "<p>{spinnerHide}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{isSpinnerExcluded}",
+        "visibility": "public",
+        "html": "<p>{isSpinnerExcluded}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{get}",
+        "visibility": "public",
+        "html": "<p>{get}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{delete}",
+        "visibility": "public",
+        "html": "<p>{delete}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{update}",
+        "visibility": "public",
+        "html": "<p>{update}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{post}",
+        "visibility": "public",
+        "html": "<p>{post}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__createCachedPromise}",
+        "visibility": "private",
+        "html": "<p>{__createCachedPromise}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__isMock}",
+        "visibility": "private",
+        "html": "<p>{__isMock}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__getDelete}",
+        "visibility": "private",
+        "html": "<p>{__getDelete}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__postPut}",
+        "visibility": "private",
+        "html": "<p>{__postPut}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__execByUrl}",
+        "visibility": "private",
+        "html": "<p>{__execByUrl}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__execByName}",
+        "visibility": "private",
+        "html": "<p>{__execByName}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__isEnabledMockByUrlAndMethod}",
+        "visibility": "private",
+        "html": "<p>{__isEnabledMockByUrlAndMethod}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{api}",
+        "visibility": "public",
+        "html": "<p>{api}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{spinnerExclude}",
+        "visibility": "public",
+        "html": "<p>{spinnerExclude}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 37,
+    "code": "app.rest = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "rest",
+      "value": "{",
+      "string": "app.rest"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nStorage for @rest objects to use in @rest execution",
+        "visibility": "public",
+        "html": "<p>Storage for @rest objects to use in @rest execution</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 40,
+    "codeStart": 46,
+    "code": "api: {},",
+    "ctx": {
+      "type": "property",
+      "name": "api",
+      "value": "{},",
+      "string": "api"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\nList of URLs where spinner functions won't fire",
+        "visibility": "public",
+        "html": "<p>List of URLs where spinner functions won't fire</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 48,
+    "codeStart": 53,
+    "code": "spinnerExclude: [],",
+    "ctx": {
+      "type": "property",
+      "name": "spinnerExclude",
+      "value": "[],",
+      "string": "spinnerExclude"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nFunction can be override.\nRuns every time when request begins\nCan be disabled by excluding some URLs setting them in @app.rest.spinnerExclude",
+        "html": "<p>Function can be override.<br />\nRuns every time when request begins<br />\nCan be disabled by excluding some URLs setting them in @app.rest.spinnerExclude</p>"
+      },
+      {
+        "type": "param",
+        "string": "requestUrl",
+        "name": "requestUrl",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>requestUrl</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 55,
+    "codeStart": 65,
+    "code": "spinnerShow: function(requestUrl){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "spinnerShow",
+      "string": "spinnerShow()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nFunction can be override.\nRuns every time when request completes\nCan be disabled by excluding some URLs setting them in @app.rest.spinnerExclude",
+        "html": "<p>Function can be override.<br />\nRuns every time when request completes<br />\nCan be disabled by excluding some URLs setting them in @app.rest.spinnerExclude</p>"
+      },
+      {
+        "type": "param",
+        "string": "requestUrl",
+        "name": "requestUrl",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>requestUrl</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 68,
+    "codeStart": 78,
+    "code": "spinnerHide: function(requestUrl){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "spinnerHide",
+      "string": "spinnerHide()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction checks if spinner functions should executing",
+        "visibility": "public",
+        "html": "<p>Function checks if spinner functions should executing</p>"
+      },
+      {
+        "type": "param",
+        "string": "requestUrl",
+        "name": "requestUrl",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>requestUrl</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 81,
+    "codeStart": 89,
+    "code": "isSpinnerExcluded: function(requestUrl){\n\n    for(var i = 0; i < app.rest.spinnerExclude.length;i++){\n        if(requestUrl == app.rest.spinnerExclude[i]){\n            return true;\n        }\n    }\n\n    return false;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "isSpinnerExcluded",
+      "string": "isSpinnerExcluded()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction return true if mock api with passed url and method is enabled",
+        "visibility": "private",
+        "html": "<p>Function return true if mock api with passed url and method is enabled</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "method",
+        "name": "method",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>method</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 102,
+    "codeStart": 111,
+    "code": "__isEnabledMockByUrlAndMethod: function(url, method){\n\n    for(prop in app.mock.api){\n        if(app.mock.api[prop].url == url && app.mock.api[prop].method == method.toLowerCase() && app.mock.api[prop].enabled){\n            return true;\n        }\n    }\n\n    return false;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__isEnabledMockByUrlAndMethod",
+      "string": "__isEnabledMockByUrlAndMethod()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executes mock object @returning function\nsearching it by @param url and @param method.",
+        "visibility": "private",
+        "html": "<p>Function executes mock object @returning function<br />\nsearching it by @param url and @param method.</p>"
+      },
+      {
+        "type": "returning",
+        "string": "function is invokes with @param request data.",
+        "html": "<p>function is invokes with @param request data.</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "method",
+        "name": "method",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>method</p>"
+      },
+      {
+        "type": "param",
+        "string": "request",
+        "name": "request",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>request</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 124,
+    "codeStart": 136,
+    "code": "__execMockByUrl: function(url, method, request){\n\n    for(prop in app.mock.api){\n        if(app.mock.api[prop].url == url && app.mock.api[prop].method == method.toLowerCase() && app.mock.api[prop].enabled){\n            return app.mock.api[prop].mockExec(request);\n        }\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__execMockByUrl",
+      "string": "__execMockByUrl()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executes mock object @returning function\nsearching it by @param name and @param method.",
+        "visibility": "private",
+        "html": "<p>Function executes mock object @returning function<br />\nsearching it by @param name and @param method.</p>"
+      },
+      {
+        "type": "returning",
+        "string": "function is invokes with @param request data.",
+        "html": "<p>function is invokes with @param request data.</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "method",
+        "name": "method",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>method</p>"
+      },
+      {
+        "type": "param",
+        "string": "request",
+        "name": "request",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>request</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 146,
+    "codeStart": 158,
+    "code": "__execMockByName: function(name, method, request){\n\n    for(prop in app.mock.api){\n        if((prop == name) && (app.mock.api[prop].method == method.toLowerCase()) && app.mock.api[prop].enabled){\n            return app.mock.api[prop].mockExec(request);\n        }\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__execMockByName",
+      "string": "__execMockByName()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction creates and returns basic promise object",
+        "visibility": "private",
+        "html": "<p>Function creates and returns basic promise object</p>"
+      },
+      {
+        "type": "param",
+        "string": "data",
+        "name": "data",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>data</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 168,
+    "codeStart": 176,
+    "code": "__createCachedPromise: function(data){\n\n    var promise = {\n        result: data,\n        then: function(callback){\n\n            if(promise.result){\n                data = promise.result;\n            }\n\n            var _result = callback(data);\n\n            if(_result){\n                promise.result = _result;\n            }\n\n            return promise;\n\n        },\n        catch: function(){\n            return promise;\n        }\n    }\n\n    return promise;\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__createCachedPromise",
+      "string": "__createCachedPromise()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering @array of rest @object",
+        "visibility": "public",
+        "html": "<p>Registering @array of rest @object</p>"
+      },
+      {
+        "type": "param",
+        "string": "restObjectsList {",
+        "name": "restObjectsList",
+        "description": "<p>{</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "name",
+        "visibility": "public",
+        "html": "<p>name</p>"
+      },
+      {
+        "type": "public",
+        "string": "url",
+        "visibility": "public",
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "public",
+        "string": "method",
+        "visibility": "public",
+        "html": "<p>method</p>"
+      },
+      {
+        "type": "public",
+        "string": "mock {",
+        "visibility": "public",
+        "html": "<p>mock {</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "enabled",
+        "visibility": "public",
+        "html": "<p>enabled</p>"
+      },
+      {
+        "type": "public",
+        "string": "returning\n }\n}",
+        "visibility": "public",
+        "html": "<p>returning<br />\n}<br />\n}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 205,
+    "codeStart": 223,
+    "code": "list: function(restObjectsList){\n\n    $.each(restObjectsList, function(i, restObj){\n        app.mock.register(restObj.name, restObj.url, restObj.method, restObj.mock.returning, restObj.mock.enabled);\n    });\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "list",
+      "string": "list()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "restName",
+        "name": "restName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>restName</p>"
+      },
+      {
+        "type": "param",
+        "string": "restUrl",
+        "name": "restUrl",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>restUrl</p>"
+      },
+      {
+        "type": "param",
+        "string": "restMethod",
+        "name": "restMethod",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>restMethod</p>"
+      },
+      {
+        "type": "param",
+        "string": "mockReturningFunction",
+        "name": "mockReturningFunction",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>mockReturningFunction</p>"
+      },
+      {
+        "type": "param",
+        "string": "mockEnabled -- optional (default false)",
+        "name": "mockEnabled",
+        "description": "<p>-- optional (default false)</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 231,
+    "codeStart": 243,
+    "code": "add: function(restName, restUrl, restMethod, mockReturningFunction, mockEnabled){\n    this.register(restName, restUrl, restMethod, mockReturningFunction, mockEnabled);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nCreates new rest object",
+        "visibility": "public",
+        "html": "<p>Creates new rest object</p>"
+      },
+      {
+        "type": "param",
+        "string": "mockUrl can be string as well as function",
+        "name": "mockUrl",
+        "description": "<p>can be string as well as function</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "restName",
+        "name": "restName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>restName</p>"
+      },
+      {
+        "type": "param",
+        "string": "restUrl",
+        "name": "restUrl",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>restUrl</p>"
+      },
+      {
+        "type": "param",
+        "string": "restMethod",
+        "name": "restMethod",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>restMethod</p>"
+      },
+      {
+        "type": "param",
+        "string": "mockReturningFunction",
+        "name": "mockReturningFunction",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>mockReturningFunction</p>"
+      },
+      {
+        "type": "param",
+        "string": "mockEnabled -- optional (default false)",
+        "name": "mockEnabled",
+        "description": "<p>-- optional (default false)</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 247,
+    "codeStart": 260,
+    "code": "register: function(restName, restUrl, restMethod, mockReturningFunction, mockEnabled){\n\n    if(app.util.System.isNull(mockEnabled)){\n        mockEnabled = false;\n    }\n\n    var urlVal = null;\n\n    if(typeof restUrl == 'string'){\n        urlVal = restUrl;\n    }else{\n        urlVal = restUrl();\n    }\n\n    restMethod = restMethod.toLowerCase();\n\n    app.rest.api[restName] = {\n        url: urlVal,\n        method: restMethod,\n        mockExec: mockReturningFunction,\n        mockEnabled: mockEnabled,\n        promise: app.rest.__getExecFunction(urlVal, restMethod)\n    }\n\n},\n\n__getExecFunction: function(url, method){\n\n    if(method == 'get'){\n\n        return function(propertiesObject){\n            return app.rest.get(url, propertiesObject);\n        }\n\n    }else if(method == 'delete'){\n\n        return function(propertiesObject){\n            return app.rest.delete(url, propertiesObject);\n        }\n\n    }else if(method == 'post'){\n\n        return function(request, propertiesObject){\n            return app.rest.post(url, request, propertiesObject);\n        }\n\n    }else if(method == 'put'){\n\n        return function(request, propertiesObject){\n            return app.rest.put(url, request, propertiesObject);\n        }\n\n    }\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction executes GET request\nFunction return promise with execution params for passed @param urlOrCachedData\n\nIf @rest has @mock.enabled = true then use @mock",
+        "visibility": "public",
+        "html": "<p>Function executes GET request<br />\nFunction return promise with execution params for passed @param urlOrCachedData</p>\n<p>If @rest has @mock.enabled = true then use @mock</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlOrCachedData",
+        "name": "urlOrCachedData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlOrCachedData</p>"
+      },
+      {
+        "type": "param",
+        "string": "propertiesObject -- optional {headers, pathParams, urlParams}",
+        "name": "propertiesObject",
+        "description": "<p>-- optional {headers, pathParams, urlParams}</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 317,
+    "codeStart": 329,
+    "code": "get: function (urlOrCachedData, propertiesObject) {\n\n    if(typeof urlOrCachedData == 'string'){\n        return app.rest.getDelete(urlOrCachedData, 'GET', propertiesObject.pathParams, propertiesObject.headers, propertiesObject.urlParams);\n    }else{\n       return this.__createCachedPromise(urlOrCachedData);\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "get",
+      "string": "get()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction executes DELETE request\nFunction return promise with execution params for passed @param urlOrCachedData\n\nIf @rest has @mock.enabled = true then use @mock",
+        "visibility": "public",
+        "html": "<p>Function executes DELETE request<br />\nFunction return promise with execution params for passed @param urlOrCachedData</p>\n<p>If @rest has @mock.enabled = true then use @mock</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlOrCachedData",
+        "name": "urlOrCachedData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlOrCachedData</p>"
+      },
+      {
+        "type": "param",
+        "string": "propertiesObject -- optional {headers, pathParams, urlParams}",
+        "name": "propertiesObject",
+        "description": "<p>-- optional {headers, pathParams, urlParams}</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 339,
+    "codeStart": 351,
+    "code": "delete: function (urlOrCachedData, propertiesObject) {\n\n    if(typeof urlOrCachedData == 'string'){\n        return  app.rest.getDelete(urlOrCachedData, 'DELETE', propertiesObject.pathParams, propertiesObject.headers, propertiesObject.urlParams);\n    }else{\n        return this.__createCachedPromise(urlOrCachedData);\n    }\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "delete",
+      "string": "delete()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction executes PUT request\nFunction return promise with execution params for passed @param urlOrCachedData\n\nIf @rest has @mock.enabled = true then use @mock",
+        "visibility": "public",
+        "html": "<p>Function executes PUT request<br />\nFunction return promise with execution params for passed @param urlOrCachedData</p>\n<p>If @rest has @mock.enabled = true then use @mock</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlOrCachedData",
+        "name": "urlOrCachedData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlOrCachedData</p>"
+      },
+      {
+        "type": "param",
+        "string": "propertiesObject -- optional {headers, pathParams, urlParams}",
+        "name": "propertiesObject",
+        "description": "<p>-- optional {headers, pathParams, urlParams}</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 362,
+    "codeStart": 374,
+    "code": "update: function (urlOrCachedData, request, propertiesObject) {\n\n    if(typeof urlOrCachedData == 'string'){\n        return  app.rest.postPut(urlOrCachedData, 'PUT', request, propertiesObject.pathParams, propertiesObject.headers, propertiesObject.urlParams);\n    }else{\n        return this.__createCachedPromise(urlOrCachedData);\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "update",
+      "string": "update()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction executes POST request\nFunction return promise with execution params for passed @param urlOrCachedData\n\nIf @rest has @mock.enabled = true then use @mock",
+        "visibility": "public",
+        "html": "<p>Function executes POST request<br />\nFunction return promise with execution params for passed @param urlOrCachedData</p>\n<p>If @rest has @mock.enabled = true then use @mock</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlOrCachedData",
+        "name": "urlOrCachedData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlOrCachedData</p>"
+      },
+      {
+        "type": "param",
+        "string": "propertiesObject -- optional {headers, pathParams, urlParams}",
+        "name": "propertiesObject",
+        "description": "<p>-- optional {headers, pathParams, urlParams}</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 384,
+    "codeStart": 396,
+    "code": "post: function (urlOrCachedData, request, propertiesObject) {\n\n    if(typeof urlOrCachedData == 'string'){\n        return  app.rest.postPut(urlOrCachedData, 'POST', request, propertiesObject.pathParams, propertiesObject.headers, propertiesObject.urlParams);\n    }else{\n        return this.__createCachedPromise(urlOrCachedData);\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "post",
+      "string": "post()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction decides if endpoint is mocked and mock is enabled then\nexecute mock @returning function.\n\nIf no mock available then process normal way using REST.\n\nReturns promise",
+        "visibility": "private",
+        "html": "<p>Function decides if endpoint is mocked and mock is enabled then<br />\nexecute mock @returning function.</p>\n<p>If no mock available then process normal way using REST.</p>\n<p>Returns promise</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "method",
+        "name": "method",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>method</p>"
+      },
+      {
+        "type": "param",
+        "string": "request",
+        "name": "request",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>request</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBackIsnt",
+        "name": "callBackIsnt",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>callBackIsnt</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 406,
+    "codeStart": 422,
+    "code": "__isMock: function(url, method, request, callBackIsnt){\n\n    var promise = null;\n    if(app.mock.__isEnabledMockByUrlAndMethod(url, method)){\n\n        var result = app.mock.__execMockByUrl(url, method, request);\n\n        promise = {\n            result: result,\n            then: function(callBack){\n\n                var _result = callback(promise.result);\n\n                if(_result){\n                    promise.result = _result;\n                }\n\n                callBack(promise.result);\n\n                return promise;\n\n            },\n            catch: function(callBack){\n                return promise;\n            }\n        };\n\n    }else{\n        promise = callBackIsnt();\n    }\n\n    return promise;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__isMock",
+      "string": "__isMock()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to realize GET and DELETE methods execution using AJAX\nand preparing url params, path params, headers etc.\n\nConstructs promise and returns it.",
+        "visibility": "private",
+        "html": "<p>Function to realize GET and DELETE methods execution using AJAX<br />\nand preparing url params, path params, headers etc.</p>\n<p>Constructs promise and returns it.</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "method",
+        "name": "method",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>method</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathParams",
+        "name": "pathParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathParams</p>"
+      },
+      {
+        "type": "param",
+        "string": "headers",
+        "name": "headers",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>headers</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlParams",
+        "name": "urlParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlParams</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 457,
+    "codeStart": 472,
+    "code": "__getDelete: function (url, method, pathParams, headers, urlParams) {\n\n    return app.rest.isMock(url, method, null, function(){\n\n        var preparedUrl = url;\n\n        if(pathParams !== undefined && pathParams !== null){\n            preparedUrl = app.util.System.preparePathParams(url, pathParams);\n        }\n\n        if(urlParams !== undefined && urlParams !== null){\n            preparedUrl = app.util.System.prepareUrlParams(url, urlParams);\n        }\n\n        var dataType =  \"json\";\n        var contentType = \"application/json; charset=utf-8\";\n\n        if(headers && headers['Content-Type']){\n            contentType = headers['Content-Type'];\n        }\n\n        if(headers && headers.contentType){\n            contentType = headers.contentType;\n        }\n\n        if(headers && headers.dataType){\n            dataType = headers.dataType;\n        }\n\n        var promise = $.ajax({\n            url: preparedUrl,\n            type: method,\n            beforeSend: function () {\n\n                if(!app.rest.isSpinnerExcluded(url)){\n                    app.rest.spinnerShow(url);\n                }\n\n            },\n            complete: function () {\n\n                if(!app.rest.isSpinnerExcluded(url)){\n                    app.rest.spinnerHide(url);\n                }\n\n            },\n            headers: headers,\n            contentType: contentType,\n            dataType: dataType\n        });\n\n        promise.result = null;\n\n        promise.then = function(callback){\n\n            promise.done(function(result){\n\n                if(promise.result){\n                    result = promise.result;\n                }\n\n                var _result = callback(result);\n\n                if(_result){\n                    promise.result = _result;\n                }\n\n            });\n\n            return promise;\n        };\n\n        promise.catch = function(callback){\n            promise.fail(callback);\n            return promise;\n        };\n\n        return promise;\n\n    });\n\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getDelete",
+      "string": "__getDelete()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to realize POST and PUT methods execution using AJAX\nand preparing request data, url params, path params, headers etc.\n\nConstructs promise and returns it.",
+        "visibility": "private",
+        "html": "<p>Function to realize POST and PUT methods execution using AJAX<br />\nand preparing request data, url params, path params, headers etc.</p>\n<p>Constructs promise and returns it.</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "method",
+        "name": "method",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>method</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathParams",
+        "name": "pathParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathParams</p>"
+      },
+      {
+        "type": "param",
+        "string": "headers",
+        "name": "headers",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>headers</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlParams",
+        "name": "urlParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlParams</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 557,
+    "codeStart": 572,
+    "code": "__postPut: function (url, method, request, pathParams, headers, urlParams) {\n\n    return app.rest.isMock(url, method, request, function(){\n\n        var jsonData = JSON.stringify(request);\n\n        var preparedUrl = url;\n\n        if(pathParams !== undefined && pathParams !== null){\n            preparedUrl = app.util.System.preparePathParams(url, pathParams);\n        }\n\n        if(urlParams !== undefined && urlParams !== null){\n            preparedUrl = app.util.System.prepareUrlParams(url, urlParams);\n        }\n\n        var dataType =  \"json\";\n        var contentType = \"application/json; charset=utf-8\";\n\n        if(headers && headers['Content-Type']){\n            contentType = headers['Content-Type'];\n        }\n\n        if(headers && headers.contentType){\n            contentType = headers.contentType;\n        }\n\n        if(headers && headers.dataType){\n            dataType = headers.dataType;\n        }\n\n        var promise = $.ajax({\n            url: preparedUrl,\n            data: jsonData,\n            type: method,\n            beforeSend: function () {\n\n                if(!app.rest.isSpinnerExcluded(url)){\n                    app.rest.spinnerShow(url);\n                }\n\n            },\n            complete: function () {\n\n                if(!app.rest.isSpinnerExcluded(url)){\n                    app.rest.spinnerHide(url);\n                }\n\n            },\n            headers: headers,\n            contentType: contentType,\n            dataType: dataType\n        });\n\n        promise.then = function(callback){\n            promise.done(callback);\n            return promise;\n        };\n\n        promise.catch = function(callback){\n            promise.fail(callback);\n            return promise;\n        };\n\n        return promise;\n\n    });\n\n}\n\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__postPut",
+      "string": "__postPut()"
+    }
+  }
+]

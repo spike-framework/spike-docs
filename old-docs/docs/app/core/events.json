@@ -1,0 +1,425 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nEvents module\nModule designed for implementing Cordova default events\n\nAllowed events overriding :\n\nrender\noffline\nonline\ndom\nback\nready\n\nYou can add own custom events to use by your application li",
+        "visibility": "public",
+        "html": "<p>Events module<br />\nModule designed for implementing Cordova default events</p>\n<p>Allowed events overriding :</p>\n<p>render<br />\noffline<br />\nonline<br />\ndom<br />\nback<br />\nready</p>\n<p>You can add own custom events to use by your application li</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{domEvents}",
+        "visibility": "public",
+        "html": "<p>{domEvents}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{onOnline}",
+        "visibility": "public",
+        "html": "<p>{onOnline}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{onOffline}",
+        "visibility": "public",
+        "html": "<p>{onOffline}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{onBack}",
+        "visibility": "public",
+        "html": "<p>{onBack}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{onDeviceReady}",
+        "visibility": "public",
+        "html": "<p>{onDeviceReady}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{onReady}",
+        "visibility": "public",
+        "html": "<p>{onReady}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{extend}",
+        "visibility": "public",
+        "html": "<p>{extend}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__functionName}",
+        "visibility": "private",
+        "html": "<p>{__functionName}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__extend}",
+        "visibility": "private",
+        "html": "<p>{__extend}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 31,
+    "code": "app.events = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "events",
+      "value": "{",
+      "string": "app.events"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional @event function executed when Cordova is initializing\nCan contain any global events registred via @window.addEventListener\nor @document.addEventListener",
+        "html": "<p>Additional @event function executed when Cordova is initializing<br />\nCan contain any global events registred via @window.addEventListener<br />\nor @document.addEventListener</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 33,
+    "codeStart": 42,
+    "code": "domEvents: function(){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "domEvents",
+      "string": "domEvents()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional @event function executed when application is in @online state",
+        "html": "<p>Additional @event function executed when application is in @online state</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 46,
+    "codeStart": 53,
+    "code": "onOnline: function(){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "onOnline",
+      "string": "onOnline()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional @event function executed when application is in @offline state",
+        "html": "<p>Additional @event function executed when application is in @offline state</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 56,
+    "codeStart": 63,
+    "code": "onOffline: function(){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "onOffline",
+      "string": "onOffline()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional @event function executed when @back event happens\n\nIf there aren't rendered modals and current controller has not\noverriden @onBack function then application invokes this function\n\nMore info in @app.__cordova.__onBack function",
+        "html": "<p>Additional @event function executed when @back event happens</p>\n<p>If there aren't rendered modals and current controller has not<br />\noverriden @onBack function then application invokes this function</p>\n<p>More info in @app.__cordova.__onBack function</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 66,
+    "codeStart": 78,
+    "code": "onBack: function(){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "onBack",
+      "string": "onBack()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional @event function executed when Cordova application is ready (device)",
+        "html": "<p>Additional @event function executed when Cordova application is ready (device)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 81,
+    "codeStart": 88,
+    "code": "onDeviceReady: function(){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "onDeviceReady",
+      "string": "onDeviceReady()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional @event function executed when Spike application is ready\nInvokes before rendering @app.config.mainController",
+        "html": "<p>Additional @event function executed when Spike application is ready<br />\nInvokes before rendering @app.config.mainController</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 91,
+    "codeStart": 99,
+    "code": "onReady: function(){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "onReady",
+      "string": "onReady()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to extending and overriding default events with new implementations defined by user",
+        "visibility": "public",
+        "html": "<p>Function to extending and overriding default events with new implementations defined by user</p>"
+      },
+      {
+        "type": "param",
+        "string": "eventsMap",
+        "name": "eventsMap",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>eventsMap</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 103,
+    "codeStart": 111,
+    "code": "extend: function(eventsMap){\n\n    $.each(eventsMap, function(eventName, eventCallback){\n        app.events.__extend(eventName, eventCallback);\n    })\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "extend",
+      "string": "extend()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nReturns mapped event name to function name",
+        "visibility": "private",
+        "html": "<p>Returns mapped event name to function name</p>"
+      },
+      {
+        "type": "param",
+        "string": "eventName",
+        "name": "eventName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>eventName</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 119,
+    "codeStart": 126,
+    "code": "__functionName: function(eventName){\n\n    switch(eventName){\n        case 'render': return 'onRender';\n        case 'offline': return 'onOffline';\n        case 'online': return 'onOnline';\n        case 'dom': return 'domEvents';\n        case 'back': return 'onBack';\n        case 'ready': return 'onReady';\n        default: return eventName;\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__functionName",
+      "string": "__functionName()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to saving new event implementation",
+        "visibility": "private",
+        "html": "<p>Function to saving new event implementation</p>"
+      },
+      {
+        "type": "param",
+        "string": "eventName",
+        "name": "eventName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>eventName</p>"
+      },
+      {
+        "type": "param",
+        "string": "eventCallback",
+        "name": "eventCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>eventCallback</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 140,
+    "codeStart": 148,
+    "code": "__extend: function(eventName, eventCallback){\n\n    app.events[app.events.__functionName(eventName)] = eventCallback;\n\n}\n\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__extend",
+      "string": "__extend()"
+    }
+  }
+]

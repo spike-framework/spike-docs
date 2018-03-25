@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Component module</h2>
+
+            <p>
+                <code>component</code> in Spike Framework is a independent part of application functionality.
+                <br/>
+                It means that they are constructed to be used as part of rendered page, for example as some menu, some filter on the list, or some list of items
+                <br/>
+                Component can be used in many controllers but only one instance of component can exist in controller tree.
+                <br/>
+                Components by default are initialized every time when they are renderd.
+                <br/>
+                There is possibility to sign component as <code>global component</code>, then component works as singleton.
+                <br/>
+            </p>
+
+            <p>
+                <b>Components cannot contain another <code>components</code>. For same functionality use <code>partials</code></b>
+            </p>
+
+            <p>
+                Every <code>component</code> can manage only one single view and directory structure
+                have to be fixed as follows:
+            <ul>
+                <li>src/app (value from <code>app.config.rootPath</code>)
+                    <ul>
+                        <li>
+                            component (value from <code>app.config.componentDirectory</code>)
+                            <ul>
+                                <li>menu (component name)
+                                    <ul>
+                                        <li>menu.component.js</li>
+                                        <li>menu.view.html</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+
+            <p>
+                Also naming convention must be keeped as:
+            <p>
+                Component file name should be named <code>COMPONENT_NAME.component.js</code>
+            </p>
+            <p>
+                Component view name should be named <code>COMPONENT_NAME.view.html</code>
+            </p>
+            </p>
+
+
+            <h5>Example component declaration:</h5>
+            <pre class="brush: js;">
+
+                app.component.register("Menu", {
+
+                    init: function(params) {
+                        ...
+                    }
+
+                });
+
+            </pre>
+
+            <h5>Example component view:</h5>
+            <pre class="brush: js;">
+
+                <div class="menu-component">
+                </div>
+
+            </pre>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Global component methods</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.component.register</code>
+                </div>
+                <div class="col-sm-10">
+                    Registers new component into Spike application context
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.component.register("Menu", {
+
+                            init: function(params) {
+                                ...
+                            }
+
+                        });
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.component.add</code>
+                </div>
+                <div class="col-sm-10">
+                    Registers new component into Spike application context
+                    <br/>
+                    Substitute method for <code>app.component.register</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Component context</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">inherits</code>
+                </div>
+                <div class="col-sm-10">
+                    Sets list of <code>abstract</code> modules to be inherited from
+                    into declared component
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.abstract.register("SwipeMenu", {
+                            ...
+                        });
+
+                        'import $swipeMenu as app.abstract.SwipeMenu';
+                        app.component.register("LeftSwipeMenu", {
+
+                            inherits: [
+                                $swipeMenu
+                            ],
+
+                            init: function(params) {
+                                ...
+                            }
+
+                        });
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">init</code>
+                </div>
+                <div class="col-sm-10">
+                    Required function in every component. Is invoked every time when
+                    component is rendered.
+                    <br/>
+                    <b>Warning! Invoked once when component is <code>global</code></b>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>params</code>
+                            Object containing
+                            <ul>
+                                <li>urlParams</li>
+                                <li>pathParams</li>
+                                <li>routingParams</li>
+                            </ul>
+                            See more on <a href="routing.html">routing page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">global</code>
+                </div>
+                <div class="col-sm-10">
+                    Property defines if component should works as singleton or be rendered
+                    every time when declaration occurred.
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        'import $this as app.component.Menu';
+
+                        app.component.register("Menu", {
+
+                            global: true,
+
+                            init: function(params){
+                                ... //Will be executed only once during app lifecycle
+                            }
+
+                        });
+
+                    </pre>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">rootSelector</code>
+                </div>
+                <div class="col-sm-10">
+                    Function returns component jQuery selector
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Injecting components into controllers</h4>
+            <p>
+                Spike Framework allows developer to inject unlimited number of components into
+                any controller to build whole page view based on independent working pieces of code
+            </p>
+
+            First step to inject components into controller is to declare components names as an array
+            in <code>controller</code> <code>components</code> constant:
+            <br/>
+            <pre class="brush: js;">
+
+                app.controller.register("Home", {
+
+                    components: ['Menu', 'Footer'],
+
+                    init: function(params){
+                        ...
+                    }
+
+                });
+
+            </pre>
+
+            Second step is declaring components into controller view:
+            <br/>
+            <pre class="brush: js;">
+
+                <div class="home-view">
+
+                    <component name="menu"></component>
+                    <component name="footer"></component>
+
+                </div>
+
+            </pre>
+
+            <h5>Naming conventions</h5>
+            <p>
+                Components declared in HTML should be constructed following way:
+
+            <pre class="brush: js;">
+
+                <component name="COMPONENT_NAME" inline-param1="..." inline-param2="..." ... ></component>
+
+            </pre>
+            <p>
+                Where <code>COMPONENT_NAME</code> should be camel-case and starts from <b>lower case letter</b>
+            </p>
+
+            </p>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Passing parameters into components</h4>
+            <p>
+                Components also can get parameters passed as HTML <code>inline</code> params or
+                parameters declared in <code>controller</code>
+            </p>
+
+            Example passing parameters from <code>controller</code>:
+            <br/>
+            <pre class="brush: js;">
+
+                app.controller.register("Home", {
+
+                    components: {
+                        Menu: {
+                            position: 'LEFT'
+                        },
+                        Footer: {}
+                    }
+
+                    init: function(params){
+                        ...
+                    }
+
+                });
+
+            </pre>
+
+            Another way to pass parameters is to use <code>inline</code> params in HTML view:
+            <br/>
+            <pre class="brush: js;">
+
+                <div class="home-view">
+
+                    <component name="menu" position="LEFT"></component>
+
+                </div>
+
+            </pre>
+
+
+            In result of above examples we can get passed parameters via <code>init</code> function:
+            <br/>
+            <pre class="brush: js;">
+
+                   app.component.register("Menu", {
+
+                    init: function(params){
+                        //params.position == 'LEFT'
+                    }
+
+                });
+
+            </pre>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Components outside controllers</h4>
+            <p>
+                Components also can be rendered out of <code>controller</code> context
+                for example in <code>index.html</code> file out of <code>controller views container</code>
+            </p>
+
+            <p>
+                Only one requirement to working component outside context is to have setted <code>global</code> property to <code>TRUE</code>
+            </p>
+
+            Example rendering <code>component</code> in <code>index.html</code>:
+            <br/>
+
+            <pre class="brush: js;">
+
+                app.component.register("TopMenu", {
+
+                    global: true,
+
+                    init: function(params){
+                        ...
+                    }
+
+                });
+
+                ...
+
+                app.component.register("Footer", {
+
+                    global: true,
+
+                    init: function(params){
+                        ...
+                    }
+
+                });
+
+            </pre>
+
+            <pre class="brush: js;">
+                ...
+
+                <component name="topMenu"></component>
+
+                <div spike-view></div>
+                <div spike-modals></div>
+
+                <component name="footer"></component>
+
+                ...
+            </pre>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

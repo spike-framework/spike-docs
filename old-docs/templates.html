@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Template engine</h2>
+
+            <p>
+                Spike Framework and Spike Compiler have own powerful template engine which gives developer
+                easy way to make independent small pieces of HTML and JS using <code>partials</code>
+                <br/>
+                Provided template engine is so simple and powerful, because allow developer to mix plain JavaScript
+                with HTML without any strings concatenation.
+            </p>
+
+            <p>
+                Templates are only possible to use with <code>partials</code> so it's strongly recommended to
+                see <a href="partials.html">partials details</a> after reading this section.
+            </p>
+
+            <h5>Example template repeating list of users:</h5>
+            <pre class="brush: js;">
+
+                'import $userService as app.service.User';
+
+                <ul>
+
+                # var users = $userService.getUsers();
+                # $.each(users, function(index, user) {
+
+                    <li>
+                        <p>Username: [[user.username]]</p>
+                        <p>Email: [[user.email]]</p>
+                    </li>
+
+                # });
+
+                </ul>
+
+            </pre>
+
+            <h5>For example result would be:</h5>
+            <pre class="brush: js;">
+
+                <ul>
+                    <li>
+                        <p>Username: Dawid</p>
+                        <p>Email: dawid123@ok.com</p>
+                    </li>
+                       <li>
+                        <p>Username: Edward</p>
+                        <p>Email: ed88@ok.com</p>
+                    </li>
+                       <li>
+                        <p>Username: Nicolas</p>
+                        <p>Email: niki1990@ok.com</p>
+                    </li>
+                </ul>
+
+            </pre>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Syntax</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">[[ ]]</code>
+                </div>
+                <div class="col-sm-10">
+                    Injects JavaScript code result into HTML
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        # var multiplyByTwo = function(number){
+                        #     return number*2;
+                        # }
+
+                        # var number = 2;
+
+                        <span> [[ number + ' * 2 = ' + multiplyByTwo(id) ]]</span>
+
+                        # var title = 'Harry Potter';
+
+                        <h1> [[ title ]]</h1>
+
+                        # var person = {
+                        #    name: 'Nicolas',
+                        #    surname: 'Petterson'
+                        # };
+
+                        <p> [[ person.name + ' ' + person.surname ]]</p>
+
+                    </pre>
+
+                    Result would be:
+                    <pre class="brush: js;">
+
+                        <span>2 * 2 = 4</span>
+                        <h1>Harry Potter</h1>
+                        <p>Nicolas Petterson</p>
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">[[[ ]]]</code>
+                </div>
+                <div class="col-sm-10">
+                    Injects JavaScript code result into HTML and wraps it into
+                    single quotes <code>'</code>
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        'import $this as ...';
+
+                        # for(var i = 0; i < names.length; i++) {
+                        # var name = names[i]
+
+                        <button type="button" onclick="$this.getName([[[name]]])">Select [[name]]</button>
+
+                        # }
+
+                    </pre>
+
+                    Result would be:
+                    <pre class="brush: js;">
+
+                        <button type="button" onclick="$this.getName('Peter')">Select Peter</button>
+                        <button type="button" onclick="$this.getName('Jack')">Select Jack</button>
+                        <button type="button" onclick="$this.getName('Doyle')">Select Doyle</button>
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">#</code>
+                </div>
+                <div class="col-sm-10">
+                    Injects JavaScript code and executes it during
+                    template result building. In <code>#</code> signed lines, you can mix any JS
+                    and included libraries code of your project.
+                    <br/>
+                    Every line which not contains HTML should be signed with <code>#</code> sign
+                    before code starts.
+                    <br/>
+                    There is no need to add <code>;</code> end of line colon sign because compiler
+                    adds it automatically. Of course you can use it just for developing proposes,
+                    finally all colons are replaced before compilation starts and added again on the
+                    begin of line.
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        # var list = ['Jack', 'Doyle', 'Michael']
+
+                        # $.each(list, function(index, name) {
+
+                            <p>[[name]]</p>
+
+                        # });
+
+                    </pre>
+
+                    Result would be:
+                    <pre class="brush: js;">
+
+                        <p>Jack</p>
+                        <p>Doyle</p>
+                        <p>Michael</p>
+
+                    </pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Imports</h4>
+            <p>
+                Spike template engine allows developer to use <code>Imports</code> Spike feature
+                as described in <a href="imports.html">imports section</a> with only one exception:
+                <br/>
+                There's no default <code>$this</code> import because <code>partials</code>
+                are repeated elements in project and have not static reference.
+                <br/>
+                Only purpose to use <code>$this</code> import is to make reference
+                to assigned partial to the current template.
+                <br/>
+                For example:
+
+                <pre class="brush: js;">
+
+                menuItem.partial.js
+
+                app.partial.register("MenuItem", {
+
+                    defaultClass: 'button-red'
+
+                });
+
+                menuItem.partial.html
+
+                'import $this as app.partial.MenuItem';
+
+                <button type="button" class="[[$this.defaultClass]]">Default button</button>
+
+                </pre>
+
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,421 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nGlobal module\nModule designed for as globals storage instead of window global during application lifecycle.\nCan be used anywhere.\n\nOnly one active instance in time is available (singleton)",
+        "visibility": "public",
+        "html": "<p>Global module<br />\nModule designed for as globals storage instead of window global during application lifecycle.<br />\nCan be used anywhere.</p>\n<p>Only one active instance in time is available (singleton)</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__globals}",
+        "visibility": "private",
+        "html": "<p>{__globals}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 18,
+    "code": "app.global = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "global",
+      "value": "{",
+      "string": "app.global"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerName",
+        "name": "controllerName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerName</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerObject",
+        "name": "controllerObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 20,
+    "codeStart": 28,
+    "code": "add: function(globalName, globalInitialValue){\n    this.register(globalName, globalInitialValue);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new global variable in application",
+        "visibility": "public",
+        "html": "<p>Registering new global variable in application</p>"
+      },
+      {
+        "type": "param",
+        "string": "globalName",
+        "name": "globalName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>globalName</p>"
+      },
+      {
+        "type": "param",
+        "string": "globalInitialValue",
+        "name": "globalInitialValue",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>globalInitialValue</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 32,
+    "codeStart": 40,
+    "code": "register: function(globalName, globalInitialValue){\n\n    // Filter if name is invalid (can break application)\n    app.system.__filterRestrictedNames(globalName);",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{get}",
+        "visibility": "public",
+        "html": "<p>{get}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{set}",
+        "visibility": "public",
+        "html": "<p>{set}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__value}",
+        "visibility": "private",
+        "html": "<p>{__value}</p>"
+      }
+    ],
+    "description": {
+      "full": "<p>New global variable object</p>",
+      "summary": "<p>New global variable object</p>",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 45,
+    "codeStart": 56,
+    "code": "app.global[globalName] = {",
+    "ctx": false
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nVariable to store global variable value",
+        "visibility": "private",
+        "html": "<p>Variable to store global variable value</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 58,
+    "codeStart": 62,
+    "code": "__value: null,",
+    "ctx": {
+      "type": "property",
+      "name": "__value",
+      "value": "null,",
+      "string": "__value"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to retrieve global variable value\nOptionally @param index can be passed when global variable value is an @Array object\nthen function returns value on passed index in this array",
+        "visibility": "public",
+        "html": "<p>Function to retrieve global variable value<br />\nOptionally @param index can be passed when global variable value is an @Array object<br />\nthen function returns value on passed index in this array</p>"
+      },
+      {
+        "type": "param",
+        "string": "index --optional",
+        "name": "index",
+        "description": "<p>--optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 64,
+    "codeStart": 73,
+    "code": "get: function(index){\n    if(index){\n        return this.__value[index];\n    }else{\n        return this.__value;\n    }\n},",
+    "ctx": {
+      "type": "method",
+      "name": "get",
+      "string": "get()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to setting global variable value\n\nOptionally @param index can be passed when global variable value is an @Array object\nthen function sets value on passed index in this array.\n\nIf @param index is not passed and global variable value is an @Array object\nthen value is setted typical way\n\nFor adding items to @Array object then use @push function instead",
+        "visibility": "public",
+        "html": "<p>Function to setting global variable value</p>\n<p>Optionally @param index can be passed when global variable value is an @Array object<br />\nthen function sets value on passed index in this array.</p>\n<p>If @param index is not passed and global variable value is an @Array object<br />\nthen value is setted typical way</p>\n<p>For adding items to @Array object then use @push function instead</p>"
+      },
+      {
+        "type": "param",
+        "string": "index --optional",
+        "name": "index",
+        "description": "<p>--optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 81,
+    "codeStart": 96,
+    "code": "set: function(newGlobalValue, index){\n\n    if(this.__value && index){\n        this.__value[index] = newGlobalValue;\n    } else {\n        this.__value = newGlobalValue;\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "set",
+      "string": "set()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to setting global variable value for @Array object\n\nIf global variable value is an @Array object\nthen function push new value into this array\n\nIf global variable value is not @Array object\nthen value is not setted",
+        "visibility": "public",
+        "html": "<p>Function to setting global variable value for @Array object</p>\n<p>If global variable value is an @Array object<br />\nthen function push new value into this array</p>\n<p>If global variable value is not @Array object<br />\nthen value is not setted</p>"
+      },
+      {
+        "type": "param",
+        "string": "newGlobalValueArrayItem",
+        "name": "newGlobalValueArrayItem",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>newGlobalValueArrayItem</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 106,
+    "codeStart": 119,
+    "code": "push: function(newGlobalValueArrayItem){\n\n    if(this.__value && this.__value instanceof Array){\n        this.__value.push(newGlobalValueArrayItem);\n    }\n\n}\n\n        };\n\n        this.__value = value;\n\n    },",
+    "ctx": {
+      "type": "method",
+      "name": "push",
+      "string": "push()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering list of global objects variables in application",
+        "visibility": "public",
+        "html": "<p>Registering list of global objects variables in application</p>"
+      },
+      {
+        "type": "param",
+        "string": "globalObjectsList {",
+        "name": "globalObjectsList",
+        "description": "<p>{</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "name - name of the global variable",
+        "visibility": "public",
+        "html": "<p>name - name of the global variable</p>"
+      },
+      {
+        "type": "public",
+        "string": "initial - initial value of the global variable\n}",
+        "visibility": "public",
+        "html": "<p>initial - initial value of the global variable<br />\n}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 133,
+    "codeStart": 144,
+    "code": "list: function(globalObjectsList){\n\n    $.each(globalObjectsList, function(i, __global){\n        app.global.add(__global.name, __global.initial);\n    });\n\n}\n\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "list",
+      "string": "list()"
+    }
+  }
+]

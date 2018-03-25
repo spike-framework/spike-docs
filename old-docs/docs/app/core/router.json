@@ -1,0 +1,958 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRouter object\nObject designed as routing module for registreing and processing defined endpoints\nCan be configured via @app.config.routing parameter",
+        "visibility": "public",
+        "html": "<p>Router object<br />\nObject designed as routing module for registreing and processing defined endpoints<br />\nCan be configured via @app.config.routing parameter</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{create}",
+        "visibility": "public",
+        "html": "<p>{create}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{setPathParams}",
+        "visibility": "public",
+        "html": "<p>{setPathParams}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{setURLParams}",
+        "visibility": "public",
+        "html": "<p>{setURLParams}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__pathFunction}",
+        "visibility": "private",
+        "html": "<p>{__pathFunction}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__registerPath}",
+        "visibility": "private",
+        "html": "<p>{__registerPath}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__pathPatternExist}",
+        "visibility": "private",
+        "html": "<p>{__pathPatternExist}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__createPathPattern}",
+        "visibility": "private",
+        "html": "<p>{__createPathPattern}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__registerRouter}",
+        "visibility": "private",
+        "html": "<p>{__registerRouter}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__checkPathIntegrity}",
+        "visibility": "private",
+        "html": "<p>{__checkPathIntegrity}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__getURLParams}",
+        "visibility": "private",
+        "html": "<p>{__getURLParams}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__getPathData}",
+        "visibility": "private",
+        "html": "<p>{__getPathData}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__getCurrentView}",
+        "visibility": "private",
+        "html": "<p>{__getCurrentView}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__redirectToView}",
+        "visibility": "private",
+        "html": "<p>{__redirectToView}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__renderCurrentView}",
+        "visibility": "private",
+        "html": "<p>{__renderCurrentView}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__otherwiseReplacement}",
+        "visibility": "private",
+        "html": "<p>{__otherwiseReplacement}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__pathParamReplacement}",
+        "visibility": "private",
+        "html": "<p>{__pathParamReplacement}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__endpoints}",
+        "visibility": "private",
+        "html": "<p>{__endpoints}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 31,
+    "code": "app.router = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "router",
+      "value": "{",
+      "string": "app.router"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nDeclares string which is used as 'OTHERWISE' URL",
+        "visibility": "private",
+        "html": "<p>Declares string which is used as 'OTHERWISE' URL</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 33,
+    "codeStart": 37,
+    "code": "__otherwiseReplacement: '!',",
+    "ctx": {
+      "type": "property",
+      "name": "__otherwiseReplacement",
+      "value": "'!',",
+      "string": "__otherwiseReplacement"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nDeclares pattern replacement for path params",
+        "visibility": "private",
+        "html": "<p>Declares pattern replacement for path params</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 39,
+    "codeStart": 43,
+    "code": "__pathParamReplacement: '__var__',",
+    "ctx": {
+      "type": "property",
+      "name": "__pathParamReplacement",
+      "value": "'__var__',",
+      "string": "__pathParamReplacement"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nStorage of routing endpoints objects",
+        "visibility": "private",
+        "html": "<p>Storage of routing endpoints objects</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 45,
+    "codeStart": 49,
+    "code": "__endpoints: {},",
+    "ctx": {
+      "type": "property",
+      "name": "__endpoints",
+      "value": "{},",
+      "string": "__endpoints"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nReturns factory object for creating routing endpoints\nbased on {path} and {other} functions mapped from",
+        "visibility": "private",
+        "html": "<p>Returns factory object for creating routing endpoints<br />\nbased on {path} and {other} functions mapped from</p>"
+      },
+      {
+        "type": "private",
+        "string": "__pathFunction and @private __otherFunction",
+        "visibility": "private",
+        "html": "<p>__pathFunction and @private __otherFunction</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 51,
+    "codeStart": 59,
+    "code": "__getRouterFactory: function(){\n    return {\n        path: app.router.__pathFunction,\n        other: app.router.__otherFunction\n    }\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getRouterFactory",
+      "string": "__getRouterFactory()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction creates starts creating new router and\nReturns routing creator object.",
+        "visibility": "public",
+        "html": "<p>Function creates starts creating new router and<br />\nReturns routing creator object.</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 66,
+    "codeStart": 73,
+    "code": "create: function () {\n    return app.router.__getRouterFactory();\n},",
+    "ctx": {
+      "type": "method",
+      "name": "create",
+      "string": "create()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction registers otherwise endpoint.\nReturns routing creator.",
+        "visibility": "private",
+        "html": "<p>Function registers otherwise endpoint.<br />\nReturns routing creator.</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathObject",
+        "name": "pathObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 77,
+    "codeStart": 85,
+    "code": "__otherFunction: function(pathObject){\n     return app.router.__pathFunction(app.router.__otherwiseReplacement, pathObject);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__otherFunction",
+      "string": "__otherFunction()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction registers routing endpoint.\nChecks if @pathValue and @pathObject are defined\nIf not throws error.\nIf defined, registers new endpoint via @private {__registerPath}\n\nReturns routing creator",
+        "visibility": "private",
+        "html": "<p>Function registers routing endpoint.<br />\nChecks if @pathValue and @pathObject are defined<br />\nIf not throws error.<br />\nIf defined, registers new endpoint via @private {__registerPath}</p>\n<p>Returns routing creator</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathValue",
+        "name": "pathValue",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathValue</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathObject",
+        "name": "pathObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 89,
+    "codeStart": 102,
+    "code": "__pathFunction: function (pathValue, pathObject) {\n\n    if (app.util.System.isEmpty(pathValue) || app.util.System.isNull(pathObject)) {\n        app.system.__throwError(app.system.__messages.PATH_DEFINITION);\n    }\n\n    app.router.__registerPath(pathValue, pathObject.controller, pathObject.routingParams, pathObject.onRoute);\n\n    return app.router.__getRouterFactory();\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__pathFunction",
+      "string": "__pathFunction()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction registers new routing endpoint.\nIf endpoint with given @pathValue already exists then\nthrows error.\nIf not, creates given @pathValue pattern and checks\nif endpoint with similar pattern already exist, if exist\nthrows error.\nCreates endpoint object.",
+        "visibility": "private",
+        "html": "<p>Function registers new routing endpoint.<br />\nIf endpoint with given @pathValue already exists then<br />\nthrows error.<br />\nIf not, creates given @pathValue pattern and checks<br />\nif endpoint with similar pattern already exist, if exist<br />\nthrows error.<br />\nCreates endpoint object.</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathValue",
+        "name": "pathValue",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathValue</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathController",
+        "name": "pathController",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathController</p>"
+      },
+      {
+        "type": "param",
+        "string": "routingParams",
+        "name": "routingParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>routingParams</p>"
+      },
+      {
+        "type": "param",
+        "string": "onRouteEvent",
+        "name": "onRouteEvent",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>onRouteEvent</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 114,
+    "codeStart": 131,
+    "code": "__registerPath: function (pathValue, pathController, routingParams, onRouteEvent) {\n\n    if (app.router.__endpoints[pathValue]) {\n        app.system.__throwError(app.system.__messages.PATH_ALREADY_EXIST, [pathValue]);\n    }\n\n    var pathPattern = app.router.__createPathPattern(pathValue);\n\n    //Checks if pattern exists in set of endpoints\n    if (app.router.__pathPatternExist(pathPattern)) {\n        app.system.__throwError(app.system.__messages.PATH_PATTERN_ALREADY_EXIST, [pathValue, pathPattern.join(\"\").split(app.router.__pathParamReplacement).join(\"/PATH_PARAM\")]);\n    }\n\n    app.router.__endpoints[pathValue] = {\n        __pathValue: pathValue,\n        controller: pathController,\n        routingParams: routingParams,\n        onRouteEvent: onRouteEvent,\n        __pathPattern: pathPattern\n    };\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__registerPath",
+      "string": "__registerPath()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction checks if path patterns already exists in set of endpoints",
+        "visibility": "private",
+        "html": "<p>Function checks if path patterns already exists in set of endpoints</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathPattern",
+        "name": "pathPattern",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathPattern</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 154,
+    "codeStart": 161,
+    "code": "__pathPatternExist: function (pathPattern) {\n\n    for (pathValue in app.router.__endpoints) {\n\n        if (app.router.__endpoints[pathValue].__pathPattern.pattern.join(\"\") == pathPattern.pattern.join(\"\")) {\n            return true;\n        }\n\n    }\n\n    return false;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__pathPatternExist",
+      "string": "__pathPatternExist()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction creates path pattern from given @pathValue\nReturns path pattern object containing pattern and\ngiver @pathValue path params set",
+        "visibility": "private",
+        "html": "<p>Function creates path pattern from given @pathValue<br />\nReturns path pattern object containing pattern and<br />\ngiver @pathValue path params set</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathValue",
+        "name": "pathValue",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathValue</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 175,
+    "codeStart": 185,
+    "code": "__createPathPattern: function (pathValue) {\n\n    var pathPattern = {\n        pattern: [],\n        pathParams: []\n    };\n\n    //Avoid processing URL params\n    var splitted = pathValue.substring(0, pathValue.indexOf('?') > -1 ? pathValue.indexOf('?') : pathValue.length).split('/');\n\n    for (var i = 0; i < splitted.length; i++) {\n\n        if (splitted[i].indexOf(':') > -1) {\n            //Is path param\n            pathPattern.pathParams.push(splitted[i].replace(':', ''));\n            pathPattern.pattern.push(app.router.__pathParamReplacement)\n        } else if (splitted[i].trim().length > 0) {\n            pathPattern.pattern.push(splitted[i])\n        }\n\n    }\n\n    return pathPattern;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__createPathPattern",
+      "string": "__createPathPattern()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction initializes router.\nIf @app.config.routingEnabled is setted, then\nprepare browser URL to work with router.\n\nBinds hashchange event.",
+        "visibility": "private",
+        "html": "<p>Function initializes router.<br />\nIf @app.config.routingEnabled is setted, then<br />\nprepare browser URL to work with router.</p>\n<p>Binds hashchange event.</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 211,
+    "codeStart": 221,
+    "code": "__registerRouter: function () {\n\n    if (app.config.routingEnabled) {\n\n        if(window.location.hash.substring(0,2) !== '#/'){\n            window.location.hash = '#/';\n        }\n\n        app.router.__renderCurrentView();\n\n        $(window).bind('hashchange', function () {\n            console.log('HASH HASNGE');\n            app.router.__renderCurrentView();\n        });\n\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__registerRouter",
+      "string": "__registerRouter()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\n Function checks if given @hashPattern so pattern created\n from current browser hash matches with @endpointPattern\n given from @private __endpoints set",
+        "visibility": "private",
+        "html": "<p>Function checks if given @hashPattern so pattern created<br />\nfrom current browser hash matches with @endpointPattern<br />\ngiven from @private __endpoints set</p>"
+      },
+      {
+        "type": "param",
+        "string": "hashPattern",
+        "name": "hashPattern",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>hashPattern</p>"
+      },
+      {
+        "type": "param",
+        "string": "endpointPattern",
+        "name": "endpointPattern",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>endpointPattern</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 240,
+    "codeStart": 251,
+    "code": "__checkPathIntegrity: function (hashPattern, endpointPattern) {\n\n    for (var i = 0; i < endpointPattern.pattern.length; i++) {\n\n        if (endpointPattern.pattern[i] !== app.router.__pathParamReplacement\n            && endpointPattern.pattern[i] !== hashPattern.pattern[i]) {\n            return false;\n        }\n\n    }\n\n    return true;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__checkPathIntegrity",
+      "string": "__checkPathIntegrity()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction returns object with params stored in current browser URL",
+        "visibility": "private",
+        "html": "<p>Function returns object with params stored in current browser URL</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 266,
+    "codeStart": 272,
+    "code": "__getURLParams: function () {\n\n    var params = {};\n\n    if(window.location.href.indexOf('?') > -1){\n        window.location.href.substring(window.location.href.indexOf('?'), window.location.href.length).replace(/[?&]+([^=&]+)=([^&]*)/gi, function (str, key, value) {\n            params[key] = app.util.System.tryParseNumber(value);\n        });\n    }\n\n\n    return params;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getURLParams",
+      "string": "__getURLParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction returns object containing @urlParams and",
+        "visibility": "private",
+        "html": "<p>Function returns object containing @urlParams and</p>"
+      },
+      {
+        "type": "pathParams",
+        "string": "as objects. Data is retrieved from given @hashPattern based on @endpointPattern",
+        "html": "<p>as objects. Data is retrieved from given @hashPattern based on @endpointPattern</p>"
+      },
+      {
+        "type": "param",
+        "string": "hashPattern",
+        "name": "hashPattern",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>hashPattern</p>"
+      },
+      {
+        "type": "param",
+        "string": "endpointPattern",
+        "name": "endpointPattern",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>endpointPattern</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 287,
+    "codeStart": 299,
+    "code": "__getPathData: function (hashPattern, endpointPattern) {\n\n    var urlParams = app.router.__getURLParams();\n    var pathParams = {};\n    var pathParamsIndex = 0;\n    for (var i = 0; i < endpointPattern.pattern.length; i++) {\n\n        if (endpointPattern.pattern[i] == app.router.__pathParamReplacement) {\n            //If path param is numeric string, then making it just number. If not, returns passed object without modifications\n            pathParams[endpointPattern.pathParams[pathParamsIndex]] = app.util.System.tryParseNumber(hashPattern.pattern[i]);\n            pathParamsIndex++;\n        }\n\n    }\n\n    return {\n        urlParams: urlParams,\n        pathParams: pathParams,\n    };\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getPathData",
+      "string": "__getPathData()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction gets current browser URL data\n\nFinally, for given endpoint data sets\nglobal info like @private __controller, @public routingParams\nand @private {__onRouteEvent} properties.\n\nReturns those data.",
+        "visibility": "private",
+        "html": "<p>Function gets current browser URL data</p>\n<p>Finally, for given endpoint data sets<br />\nglobal info like @private __controller, @public routingParams<br />\nand @private {__onRouteEvent} properties.</p>\n<p>Returns those data.</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 321,
+    "codeStart": 332,
+    "code": "__getCurrentView: function () {\n\n    var currentEndpointObject = app.router.__getCurrentViewData();\n\n    var currentEndpointData = currentEndpointObject.data;\n    var currentEndpoint = currentEndpointObject.endpoint;\n\n\n    if (currentEndpointData == null && app.router.__endpoints[app.router.__otherwiseReplacement]) {\n        currentEndpointData = {\n            __controller: app.router.__endpoints[app.router.__otherwiseReplacement].controller,\n            routingParams: app.router.__endpoints[app.router.__otherwiseReplacement].routingParams,\n            __onRouteEvent: app.router.__endpoints[app.router.__otherwiseReplacement].onRouteEvent,\n        };\n    }else{\n        currentEndpointData.__controller = currentEndpoint.controller;\n        currentEndpointData.routingParams =  currentEndpoint.routingParams;\n        currentEndpointData.__onRouteEvent =  currentEndpoint.onRouteEvent;\n    }\n\n\n    return currentEndpointData;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getCurrentView",
+      "string": "__getCurrentView()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction gets current browser URL and matches it\nwith @private __endpoints.\n\nIf current URL matches with any of routing declarations from",
+        "visibility": "private",
+        "html": "<p>Function gets current browser URL and matches it<br />\nwith @private __endpoints.</p>\n<p>If current URL matches with any of routing declarations from</p>"
+      },
+      {
+        "type": "private",
+        "string": "__endpoints set, then gets endpoint data.\n\nIf current URL not matches then endpoint data is null.\n\nReturns those data.",
+        "visibility": "private",
+        "html": "<p>__endpoints set, then gets endpoint data.</p>\n<p>If current URL not matches then endpoint data is null.</p>\n<p>Returns those data.</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 357,
+    "codeStart": 370,
+    "code": "__getCurrentViewData: function () {\n\n    var hash = window.location.hash.replace(/^#\\//, '');\n\n    var hashPattern = app.router.__createPathPattern(hash);\n\n    for (var pathValue in app.router.__endpoints) {\n\n        if (app.router.__endpoints[pathValue].__pathPattern.pattern.length == hashPattern.pattern.length\n            && app.router.__checkPathIntegrity(hashPattern, app.router.__endpoints[pathValue].__pathPattern)) {\n            var currentEndpoint = app.router.__endpoints[pathValue];\n            var currentEndpointData = app.router.__getPathData(hashPattern, app.router.__endpoints[pathValue].__pathPattern);\n\n            return {\n                endpoint: currentEndpoint,\n                data: currentEndpointData\n            }\n\n        }\n\n    }\n\n    return {\n        endpoint: null,\n        data: null\n    };\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getCurrentViewData",
+      "string": "__getCurrentViewData()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction applies given @pathParams to the current\nbrowser URL.\n\nIf given @pathParams not contains or contains undefined\nor null value for specified param, then function omits it",
+        "visibility": "public",
+        "html": "<p>Function applies given @pathParams to the current<br />\nbrowser URL.</p>\n<p>If given @pathParams not contains or contains undefined<br />\nor null value for specified param, then function omits it</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathParams",
+        "name": "pathParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathParams</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 399,
+    "codeStart": 410,
+    "code": "setPathParams: function(pathParams){\n\n    var currentViewData = app.router.__getCurrentViewData();\n\n    for(var pathParam in pathParams){\n\n        if(currentViewData.data.pathParams[pathParam]\n        && !app.util.System.isNull(pathParams[pathParam])){\n            currentViewData.data.pathParams[pathParam] = pathParams[pathParam];\n        }\n\n    }\n\n    app.router.__redirectToView(currentViewData.endpoint.__pathValue, currentViewData.data.pathParams, currentViewData.data.urlParams);\n\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "setPathParams",
+      "string": "setPathParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction applies given @urlParams to the current\nbrowser URL\n\nIf given @urlParams not contains or contains undefined\nor null value for specified param, then function omits it",
+        "visibility": "public",
+        "html": "<p>Function applies given @urlParams to the current<br />\nbrowser URL</p>\n<p>If given @urlParams not contains or contains undefined<br />\nor null value for specified param, then function omits it</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlParams",
+        "name": "urlParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlParams</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 429,
+    "codeStart": 442,
+    "code": "setURLParams: function(urlParams){\n\n    var currentViewData = app.router.__getCurrentViewData();\n\n    for(var urlParam in urlParams){\n\n        if(currentViewData.data.urlParams[urlParam]\n            && !app.util.System.isNull(urlParams[urlParam])){\n            currentViewData.data.urlParams[urlParam] = urlParams[urlParam];\n        }\n\n    }\n\n    app.router.__redirectToView(currentViewData.endpoint.__pathValue, currentViewData.data.pathParams, currentViewData.data.urlParams);\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "setURLParams",
+      "string": "setURLParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction redirects to given @path defined in @app.config.routing\nobject and applies given @pathParams and @urlParams to @path",
+        "visibility": "private",
+        "html": "<p>Function redirects to given @path defined in @app.config.routing<br />\nobject and applies given @pathParams and @urlParams to @path</p>"
+      },
+      {
+        "type": "param",
+        "string": "path",
+        "name": "path",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>path</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathParams",
+        "name": "pathParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathParams</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlParams",
+        "name": "urlParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlParams</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 459,
+    "codeStart": 469,
+    "code": "__redirectToView: function(path, pathParams, urlParams){\n\n    if(path[0] !== '/'){\n        path = '/'+path;\n    }\n\n    path = app.util.System.preparePathDottedParams(path, pathParams);\n    path = app.util.System.prepareUrlParams(path, urlParams);\n\n    window.location.hash = path;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__redirectToView",
+      "string": "__redirectToView()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction retrieves current view data from current browser URL\nand renders matched endpoint  defined in @app.config.routing",
+        "visibility": "private",
+        "html": "<p>Function retrieves current view data from current browser URL<br />\nand renders matched endpoint  defined in @app.config.routing</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 481,
+    "codeStart": 488,
+    "code": "__renderCurrentView: function () {\n    var currentEndpointData = app.router.__getCurrentView();\n    app.system.render(app.controller[currentEndpointData.__controller], currentEndpointData, currentEndpointData.__onRouteEvent);\n}\n\n}",
+    "ctx": {
+      "type": "method",
+      "name": "__renderCurrentView",
+      "string": "__renderCurrentView()"
+    }
+  }
+]

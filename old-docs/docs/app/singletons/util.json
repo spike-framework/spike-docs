@@ -1,0 +1,953 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nUtil module\nModule designed for usage as singleton during application lifecycle.\nCan be used in any other modules.\n\nOnly one active instance in time is available",
+        "visibility": "public",
+        "html": "<p>Util module<br />\nModule designed for usage as singleton during application lifecycle.<br />\nCan be used in any other modules.</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "System",
+        "visibility": "public",
+        "html": "<p>System</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 18,
+    "code": "app.util = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "util",
+      "value": "{",
+      "string": "app.util"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginName",
+        "name": "pluginName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginName</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginWrapperFunction",
+        "name": "pluginWrapperFunction",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginWrapperFunction</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 20,
+    "codeStart": 28,
+    "code": "add: function (utilName, utilFunctions) {\n    this.register(utilName, utilFunctions);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new utils object containing set of functions",
+        "visibility": "public",
+        "html": "<p>Registering new utils object containing set of functions</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginName",
+        "name": "pluginName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginName</p>"
+      },
+      {
+        "type": "param",
+        "string": "pluginWrapperFunction",
+        "name": "pluginWrapperFunction",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pluginWrapperFunction</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 32,
+    "codeStart": 40,
+    "code": "register: function (utilName, utilFunctions) {\n    app.util[utilName] = utilFunctions;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [],
+    "description": {
+      "full": "<p>System util used by application core</p>",
+      "summary": "<p>System util used by application core</p>",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 44,
+    "codeStart": 47,
+    "code": "System: {",
+    "ctx": {
+      "type": "property",
+      "name": "System",
+      "value": "{",
+      "string": "System"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nCopies array to another instance without reference",
+        "visibility": "public",
+        "html": "<p>Copies array to another instance without reference</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{string}",
+        "types": [
+          "string"
+        ],
+        "typesDescription": "<code>string</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{string}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 48,
+    "codeStart": 55,
+    "code": "copyArray: function (oldArray) {\n    return JSON.parse(JSON.stringify(oldArray));\n},",
+    "ctx": {
+      "type": "method",
+      "name": "copyArray",
+      "string": "copyArray()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns date for logging module",
+        "visibility": "public",
+        "html": "<p>Returns date for logging module</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{string}",
+        "types": [
+          "string"
+        ],
+        "typesDescription": "<code>string</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{string}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 59,
+    "codeStart": 66,
+    "code": "currentDateLog: function () {\n    return new Date().toLocaleTimeString();\n},",
+    "ctx": {
+      "type": "method",
+      "name": "currentDateLog",
+      "string": "currentDateLog()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to bind values represented by map or array to special\nformatted @string\n\nExample:\n\nvar someString = \"Mark of this car is {0}\";\napp.util.System.bindStringParams(someString, [\"Ford\"] );\n\nor\n\nvar someString = \"Mark of this car is {mark}\";\napp.util.System.bindStringParams(someString, { mark: \"Ford\" } );",
+        "visibility": "public",
+        "html": "<p>Function to bind values represented by map or array to special<br />\nformatted @string</p>\n<p>Example:</p>\n<p>var someString = &quot;Mark of this car is {0}&quot;;<br />\napp.util.System.bindStringParams(someString, [&quot;Ford&quot;] );</p>\n<p>or</p>\n<p>var someString = &quot;Mark of this car is {mark}&quot;;<br />\napp.util.System.bindStringParams(someString, { mark: &quot;Ford&quot; } );</p>"
+      },
+      {
+        "type": "param",
+        "string": "string",
+        "name": "string",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>string</p>"
+      },
+      {
+        "type": "param",
+        "string": "objectOrArrayParams",
+        "name": "objectOrArrayParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>objectOrArrayParams</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{*}",
+        "types": [],
+        "typesDescription": "<code>*</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{*}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 70,
+    "codeStart": 91,
+    "code": "bindStringParams: function (string, objectOrArrayParams) {\n\n    if (!objectOrArrayParams) {\n        return string;\n    }\n\n    if (objectOrArrayParams instanceof Array) {\n\n        for (var i = 0; i < objectOrArrayParams.length; i++) {\n            string = string.replace('{' + i + '}', JSON.stringify(objectOrArrayParams[i]))\n        }\n\n    } else {\n\n        for (var paramName in objectOrArrayParams) {\n            string = string.replace('{' + paramName + '}', JSON.stringify(objectOrArrayParams[paramName]));\n        }\n\n    }\n\n    return string;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "bindStringParams",
+      "string": "bindStringParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nChecks if passed object is JavaScript @function",
+        "visibility": "public",
+        "html": "<p>Checks if passed object is JavaScript @function</p>"
+      },
+      {
+        "type": "param",
+        "string": "functionToCheck",
+        "name": "functionToCheck",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>functionToCheck</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{*|boolean}",
+        "types": [
+          "boolean"
+        ],
+        "typesDescription": "<code>*</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{*|boolean}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 115,
+    "codeStart": 123,
+    "code": "isFunction: function (functionToCheck) {\n    var getType = {};\n    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';\n},",
+    "ctx": {
+      "type": "method",
+      "name": "isFunction",
+      "string": "isFunction()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to parse JSON @string to JavaScript @object with replacing\nwhole whitespaces, tabs, new lines etc.",
+        "visibility": "public",
+        "html": "<p>Function to parse JSON @string to JavaScript @object with replacing<br />\nwhole whitespaces, tabs, new lines etc.</p>"
+      },
+      {
+        "type": "param",
+        "string": "s",
+        "name": "s",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>s</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 128,
+    "codeStart": 136,
+    "code": "parseJSON: function (s) {\n\n    s = s.replace(/\\\\n/g, \"\\\\n\")\n        .replace(/\\\\'/g, \"\\\\'\")\n        .replace(/\\\\\"/g, '\\\\\"')\n        .replace(/\\\\&/g, \"\\\\&\")\n        .replace(/\\\\r/g, \"\\\\r\")\n        .replace(/\\\\t/g, \"\\\\t\")\n        .replace(/\\\\b/g, \"\\\\b\")\n        .replace(/\\\\f/g, \"\\\\f\");\n    s = s.replace(/[\\u0000-\\u0019]+/g, \"\");\n    var o = JSON.parse(s);\n\n    return o;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "parseJSON",
+      "string": "parseJSON()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns true if passed object is undefined or null or empty",
+        "visibility": "public",
+        "html": "<p>Returns true if passed object is undefined or null or empty</p>"
+      },
+      {
+        "type": "param",
+        "string": "obj",
+        "name": "obj",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>obj</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{boolean}",
+        "types": [
+          "boolean"
+        ],
+        "typesDescription": "<code>boolean</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{boolean}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 152,
+    "codeStart": 160,
+    "code": "isEmpty: function (obj) {\n\n    if (obj == undefined || obj == null) {\n        return true;\n    }\n\n    if (typeof obj == 'string') {\n        if (obj.trim().length == 0) {\n            return true;\n        }\n    }\n\n    return false;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "isEmpty",
+      "string": "isEmpty()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nIf path param is numeric string, then making it just number - integer or float.\nIf not, returns passed object without modifications",
+        "visibility": "public",
+        "html": "<p>If path param is numeric string, then making it just number - integer or float.<br />\nIf not, returns passed object without modifications</p>"
+      },
+      {
+        "type": "param",
+        "string": "obj",
+        "name": "obj",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>obj</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 176,
+    "codeStart": 184,
+    "code": "tryParseNumber: function (obj) {\n\n    if (!app.util.System.isEmpty(obj) && $.isNumeric(obj)) {\n\n        if (app.util.System.isInt(parseFloat(obj))) {\n            return parseInt(obj, 10);\n        } else  {\n            return parseFloat(obj);\n        }\n\n    }\n\n    return obj;\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "tryParseNumber",
+      "string": "tryParseNumber()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nChecks if given number is integer",
+        "visibility": "public",
+        "html": "<p>Checks if given number is integer</p>"
+      },
+      {
+        "type": "param",
+        "string": "n",
+        "name": "n",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>n</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 201,
+    "codeStart": 207,
+    "code": "isInt: function (n) {\n    return Number(n) === n && n % 1 === 0;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "isInt",
+      "string": "isInt()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nChecks if given number is float",
+        "visibility": "public",
+        "html": "<p>Checks if given number is float</p>"
+      },
+      {
+        "type": "param",
+        "string": "n",
+        "name": "n",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>n</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 211,
+    "codeStart": 217,
+    "code": "isFloat: function (n) {\n    return Number(n) === n && n % 1 !== 0;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "isFloat",
+      "string": "isFloat()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns true if passed object is undefined or null",
+        "visibility": "public",
+        "html": "<p>Returns true if passed object is undefined or null</p>"
+      },
+      {
+        "type": "param",
+        "string": "obj",
+        "name": "obj",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>obj</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{boolean}",
+        "types": [
+          "boolean"
+        ],
+        "typesDescription": "<code>boolean</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{boolean}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 221,
+    "codeStart": 229,
+    "code": "isNull: function (obj) {\n\n    if (obj == undefined || obj == null) {\n        return true;\n    }\n\n    return false;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "isNull",
+      "string": "isNull()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to replacing whole URL path params (not typical) with passed\nvalues from params map\n\nExample:\n\nvar someURL = \"http://www.someSite.com/person/{personId}\"\n\"http://www.someSite.com/person/2\" = app.util.System.preparePathParams(someUrl, { personId: 2 });",
+        "visibility": "public",
+        "html": "<p>Function to replacing whole URL path params (not typical) with passed<br />\nvalues from params map</p>\n<p>Example:</p>\n<p>var someURL = &quot;http://www.someSite.com/person/{personId}&quot;<br />\n&quot;http://www.someSite.com/person/2&quot; = app.util.System.preparePathParams(someUrl, { personId: 2 });</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "params",
+        "name": "params",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>params</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 239,
+    "codeStart": 253,
+    "code": "preparePathDottedParams: function (url, params) {\n\n    for (var prop in params) {\n        url = url.replace(':' + prop, params[prop]);\n    }\n\n    return url;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "preparePathDottedParams",
+      "string": "preparePathDottedParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to replacing whole URL path params (not typical) with passed\nvalues from params map\n\nExample:\n\nvar someURL = \"http://www.someSite.com/person/{personId}\"\n\"http://www.someSite.com/person/2\" = app.util.System.preparePathParams(someUrl, { personId: 2 });",
+        "visibility": "public",
+        "html": "<p>Function to replacing whole URL path params (not typical) with passed<br />\nvalues from params map</p>\n<p>Example:</p>\n<p>var someURL = &quot;http://www.someSite.com/person/{personId}&quot;<br />\n&quot;http://www.someSite.com/person/2&quot; = app.util.System.preparePathParams(someUrl, { personId: 2 });</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "params",
+        "name": "params",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>params</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 264,
+    "codeStart": 278,
+    "code": "preparePathParams: function (url, params) {\n\n    for (var prop in params) {\n        url = url.replace('{' + prop + '}', params[prop]);\n    }\n\n    return url;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "preparePathParams",
+      "string": "preparePathParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to adding URL params (typical) with passed\nvalues from params map\n\nExample:\n\nvar someURL = \"http://www.someSite.com/person\"\n\"http://www.someSite.com/person?id=2\" = app.util.System.prepareUrlParams(someUrl, { id: 2 });",
+        "visibility": "public",
+        "html": "<p>Function to adding URL params (typical) with passed<br />\nvalues from params map</p>\n<p>Example:</p>\n<p>var someURL = &quot;http://www.someSite.com/person&quot;<br />\n&quot;http://www.someSite.com/person?id=2&quot; = app.util.System.prepareUrlParams(someUrl, { id: 2 });</p>"
+      },
+      {
+        "type": "param",
+        "string": "url",
+        "name": "url",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>url</p>"
+      },
+      {
+        "type": "param",
+        "string": "params",
+        "name": "params",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>params</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 288,
+    "codeStart": 302,
+    "code": "prepareUrlParams: function (url, params) {\n\n    var i = 0;\n    for (var prop in params) {\n\n        if (i == 0) {\n            url = url + '?' + prop + '=' + params[prop];\n        } else {\n            url = url + '&' + prop + '=' + params[prop];\n        }\n\n        i++;\n\n    }\n\n    return url;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "prepareUrlParams",
+      "string": "prepareUrlParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to finding string occurence between another @string objects",
+        "visibility": "public",
+        "html": "<p>Function to finding string occurence between another @string objects</p>"
+      },
+      {
+        "type": "param",
+        "string": "str - string which want to find",
+        "name": "str",
+        "description": "<ul>\n<li>string which want to find</li>\n</ul>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "first",
+        "name": "first",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>first</p>"
+      },
+      {
+        "type": "param",
+        "string": "last",
+        "name": "last",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>last</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{Array}",
+        "types": [
+          "Array"
+        ],
+        "typesDescription": "<code>Array</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{Array}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 321,
+    "codeStart": 331,
+    "code": "findStringBetween: function (str, first, last) {\n\n    var r = new RegExp(first + '(.*?)' + last, 'gm');\n    var arr = str.match(r);\n\n    if (arr == null || arr.length == 0) {\n        return [];\n    }\n\n    var arr2 = [];\n\n    for (var i = 0; i < arr.length; i++) {\n        arr2.push(arr[i].replace(first, '').replace(last, ''));\n    }\n\n    return arr2;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "findStringBetween",
+      "string": "findStringBetween()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to generating hashes for id creating",
+        "visibility": "public",
+        "html": "<p>Function to generating hashes for id creating</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{string}",
+        "types": [
+          "string"
+        ],
+        "typesDescription": "<code>string</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{string}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 350,
+    "codeStart": 357,
+    "code": "hash: function () {\n    var text = \"\";\n    var possible = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\";\n\n    for (var i = 0; i < 10; i++)\n        text += possible.charAt(Math.floor(Math.random() * possible.length));\n\n    return text;\n}\n\n    }\n};",
+    "ctx": {
+      "type": "method",
+      "name": "hash",
+      "string": "hash()"
+    }
+  }
+]

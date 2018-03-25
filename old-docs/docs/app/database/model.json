@@ -1,0 +1,493 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nModel module\nModule designed for usage as class representation of database tables.\nCan be used in another modules.\n\nDatabase representation is created directly from model classes during database initialization.",
+        "visibility": "public",
+        "html": "<p>Model module<br />\nModule designed for usage as class representation of database tables.<br />\nCan be used in another modules.</p>\n<p>Database representation is created directly from model classes during database initialization.</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__verifyView}",
+        "visibility": "private",
+        "html": "<p>{__verifyView}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__dataArchive}",
+        "visibility": "private",
+        "html": "<p>{__dataArchive}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 20,
+    "code": "app.model = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "model",
+      "value": "{",
+      "string": "app.model"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nStorage for create table scripts generated during adding new @model",
+        "visibility": "private",
+        "html": "<p>Storage for create table scripts generated during adding new @model</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 22,
+    "codeStart": 27,
+    "code": "__createScripts: [],",
+    "ctx": {
+      "type": "property",
+      "name": "__createScripts",
+      "value": "[],",
+      "string": "__createScripts"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nStorage for drop table scripts generated during adding new @model",
+        "visibility": "private",
+        "html": "<p>Storage for drop table scripts generated during adding new @model</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 29,
+    "codeStart": 34,
+    "code": "__dropScripts: [],",
+    "ctx": {
+      "type": "property",
+      "name": "__dropScripts",
+      "value": "[],",
+      "string": "__dropScripts"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "modelName",
+        "name": "modelName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modelName</p>"
+      },
+      {
+        "type": "param",
+        "string": "modelColumns",
+        "name": "modelColumns",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modelColumns</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 36,
+    "codeStart": 44,
+    "code": "add: function(modelName, modelColumns){\n    this.register(modelName, modelColumns);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new model in application\nCreates set of scripts for model",
+        "visibility": "public",
+        "html": "<p>Registering new model in application<br />\nCreates set of scripts for model</p>"
+      },
+      {
+        "type": "param",
+        "string": "modelName",
+        "name": "modelName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modelName</p>"
+      },
+      {
+        "type": "param",
+        "string": "modelColumns",
+        "name": "modelColumns",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modelColumns</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 48,
+    "codeStart": 57,
+    "code": "register: function (modelName, modelColumns) {\n\n    //Creates columns array without id column\n    var _columns = app.util.System.copyArray(modelColumns);\n    var columns = [];\n    for(var i = 0;i<_columns.length;i++){\n        if(_columns[i].toLowerCase() !== 'id'){\n            columns.push(_columns[i]);\n        }\n    }\n\n    var nameUpperCase = modelName.toUpperCase();\n\n    //Creates set of scripts to drop table, create table and find all rows\n    var dropTableSql =  app.crud.builder.drop(nameUpperCase);\n    var createTableSql =  app.crud.builder.create(nameUpperCase, columns);\n    var findAllSql =  app.crud.builder.findAll(nameUpperCase);\n\n    app.model.__createScripts.push(createTableSql);\n    app.model.__dropScripts.push(dropTableSql);\n\n    var columnsAll = app.util.System.copyArray(columns).push(\"id\");",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{new}",
+        "visibility": "public",
+        "html": "<p>{new}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{table}",
+        "visibility": "public",
+        "html": "<p>{table}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{columns}",
+        "visibility": "public",
+        "html": "<p>{columns}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__columnsAll}",
+        "visibility": "private",
+        "html": "<p>{__columnsAll}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__dropSQL}",
+        "visibility": "private",
+        "html": "<p>{__dropSQL}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__createSQL}",
+        "visibility": "private",
+        "html": "<p>{__createSQL}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 79,
+    "codeStart": 94,
+    "code": "var modelObject = {",
+    "ctx": {
+      "type": "declaration",
+      "name": "modelObject",
+      "value": "{",
+      "string": "modelObject"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\nName of the database table",
+        "visibility": "public",
+        "html": "<p>Name of the database table</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 96,
+    "codeStart": 100,
+    "code": "table: nameUpperCase,",
+    "ctx": {
+      "type": "property",
+      "name": "table",
+      "value": "nameUpperCase,",
+      "string": "table"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\nList of columns (without identifier)",
+        "visibility": "public",
+        "html": "<p>List of columns (without identifier)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 102,
+    "codeStart": 106,
+    "code": "columns: columns,",
+    "ctx": {
+      "type": "property",
+      "name": "columns",
+      "value": "columns,",
+      "string": "columns"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nList of columns (with identifier)",
+        "visibility": "private",
+        "html": "<p>List of columns (with identifier)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 108,
+    "codeStart": 112,
+    "code": "__columnsAll: columnsAll,",
+    "ctx": {
+      "type": "property",
+      "name": "__columnsAll",
+      "value": "columnsAll,",
+      "string": "__columnsAll"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nScript for dropping table",
+        "visibility": "private",
+        "html": "<p>Script for dropping table</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 114,
+    "codeStart": 118,
+    "code": "__dropSQL: dropTableSql,",
+    "ctx": {
+      "type": "property",
+      "name": "__dropSQL",
+      "value": "dropTableSql,",
+      "string": "__dropSQL"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nScript for creating table",
+        "visibility": "private",
+        "html": "<p>Script for creating table</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 120,
+    "codeStart": 124,
+    "code": "__createSQL: createTableSql,",
+    "ctx": {
+      "type": "property",
+      "name": "__createSQL",
+      "value": "createTableSql,",
+      "string": "__createSQL"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns new @model object with assigned values from @param valueList\nValues are assigned without @column id and in order as @model object has been\ndefined.\n\nExample:\n\nmodel.add(\"SomeTable\",  [\"id\", \"name\", \"surname\"]);\n\n{name: 'Patrick', surname: 'Jackson' } == model.SomeTable.new(['Patrick', 'Jackson']);",
+        "visibility": "public",
+        "html": "<p>Returns new @model object with assigned values from @param valueList<br />\nValues are assigned without @column id and in order as @model object has been<br />\ndefined.</p>\n<p>Example:</p>\n<p>model.add(&quot;SomeTable&quot;,  [&quot;id&quot;, &quot;name&quot;, &quot;surname&quot;]);</p>\n<p>{name: 'Patrick', surname: 'Jackson' } == model.SomeTable.new(['Patrick', 'Jackson']);</p>"
+      },
+      {
+        "type": "param",
+        "string": "valueList",
+        "name": "valueList",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>valueList</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 126,
+    "codeStart": 142,
+    "code": "new: function (valueList) {\n\n    var modelObj = {};\n\n    for (var i = 0; i < this.columns; i++) {\n\n        if (valueList[this.columns[i]] !== undefined) {\n            modelObj[this.columns[i]] = valueList[this.columns[i]];\n        } else {\n            modelObj[this.columns[i]] = null;\n        }\n\n    }\n\n    return modelObj;\n\n},\n\n\n        }\n\n        //Create new modal instance\n        app.model[modelName] = modelObject;\n\n    }\n};",
+    "ctx": {
+      "type": "method",
+      "name": "new",
+      "string": "new()"
+    }
+  }
+]

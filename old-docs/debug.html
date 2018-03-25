@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Debug</h2>
+
+            <p>
+                Spike application supports basic debugging functions used as opposites to <code>console.log</code>
+                <br/>
+                It's recommended to use build-in function because messages printed by it
+                can be easily switched off using <code>app.config</code> in <code>config.js</code> file
+            </p>
+
+            <h4>Example usage debug by passing array</h4>
+            <pre class="brush: js;">
+                app.debug('Invoke function {0} with param: {1}', ['fooFunction', arg]);
+            </pre>
+
+            <h4>JavaScript console would print:</h4>
+            <div class="console-box">
+                <p class="console gray">20:54:43 Spike Framework:  Invoke function "fooFunction" with param: 100</p>
+            </div>
+
+            <h4>Also you can pass object instead of array:</h4>
+            <pre class="brush: js;">
+
+                app.debug('Invoke function {name} with id: {id}', {
+                    name: 'fooFunction2', id: 200
+                });
+            </pre>
+
+            <h4>JavaScript console would print:</h4>
+            <div class="console-box">
+                <p class="console gray">20:54:43 Spike Framework:  Invoke function "fooFunction2" with id: 200</p>
+            </div>
+
+
+
+            <h4>Debug methods</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.obj</code>
+                </div>
+                <div class="col-sm-10">
+                    Prints JavaScript object on console
+                    <br/>
+                    Shows only when <code>app.config.showObj</code> is setted to <code>TRUE</code>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>jsObject</code>
+                            JavaScript object
+                        </li>
+                    </ul>
+
+                    Example usage:
+                    <pre class="brush: js;">
+                        app.obj({
+                            name: 'Jack',
+                            surname: 'Strong'
+                        });
+                    </pre>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.log</code>
+                </div>
+                <div class="col-sm-10">
+                    Prints logging <code>BLUE</code> message with binded params on console
+                    <br/>
+                    Shows only when <code>app.config.showLog</code> is setted to <code>TRUE</code>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>logMessage</code>
+                            String message
+                        </li>
+                        <li>
+                            <code>logData</code>
+                            JavaScript object or array of params
+                        </li>
+                    </ul>
+
+                    Example usage with different data:
+                    <pre class="brush: js;">
+
+                      app.log('Function result is {0}', [100]);
+
+                      app.log('Function result is {result}', {
+                            result: 100
+                      });
+
+                    </pre>
+
+                    Result on console would be:
+                    <div class="console-box">
+                        <p class="console blue">20:54:43 Spike Framework: Function result is 100</p>
+                        <p class="console blue">20:54:43 Spike Framework: Function result is 100</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.error</code>
+                </div>
+                <div class="col-sm-10">
+                    Prints error <code>RED</code> message with binded params on console
+                    <br/>
+                    Shows only when <code>app.config.showError</code> is setted to <code>TRUE</code>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>errorMessage</code>
+                            String message
+                        </li>
+                        <li>
+                            <code>errorData</code>
+                            JavaScript object or array of params
+                        </li>
+                    </ul>
+
+                    Example usage with different data:
+                    <pre class="brush: js;">
+
+                        app.log('Function result is {0}', [100]);
+
+                        app.log('Function result is {result}', {
+                            result: 100
+                        });
+
+                    </pre>
+
+                    Result on console would be:
+                    <div class="console-box">
+                        <p class="console red">20:54:43 Spike Framework: Function result is 100</p>
+                        <p class="console red">20:54:43 Spike Framework: Function result is 100</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.debug</code>
+                </div>
+                <div class="col-sm-10">
+                    Prints debug <code>GRAY</code> message with binded params on console
+                    <br/>
+                    Shows only when <code>app.config.showDebug</code> is setted to <code>TRUE</code>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>debugMessage</code>
+                            String message
+                        </li>
+                        <li>
+                            <code>debugData</code>
+                            JavaScript object or array of params
+                        </li>
+                    </ul>
+
+                    Example usage with different data:
+                    <pre class="brush: js;">
+
+                        app.debug('Function result is {0}', [100]);
+
+                        app.debug('Function result is {result}', {
+                            result: 100
+                        });
+
+                    </pre>
+
+                    Result on console would be:
+                    <div class="console-box">
+                        <p class="console gray">20:54:43 Spike Framework: Function result is 100</p>
+                        <p class="console gray">20:54:43 Spike Framework: Function result is 100</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.warn</code>
+                </div>
+                <div class="col-sm-10">
+                    Prints warn <code>ORANGE</code> message with binded params on console
+                    <br/>
+                    Shows only when <code>app.config.showWarn</code> is setted to <code>TRUE</code>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>warnMessage</code>
+                            String message
+                        </li>
+                        <li>
+                            <code>warnData</code>
+                            JavaScript object or array of params
+                        </li>
+                    </ul>
+
+                    Example usage with different data:
+                    <pre class="brush: js;">
+
+                        app.warn('Function result is {0}', [100]);
+
+                        app.warn('Function result is {result}', {
+                            result: 100
+                        });
+
+                    </pre>
+
+                    Result on console would be:
+                    <div class="console-box">
+                        <p class="console orange">20:54:43 Spike Framework: Function result is 100</p>
+                        <p class="console orange">20:54:43 Spike Framework: Function result is 100</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.ok</code>
+                </div>
+                <div class="col-sm-10">
+                    Prints success <code>GREEN</code> message with binded params on console
+                    <br/>
+                    Shows only when <code>app.config.showOk</code> is setted to <code>TRUE</code>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>okMessage</code>
+                            String message
+                        </li>
+                        <li>
+                            <code>okData</code>
+                            JavaScript object or array of params
+                        </li>
+                    </ul>
+
+                    Example usage with different data:
+                    <pre class="brush: js;">
+
+                        app.ok('Function result is {0}', [100]);
+
+                        app.ok('Function result is {result}', {
+                            result: 100
+                        });
+
+                    </pre>
+
+                    Result on console would be:
+                    <div class="console-box">
+                        <p class="console green">20:54:43 Spike Framework: Function result is 100</p>
+                        <p class="console green">20:54:43 Spike Framework: Function result is 100</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

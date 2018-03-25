@@ -1,0 +1,387 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nController module\nModule designed for usage as main view during application lifecycle.\nCannot be used in another components, modals or controllers.\n\nOnly one active instance in time is available\n\nRedered every time when used @public syste.render()\nTemplate is binded to DOM element having @attr view attribute\n\nExample:\n<div view></div>",
+        "visibility": "public",
+        "html": "<p>Controller module<br />\nModule designed for usage as main view during application lifecycle.<br />\nCannot be used in another components, modals or controllers.</p>\n<p>Only one active instance in time is available</p>\n<p>Redered every time when used @public syste.render()<br />\nTemplate is binded to DOM element having @attr view attribute</p>\n<p>Example:</p>\n<div view></div>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__verifyView}",
+        "visibility": "private",
+        "html": "<p>{__verifyView}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__dataArchive}",
+        "visibility": "private",
+        "html": "<p>{__dataArchive}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 25,
+    "code": "app.controller = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "controller",
+      "value": "{",
+      "string": "app.controller"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nStorage for controllers instances",
+        "visibility": "private",
+        "html": "<p>Storage for controllers instances</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 27,
+    "codeStart": 31,
+    "code": "__dataArchive: {},",
+    "ctx": {
+      "type": "property",
+      "name": "__dataArchive",
+      "value": "{},",
+      "string": "__dataArchive"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerName",
+        "name": "controllerName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerName</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerObject",
+        "name": "controllerObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 33,
+    "codeStart": 41,
+    "code": "add: function(controllerName, controllerObject){\n    this.register(controllerName, controllerObject);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new controller in application\nCreates controller object",
+        "visibility": "public",
+        "html": "<p>Registering new controller in application<br />\nCreates controller object</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerName",
+        "name": "controllerName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerName</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerObject",
+        "name": "controllerObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 45,
+    "codeStart": 54,
+    "code": "register: function (controllerName, controllerObject) {\n\n    // Filter if name is invalid (can break application)\n    app.system.__filterRestrictedNames(controllerName);\n\n    app.log('Registering controller {0}', [controllerName]);\n    app.debug('Invoke controller.register with params: {0} {1}', [controllerName, controllerObject]);\n\n    //Setting tyope of module\n    controllerObject.__type = 'CONTROLLER';\n\n    //Setting self helper\n    controllerObject.self = function() {\n        return app.controller[controllerName];\n    }\n\n    //Setting @public checkNetwork to false if not defined\n    if(!controllerObject.checkNetwork){\n        controllerObject.checkNetwork = false;\n    }\n\n    //Setting @public components to empty array if not defined\n    if(!controllerObject.components){\n        controllerObject.components = [];\n    }\n\n    //Setting original name of module\n    controllerObject.__name = controllerName;\n\n    //Setting name starting from lower case , used with templates and directories names of controller\n    controllerObject.__lowerCaseName = controllerName.substring(0, 1).toLowerCase() + controllerName.substring(1, controllerName.length);",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction that renders controller\nCreates new controller object based ond __dataArchive and assign reference to shortcut app.ctx\nCreates controller HTML template using @function @private __loadTemplate()\nPassing controller processed template to DOM element with @attr view attribute\nRendering components used in rendered controller\nInvalidating existing modals\nInitializing controller with controllerPassedData",
+        "visibility": "private",
+        "html": "<p>Function that renders controller<br />\nCreates new controller object based ond __dataArchive and assign reference to shortcut app.ctx<br />\nCreates controller HTML template using @function @private __loadTemplate()<br />\nPassing controller processed template to DOM element with @attr view attribute<br />\nRendering components used in rendered controller<br />\nInvalidating existing modals<br />\nInitializing controller with controllerPassedData</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerPassedData",
+        "name": "controllerPassedData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerPassedData</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 87,
+    "codeStart": 99,
+    "code": "controllerObject.__render = function (controllerPassedData) {\n    app.debug('Invoke controllerObject.__render with params: {0}', [controllerPassedData]);\n\n    app.controller[controllerObject.__name] = $.extend(true, {}, app.controller.__dataArchive[controllerObject.__name]);\n\n    app.ctx = app.controller[controllerObject.__name];\n\n    app.ctx.__loadTemplate();\n\n    app.debug('Binding controller {0} template to DOM element with \"view\" attribute ', [app.ctx.__name]);\n    app.controller.__getView().html(app.ctx.__template);\n\n    //Translate DOM\n    app.message.__translate();\n\n    app.component.__initComponents(app.ctx.components);\n\n    app.modal.invalidateAll();\n\n    app.debug('Invoke controller {0} init() function', [app.ctx.__name]);\n    app.ctx.init(controllerPassedData);\n\n};",
+    "ctx": {
+      "type": "method",
+      "receiver": "controllerObject",
+      "name": "__render",
+      "string": "controllerObject.__render()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nCreating path to controller view HTML file\nCreates path based on html2js template file and directories structure",
+        "visibility": "private",
+        "html": "<p>Creating path to controller view HTML file<br />\nCreates path based on html2js template file and directories structure</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerObject",
+        "name": "controllerObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 123,
+    "codeStart": 130,
+    "code": "controllerObject.__createControllerViewPath = function(controllerObject){\n    app.debug('Invoke controllerObject.__createControllerViewPath with params: {0}', [controllerObject]);\n\n    controllerObject.__view = app.config.viewsPath+\"/\"+app.config.controllerDirectory+\"/\" + controllerObject.__lowerCaseName + \"/\" + controllerObject.__lowerCaseName + \".view.html\"\n\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "controllerObject",
+      "name": "__createControllerViewPath",
+      "string": "controllerObject.__createControllerViewPath()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction retrieving controller's template from global window[templates] variable based on generated view path\nIf template not specified, throw Error\nCreating dynamic selectors binded to template using @private system.__createSelectors()",
+        "visibility": "private",
+        "html": "<p>Function retrieving controller's template from global window[templates] variable based on generated view path<br />\nIf template not specified, throw Error<br />\nCreating dynamic selectors binded to template using @private system.__createSelectors()</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 137,
+    "codeStart": 145,
+    "code": "controllerObject.__loadTemplate = function(){\n    app.debug('Invoke controllerObject.__loadTemplate');\n\n    var templateHtml = window['templates'][app.ctx.__view];\n\n    if(!templateHtml){\n        app.system.__throwError('No view found for controller: {0}, view path: {1}', [controllerObject.__name, controllerObject.__view]);\n    }\n\n    var selectorsObj = app.system.__createSelectors(templateHtml);\n    app.ctx.selector = selectorsObj.selectors;\n\n    templateHtml = selectorsObj.html;\n\n    app.ctx.__plainTemplate = templateHtml;\n    app.ctx.__template = templateHtml;\n\n    //Commented because of global translation by jQuery\n    //app.ctx.__template = app.message.__replace(templateHtml);\n\n}\n\n//Creating view path once per application initialization\ncontrollerObject.__createControllerViewPath(controllerObject);\n\n//Creating copy of controller object in @private __dataArchive and in controller[controllerName]\napp.controller.__dataArchive[controllerName] = $.extend(true, {}, controllerObject);\napp.controller[controllerName] = $.extend(true, {}, controllerObject);\n\n    },",
+    "ctx": {
+      "type": "method",
+      "receiver": "controllerObject",
+      "name": "__loadTemplate",
+      "string": "controllerObject.__loadTemplate()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nReturns controller's DOM element with @attr view attribute",
+        "visibility": "private",
+        "html": "<p>Returns controller's DOM element with @attr view attribute</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{jQuery|HTMLElement}",
+        "types": [
+          "jQuery",
+          "HTMLElement"
+        ],
+        "typesDescription": "<a href=\"jQuery.html\">jQuery</a>|<code>HTMLElement</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{jQuery|HTMLElement}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 176,
+    "codeStart": 183,
+    "code": "__getView: function(){\n    return app.system.getView();\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getView",
+      "string": "__getView()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nVerify if DOM element with @attr view attribute exists",
+        "visibility": "private",
+        "html": "<p>Verify if DOM element with @attr view attribute exists</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 187,
+    "codeStart": 193,
+    "code": "__verifyView: function(){\n    if(this.__getView().length == 0){\n        app.system.__throwError('No DOM element with {0} attribute specified',[app.__attributes.VIEW]);\n    }\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__verifyView",
+      "string": "__verifyView()"
+    }
+  }
+]

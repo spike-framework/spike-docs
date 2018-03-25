@@ -1,0 +1,361 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nMessage module\nModule designed for usage as singleton during application lifecycle.\nCan be used in any other modules.\n\nOnly one active instance in time is available",
+        "visibility": "public",
+        "html": "<p>Message module<br />\nModule designed for usage as singleton during application lifecycle.<br />\nCan be used in any other modules.</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{get}",
+        "visibility": "public",
+        "html": "<p>{get}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__replace}",
+        "visibility": "private",
+        "html": "<p>{__replace}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "__messages",
+        "visibility": "private",
+        "html": "<p>__messages</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 21,
+    "code": "app.message = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "message",
+      "value": "{",
+      "string": "app.message"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nInformation if translations has been downloaded",
+        "visibility": "private",
+        "html": "<p>Information if translations has been downloaded</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 23,
+    "codeStart": 27,
+    "code": "__waitingForTranslations: {},",
+    "ctx": {
+      "type": "property",
+      "name": "__waitingForTranslations",
+      "value": "{},",
+      "string": "__waitingForTranslations"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nStorage for translation data",
+        "visibility": "private",
+        "html": "<p>Storage for translation data</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 29,
+    "codeStart": 33,
+    "code": "__messages: {},",
+    "ctx": {
+      "type": "property",
+      "name": "__messages",
+      "value": "{},",
+      "string": "__messages"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "languageName",
+        "name": "languageName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>languageName</p>"
+      },
+      {
+        "type": "param",
+        "string": "languageFilePath",
+        "name": "languageFilePath",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>languageFilePath</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 35,
+    "codeStart": 43,
+    "code": "add: function (languageName, languageFilePath) {\n    this.register(languageName, languageFilePath);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new language translation from hosted file\nFile can be hosted locally or from server",
+        "visibility": "public",
+        "html": "<p>Registering new language translation from hosted file<br />\nFile can be hosted locally or from server</p>"
+      },
+      {
+        "type": "param",
+        "string": "languageName",
+        "name": "languageName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>languageName</p>"
+      },
+      {
+        "type": "param",
+        "string": "languageFilePath",
+        "name": "languageFilePath",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>languageFilePath</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 47,
+    "codeStart": 56,
+    "code": "register: function (languageName, languageFilePath) {\n\n    this.__waitingForTranslations[languageName] = false;\n\n    $.ajax({\n        url: languageFilePath,\n        type: 'GET',\n        success: function (data) {\n            app.message.__messages[languageName] = data;\n            app.message.__waitingForTranslations[languageName] = true;\n        },\n        error: function (error){\n            app.message.__messages[languageName] = {};\n            app.system.__throwWarn(app.system.__messages.TRANSLATION_LOAD_WARN, [languageName, error.status]);\n        },\n        contentType: 'application/json',\n        dataType: 'json'\n    });\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction to retrieve single translation for named message\nusing existing language from @app.config.lang",
+        "visibility": "public",
+        "html": "<p>Function to retrieve single translation for named message<br />\nusing existing language from @app.config.lang</p>"
+      },
+      {
+        "type": "param",
+        "string": "messageName",
+        "name": "messageName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>messageName</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 77,
+    "codeStart": 85,
+    "code": "get: function (messageName) {\n    return app.message.__messages[app.config.lang][messageName];\n},",
+    "ctx": {
+      "type": "method",
+      "name": "get",
+      "string": "get()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to translate all existing messages in DOM\nWait's until translation file is downloaded",
+        "visibility": "private",
+        "html": "<p>Function to translate all existing messages in DOM<br />\nWait's until translation file is downloaded</p>"
+      },
+      {
+        "type": "param",
+        "string": "html",
+        "name": "html",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>html</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 89,
+    "codeStart": 98,
+    "code": "__translate: function () {\n\n    if (this.__waitingForTranslations[app.config.lang] == undefined) {\n        app.system.__throwError(app.system.__messages.TRANSLATION_NOT_EXIST, [app.config.lang])\n    }\n\n    setTimeout(function () {\n\n        if (app.message.__waitingForTranslations[app.config.lang] == true) {\n            app.message.__translateDOM();\n        } else if (app.message.__waitingForTranslations[app.config.lang] == false) {\n            app.message.__translate();\n        }\n\n    }, 100);\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__translate",
+      "string": "__translate()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to translate all existing messages in DOM based on @attr spike-translation",
+        "visibility": "private",
+        "html": "<p>Function to translate all existing messages in DOM based on @attr spike-translation</p>"
+      },
+      {
+        "type": "param",
+        "string": "html",
+        "name": "html",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>html</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 116,
+    "codeStart": 123,
+    "code": "__translateDOM: function () {\n\n    $('[' + app.__attributes.TRANSLATION + ']').each(function () {\n\n        var messageName = $(this).attr(app.__attributes.TRANSLATION);\n        $(this).html(app.message.__messages[app.config.lang][messageName])\n\n    });\n\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__translateDOM",
+      "string": "__translateDOM()"
+    }
+  }
+]

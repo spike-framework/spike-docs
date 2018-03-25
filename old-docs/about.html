@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>History</h2>
+
+            <p>
+                Spike Framework in general was build to handle <span class="important-word blue red">cordova</span> mobile applications with <span class="important-word blue">lightweight and extendable structure</span>
+                <br/>
+                written in <span class="important-word blue">plain JavaScript</span> and with support <span class="important-word blue">jQuery usage</span>.
+            </p>
+
+            <p>
+                Applications had to <span class="important-word blue">run on old devices as well as on new ones</span>, so I decided to avoid any kind of modern frameworks as Angular or Ionic with Angular modified core,
+                <br/>
+                Knockout, React, Reactive etc. because very often those <span class="important-word blue">frameworks generated more problems</span>, than they resolved.
+            </p>
+
+            <p>
+                Also the problem with modern and big frameworks is <span class="important-word blue">enormous documentation</span> (mainly for Angular and Ionic) which can take big percentage of application development process
+                <br/>
+                to learn and study framework details.
+            </p>
+
+            <p>
+                Another topic is <span class="important-word blue">TypeScript usage</span>, which I think is nice feature but in general it also <span class="important-word blue">create more problems</span> such as longer project build time, only shallow OOP usage because of
+                <br/>
+                dependencies, which in most cases are not typed and even they are typed, it <span class="important-word blue">takes long time to learn</span> tens of new classes and interfaces.
+                <br/>
+                In general, using <span class="important-word blue">TypeScript slows down development process</span> and for me - <span class="important-word blue">takes away enjoyment of coding in JavaScript</span>
+            </p>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Now</h2>
+
+            <p>
+                Spike Framework after almost two years of internal use in some companies was <span class="important-word blue">released in 2017</span> (resources was always open-source and available since 2016).
+            </p>
+
+            <p>
+                Only contributor is Dawid Senko as the author but if somebody reading this wants to join community and help with development, documentation, testing
+                <br/>
+                or any other proposes please contact me <span class="important-word red">dsenko26@gmail.com</span> or via <span class="important-word">GitHub message</span>
+            </p>
+
+            <h4>Short summary</h4>
+            <p>
+                Spike Framework is an Model-View-Controller architecture framework, where <span class="important-word blue">View</span> is realized by HTML templates,
+                <br/>
+                <span class="important-word blue">Controller</span> is realized by components, controllers or partials, and
+                <br/>
+                <span class="important-word blue">Model</span> is realized by local database model and controller, component and partials data.
+                <br/>
+                Spike Framework includes such a features like automatic jQuery selectors, imports, template engine, GStrings, routing, translations manager, debugging,
+                <br/>
+                simple configuration, controllers, modals, components, partials, enums, globals, services, utils, REST providers, REST mocking, interceptors, local SQLLite
+                <br/>
+                and WebSQL support with by-model definition, database model, database query builder and CRUD, events handling, custom implementations and overrides, screens transitions, wrapping Cordova plugins.
+                <br/>
+                The main concept is simply and fast web and mobile application development with plain JavaScript and jQuery (no matter which version).
+                <br/>
+                Spike Framework has only this functionality which is needed and can be done with minimalist impact on performance or code size or complicity.
+                <br/>
+                Also the concept is to create abstract layer for developer to keep project consistent with minimal effort and to keep biggest freedom in implementation.
+                <br/>
+                Spike Framework is in opposite to big frameworks as Ionic or Angular, which ones require extensive knowledge.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

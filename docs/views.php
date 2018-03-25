@@ -21,6 +21,7 @@
             <li href="introduction" class="star">Introduction</li>
             <li href="selectors" class="star">Unique selectors</li>
             <li href="expressions" class="star">Expressions</li>
+            <li href="events" class="star">Events</li>
             <li href="processors" class="star">Processors</li>
             <li href="sp-print" class="sub star">sp-print</li>
             <li href="sp-translation" class="sub star">sp-translation</li>
@@ -46,13 +47,17 @@
             <li href="sp-project" class="sub star">sp-project</li>
             <li href="sp-not-project" class="sub star">sp-not-project</li>
             <li href="sp-env" class="sub star">sp-env</li>
+            <li href="sp-keep-id" class="sub star">sp-keep-id</li>
+            <li href="sp-keep-name" class="sub star">sp-keep-name</li>
         </ul>
     </div>
 
     <div class="docs-right">
 
         <?php include('views/introduction.php') ?>
+        <?php include('views/selectors.php') ?>
         <?php include('views/expressions.php') ?>
+        <?php include('views/events.php') ?>
         <?php include('views/processors.php') ?>
         <?php include('views/sp-print.php') ?>
         <?php include('views/sp-translation.php') ?>
@@ -78,6 +83,8 @@
         <?php include('views/sp-project.php') ?>
         <?php include('views/sp-not-project.php') ?>
         <?php include('views/sp-env.php') ?>
+        <?php include('views/sp-keep-id.php') ?>
+        <?php include('views/sp-keep-name.php') ?>
 
     </div>
 

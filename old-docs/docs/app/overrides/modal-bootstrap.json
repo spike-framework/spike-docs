@@ -1,0 +1,143 @@
+[
+  {
+    "tags": [
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{bootstrapModal}",
+        "visibility": "public",
+        "html": "<p>{bootstrapModal}</p>"
+      }
+    ],
+    "description": {
+      "full": "<p>Added default @public config.bootstrapModal<br />\nconfiguration option for custom Bootstrap modal implementation</p>",
+      "summary": "<p>Added default @public config.bootstrapModal<br />\nconfiguration option for custom Bootstrap modal implementation</p>",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 8,
+    "code": "app.config.extend({\n    bootstrapModal: false\n});",
+    "ctx": false
+  },
+  {
+    "tags": [
+      {
+        "type": "annonymus",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "overriding",
+        "string": "\nCustom implementation of register event for Bootstrap modals",
+        "html": "<p>Custom implementation of register event for Bootstrap modals</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 13,
+    "codeStart": 19,
+    "code": "app.modal.implement('register', function(modalObject){\n\n    if(app.config.bootstrapModal){\n\n        if(modalObject.preventDismiss){\n            modalObject.__preventDismiss = true;\n        }else{\n            modalObject.__preventDismiss = false;\n        }\n\n    }\n\n});",
+    "ctx": false
+  },
+  {
+    "tags": [
+      {
+        "type": "annonymus",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "overriding",
+        "string": "\nCustom implementation of render event for Bootstrap modals",
+        "html": "<p>Custom implementation of render event for Bootstrap modals</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 33,
+    "codeStart": 39,
+    "code": "app.modal.implement('render', function(modalSelector, modalObject){\n\n    if (app.config.bootstrapModal){\n\n        if(modalObject.__preventDismiss) {\n\n            modalSelector.modal({\n                backdrop: 'static',\n                keyboard: false\n            });\n\n        } else if(app.config.bootstrapModal) {\n            modalSelector.modal();\n        }\n\n        modalSelector.on('hidden.bs.modal', function () {\n            modalObject.__hidden = true;\n        })\n    }\n\n});",
+    "ctx": false
+  },
+  {
+    "tags": [
+      {
+        "type": "annonymus",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "overriding",
+        "string": "\nCustom implementation of show event for Bootstrap modals\nIf @public config.bootstrapModal is true, then use Bootstrap show event\nIn other case use default jQuery implementation",
+        "html": "<p>Custom implementation of show event for Bootstrap modals<br />\nIf @public config.bootstrapModal is true, then use Bootstrap show event<br />\nIn other case use default jQuery implementation</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 61,
+    "codeStart": 69,
+    "code": "app.modal.implement('show', function (modalSelector, modalObject, defaultImpl) {\n\n    if(app.config.bootstrapModal){\n        modalSelector.modal('show');\n    }else{\n        defaultImpl(modalSelector);\n    }\n\n});",
+    "ctx": false
+  },
+  {
+    "tags": [
+      {
+        "type": "annonymus",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "overriding",
+        "string": "\nCustom implementation of register hide for Bootstrap modals\nIf @public config.bootstrapModal is true, then use Bootstrap hide event\nIn other case use default jQuery implementation",
+        "html": "<p>Custom implementation of register hide for Bootstrap modals<br />\nIf @public config.bootstrapModal is true, then use Bootstrap hide event<br />\nIn other case use default jQuery implementation</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 79,
+    "codeStart": 87,
+    "code": "app.modal.implement('hide', function (modalSelector, modalObject, defaultImpl) {\n\n    if(app.config.bootstrapModal){\n        modalSelector.modal('hide');\n    }else{\n        defaultImpl(modalSelector);\n    }\n\n\n\n});",
+    "ctx": false
+  }
+]

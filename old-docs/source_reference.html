@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+
+</head>
+
+<body>
+
+<div id="notFound" style="display: none;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 style="color: #808080;">Page not found :(</h1>
+        </div>
+    </div>
+</div>
+
+<div id="contentToApply" style="display: none;">
+</div>
+
+<div id="wholeWrapper"></div>
+
+<script>
+
+    var reference = localStorage.getItem('reference');
+
+    if (!reference) {
+        $('#contentToApply').html($('#notFound').html());
+    }
+
+    function createFileDocs(json) {
+
+        var html = '<div class="row"> <div class="col-lg-12">';
+
+        for (var i = 0; i < json.length; i++) {
+
+            var block = json[i];
+
+            if (block.ctx.type == 'method') {
+
+                var fullDeclaration = block.ctx.string.replace('()', block.code.substring(block.code.indexOf('function'), block.code.indexOf(')'))).replace('function', '') + ')';
+
+
+                html += '<h2>' + fullDeclaration + '</h2>';
+
+            } else {
+                html += '<h2>' + (block.ctx.string ? block.ctx.string : 'annonymus function') + '</h2>';
+            }
+
+            html += '<h5>Type <code>' + (!block.ctx.type && !block.ctx.string ? 'function' : block.ctx.type ) + '</code></h5>';
+
+            html += '<h4>Description</h4>';
+
+            html += '<div class="reference-contains">';
+            for (var k = 0; k < block.tags.length; k++) {
+
+                var tag = block.tags[k];
+
+                if (tag.string.trim().indexOf('{') == 0) {
+                    html += '<h5>Type <code>function</code></h5>';
+                } else if (tag.type == 'param') {
+                    html += '<h5>Type <code>argument</code></h5>';
+                } else {
+                    html += '<h5>Type <code>' + tag.type + '</code></h5>';
+                }
+
+                if (tag.visibility) {
+                    html += '<h5>Visibility <code>' + tag.visibility + '</code></h5>';
+                }
+
+                if (tag.html) {
+                    html += '<div class="reference-desc">' + tag.html.replace('{', '').replace('}', '') + '</div>';
+                }
+
+
+            }
+
+            html += '</div>';
+
+
+        }
+
+        html += '</div></div>';
+        $('#contentToApply').html(html);
+
+    }
+
+    function generateDocs(filePath) {
+
+        var afterGenerating = function () {
+            $.getScript("js/script.js");
+        }
+
+        $.get(filePath, function (json) {
+            createFileDocs(json);
+            afterGenerating();
+            $(document).ready(function () {
+                SyntaxHighlighter.all();
+            });
+        });
+
+    }
+
+    if(reference){
+        generateDocs('docs/app/' + reference.replace('-', '/') + '.json');
+    }
+
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

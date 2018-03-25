@@ -1,0 +1,22 @@
+[
+  {
+    "tags": [],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "line": 1,
+    "codeStart": null,
+    "code": "app.test = {\n\n\n};",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "test",
+      "value": "{",
+      "string": "app.test"
+    }
+  }
+]

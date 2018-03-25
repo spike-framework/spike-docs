@@ -365,6 +365,15 @@ a.learn {
     justify-content: center;
 }
 
+.old {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    font-size: 0.8rem;
+    padding: 0;
+}
+
 .navbar {
     display: flex;
     height: 4rem;
@@ -408,7 +417,7 @@ a.learn {
 }
 
 .menu {
-    width: calc(80% - 18rem);
+    width: calc(80% - 23rem);
     display: flex;
     flex-direction: row;
     margin: 0;

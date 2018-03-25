@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Imports</h2>
+
+            <p>
+                Spike Compiler has feature called Imports which gives developer
+                easy way to make shortcuts to JavaScript objects
+                <br/>
+                Basically imports can be used in all compiled JS files via Spike Compiler.
+            </p>
+
+            <h5>Example usage</h5>
+            <pre class="brush: js;">
+
+                app.controller.register("Home", {
+
+                    init: function(params) {
+
+                        app.service.Menu.getMenuItems()
+                        .then(function(result) {
+
+                             app.controller.Home.createItemsList(items);
+
+                        });
+
+                    },
+
+                    createItemsList: function(items){
+                        app.partial.render(app.partial.ItemsList, result);
+                    }
+
+                });
+
+            </pre>
+
+            <h5>With Imports feature will looks like</h5>
+            <pre class="brush: js;">
+
+                'import $menuService as app.service.Menu';
+                'import $itemsList as app.partial.ItemsList';
+                'import $partial as app.partial';
+
+                  app.controller.register("Home", {
+
+                    init: function(params) {
+
+                        $menuService.getMenuItems()
+                        .then(function(result) {
+
+                             $this.createItemsList(items);
+
+                        });
+
+                    },
+
+                    createItemsList: function(items){
+                        $partial.render($itemsList, result);
+                    }
+
+                });
+
+            </pre>
+
+            <p>
+                Spike Compiler will find all references declared in <code>imports</code>
+                and replace shortcuts in file with given references.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Syntax</h4>
+            <p>
+                Imports should be always defined with follow syntax:
+                <br/>
+                <code>
+                    'import NAME_OF_SHORTCUT as FULL_REFERENCE_TO_OBJECT';
+                </code>
+                <br/>
+                <b>It's important to take care to do not have any extra whitespaces after starting <code>'</code> and
+                    before ending <code>';</code> </b>
+
+                <br/>
+            </p>
+
+            <h5>Correct usage:</h5>
+            <pre class="brush: js;">
+                'import   $menuService   as app.service.Menu';
+                'import $itemsList as    app.partial.ItemsList';
+                'import $this as app.service.Menu';
+                </pre>
+            <br/>
+            <h5>Incorrect usage:</h5>
+            <pre class="brush: js;">
+                '  import $menuService as app.service.Menu';
+                'import $itemsList as app.partial.ItemsList ';
+                'import $this as app.service.Menu ' ;
+                ' import $this as app.service.Menu ' ;
+                </pre>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>$this word</h4>
+            <p>
+                Spike Compiler will automatically add $this shortcut which is reference
+                to <code>this</code> of current context (ex. controller) if any another
+                imports are declared.
+
+                <br/>
+                For example, if developer declare import:
+
+            <pre class="brush: js;">
+                'import $menuService as app.service.Menu';
+
+                app.component.register("MenuItems", {
+                    ...
+                });
+
+                </pre>
+
+            Then Spike Compiler will automatically make
+            shortcut for <code>this</code> context:
+
+            <pre class="brush: js;">
+                'import $menuService as app.service.Menu';
+                'import $this as app.component.MenuItems';
+
+                app.component.register("MenuItems", {
+                    ...
+                });
+
+                </pre>
+
+            <p>
+                Of course, import is added during compilation time
+                so developer have to use it intuitively.
+            </p>
+
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

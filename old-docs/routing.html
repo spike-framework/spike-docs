@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Routing</h2>
+
+            <p>
+                Spike application can work in two ways: with routing and without it.
+                <br/>
+                It's recommended to use routing because when it's not defined, when user
+                reload page then application will start again. Of course it can be
+                normal behaviour on mobile.
+                <br/>
+                <b>For web development routing should be enabled and defined.</b>
+
+            </p>
+            <p>
+                Routing normally is defined via <code>app.config.routing</code> with Spike <code>config.js</code> file.
+            </p>
+
+            <h4>Example routing</h4>
+
+            <pre class="brush: js;">
+                app.config.extend({
+
+                    routing: app.router.create()
+                        .path('/', {
+                            controller: 'Home'
+                        })
+                        .path('account', {
+                            controller: 'Account',
+                            onRoute: function(){
+                                app.service.Auth.isNotLogged(function(){
+                                    app.system.redirect('/login');
+                                });
+                            }
+                        })
+                        .path('/users', {
+                            controller: 'Users',
+                            routingParams: {
+                                disableMenu: true
+                            }
+                        })
+                        .path('/user/:id', {
+                            controller: 'Users'
+                        })
+                        .other({
+                            controller: 'Home'
+                        });
+
+                });
+            </pre>
+
+            <h4>Router methods and options</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">create</code>
+                </div>
+                <div class="col-sm-10">
+                    Returns router promise object which construct
+                    routing endpoints with <code>path</code> and
+                    <code>other</code> functions
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">path</code>
+                </div>
+                <div class="col-sm-10">
+                    Function registers routing endpoint.
+                    Accepts arguments:
+                    <ul>
+                        <li>
+                            <code>pathValue</code>
+                            <p>
+                                Defines URI pattern and should be unique.
+                                Accepts <code>path params</code> prefixed with
+                                <code>:</code> sign
+                            </p>
+                        </li>
+                        <li>
+                            <code>pathObject</code>
+                            <p>
+                                Defines endpoint entry object.
+                                <ul>
+                                    <li><code>controller</code>
+                                        property is required
+                                        and must be correct controller name.
+                                    </li>
+                                    <li>
+                                        <code>routingParams</code> property is optional
+                                        and can has constants passed to controller after it's
+                                        rendering.
+                                    </li>
+                                    <li>
+                                        <code>onRoute</code> property is optional and accepts
+                                        function which is executed after endpoint is entered
+                                    </li>
+                                </ul>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">other</code>
+                </div>
+                <div class="col-sm-10">
+                    Function registers <code>otherwise</code> routing endpoint
+                    which is executed when entered URL not apply to any another
+                    defined routing endpoint patterns.
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">redirect</code>
+                </div>
+                <div class="col-sm-10">
+                    Function redirects user to controller bineded to given <code>path</code> declared in routing endpoint.
+                    Accepts arguments:
+
+                    path, pathParams, urlParams, preventReloadPage
+
+                    <ul>
+                        <li>
+                            <code>path</code>
+                            <p>
+                                URI pattern
+                                <br/>Accepts <code>path params</code> prefixed with
+                                <code>:</code> sign
+                            </p>
+                        </li>
+                        <li>
+                            <code>pathParams</code>
+                            <p>
+                                Path params to bind into given <code>path</code>
+                            </p>
+                        </li>
+                        <li>
+                            <code>urlParams</code>
+                            <p>
+                                URL params to add into given <code>path</code>
+                            </p>
+                        </li>
+                        <li>
+                            <code>preventReloadPage</code>
+                            <p>
+                                If <code>true</code> then redirecting will prevent <code>hashchange</code>
+                                event and will not reload whole page.
+
+                                Default <code>false</code>
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>redirect</code> usage:
+                    <pre class="brush: js;">
+
+                        config.js
+                        ...
+
+                            .path('/post/:id', {
+                              controller: 'Post'
+                            })
+                            .path('/home', {
+                              controller: 'Home'
+                            })
+
+                        ...
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.redirect('/post/:id', {
+                            id: 10
+                        });
+                        // Redirects to /post/10
+
+
+                        $router.redirect('/home');
+                        // Redirects to /home
+
+                        $router.redirect('/home', null, {
+                            error: true
+                        });
+                        //  Redirects to /home?error=true
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">redirectByName</code>
+                </div>
+                <div class="col-sm-10">
+                    Function redirects user to controller bineded to given <code>name</code> declared in routing endpoint.
+                    Accepts arguments:
+
+                    path, pathParams, urlParams, preventReloadPage
+
+                    <ul>
+                        <li>
+                            <code>name</code>
+                            <p>
+                                Name of declared endpoint in <code>app.config</code>
+                            </p>
+                        </li>
+                        <li>
+                            <code>pathParams</code>
+                            <p>
+                                Path params to bind into given <code>path</code>
+                            </p>
+                        </li>
+                        <li>
+                            <code>urlParams</code>
+                            <p>
+                                URL params to add into given <code>path</code>
+                            </p>
+                        </li>
+                        <li>
+                            <code>preventReloadPage</code>
+                            <p>
+                                If <code>true</code> then redirecting will prevent <code>hashchange</code>
+                                event and will not reload whole page.
+
+                                Default <code>false</code>
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>redirect</code> usage:
+                    <pre class="brush: js;">
+
+                        config.js
+                        ...
+
+                            .path('/post/:id', {
+                              controller: 'Post',
+                              name: 'PostWithId'
+                            })
+                            .path('/home', {
+                              controller: 'Home',
+                              name: 'Home'
+                            })
+
+                        ...
+
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.redirectByName(PostWithId, {
+                            id: 10
+                        });
+                        // Redirects to /post/10
+
+
+                        $router.redirectByName('Home');
+                        // Redirects to /home
+
+                        $router.redirectByName('Home', null, {
+                            error: true
+                        });
+                        //  Redirects to /home?error=true
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">location</code>
+                </div>
+                <div class="col-sm-10">
+                    Function redirects user to given <code>URL</code> which can be from outside application as
+                    well as application context.
+
+                    Accepts arguments:
+                    URL, redirectType
+
+                    <ul>
+                        <li>
+                            <code>URL</code>
+                        </li>
+                        <li>
+                            <code>redirectType</code>
+                            <p>
+                                Redirect type known as <code>target</code> property in <code>a href</code> tag.
+                                Can be on of below:
+
+                                <ul>
+                                    <li>blank</li>
+                                    <li>parent</li>
+                                    <li>top</li>
+                                    <li>self</li>
+                                </ul>
+
+                                Default <code>self</code>
+
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>location</code> usage:
+                    <pre class="brush: js;">
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.location('https://www.google.com');
+                        // Redirects to 'https://www.google.com'
+
+                        $router.location('http://spikeframework.com', 'blank');
+                        // Opens 'http://spikeframework.com' in new tab in browser
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">createLink</code>
+                </div>
+                <div class="col-sm-10">
+                    Function returns <code>URI</code> constructed from given <code>path</code>,
+                    binded <code>pathParams</code> and <code>urlParams</code>
+
+                    Accepts arguments:
+                    path, pathParams, urlParams
+
+                    <ul>
+                        <li>
+                            <code>path</code>
+                            <p>
+                                URI pattern
+                                <br/>Accepts <code>path params</code> prefixed with
+                                <code>:</code> sign
+                            </p>
+                        </li>
+                        <li>
+                            <code>pathParams</code>
+                            <p>
+                                Path params to bind into given <code>path</code>
+                            </p>
+                        </li>
+                        <li>
+                            <code>urlParams</code>
+                            <p>
+                                URL params to add into given <code>path</code>
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>createLink</code> usage:
+                    <pre class="brush: js;">
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.createLink('/post/:id', {
+                            id: 10
+                        });
+                        // Returns '/post/10'
+
+
+                        $router.createLink('/home');
+                        // Returns '/home'
+
+                        $router.createLink('/home', null, {
+                            error: true
+                        });
+                        //  Returns to '/home?error=true'
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">back</code>
+                </div>
+                <div class="col-sm-10">
+                    Function redirects to previous URL.
+
+                    Example <code>back</code> usage:
+                    <pre class="brush: js;">
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.back();
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">getCurrentRoute</code>
+                </div>
+                <div class="col-sm-10">
+                    Function returns current <code>URI</code> from browser URL.
+
+                    Example <code>getCurrentRoute</code> usage:
+                    <pre class="brush: js;">
+
+                        // Current URL: http://spikeframework.com/#/post/10
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.getCurrentRoute();
+                        // Returns to 'post/10'
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">setURLParams</code>
+                </div>
+                <div class="col-sm-10">
+                    Function encode and sets given <code>urlParams</code> into current URL.
+                    Function prevents page reload.
+
+                    <p>
+                        Function removes all existing URL params before setting new ones.
+                    </p>
+
+
+                    Accepts arguments:
+                    urlParams
+
+                    <ul>
+                        <li>
+                            <code>urlParams</code>
+                            <p>
+                                URL params to add/remove in current URL
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>setURLParams</code> usage:
+                    <pre class="brush: js;">
+
+                         // Current URL: http://spikeframework.com
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.setURLParams({
+                            error: true,
+                            login: 'dawid'
+                        });
+                        // Now current URL is http://spikeframework.com?error=true&login=dawid
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">setPathParams</code>
+                </div>
+                <div class="col-sm-10">
+                    Function encode and sets given <code>pathParams</code> into current URL.
+                    Function prevents page reload.
+
+                    <p>
+                    Passed <code>pathParams</code> must be also declared in <code>app.config.routing</code> endpoint as shown in example below.
+                    </p>
+
+                    Accepts arguments:
+                    pathParams
+
+                    <ul>
+                        <li>
+                            <code>pathParams</code>
+                            <p>
+                                Path params to bind into current <code>path</code> declared in <code>app.config.routing</code>
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>setPathParams</code> usage:
+                    <pre class="brush: js;">
+
+                         // Current URL: http://spikeframework.com/#/post/10
+
+                        config.js
+                        ...
+
+                            .path('/post/:id', {
+                              controller: 'Post'
+                            })
+
+                        ...
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.setPathParams({
+                            id: 99
+                        });
+                        // Now current URL is http://spikeframework.com/#/post/99
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">getURLParams</code>
+                </div>
+                <div class="col-sm-10">
+                    Function returns object with current URL params.
+
+                    Example <code>getURLParams</code> usage:
+                    <pre class="brush: js;">
+
+                        // Current URL: http://spikeframework.com?name=Michael&id=10
+
+                        $router.getURLParams();
+                        /**
+                            Returns {
+                                name: 'Michael',
+                                id: 10
+                            }
+                        **/
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">getPathParams</code>
+                </div>
+                <div class="col-sm-10">
+                    Function returns object with current path params.
+
+                    Example <code>getPathParams</code> usage:
+                    <pre class="brush: js;">
+
+                        // Current URL: http://spikeframework.com/#/post/10/recent
+
+                        config.js
+                        ...
+
+                            .path('/post/:id/:type', {
+                              controller: 'Post'
+                            })
+
+                        ...
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.getPathParams();
+                        /**
+                            Returns {
+                                id: 10,
+                                type: 'recent'
+                            }
+                        **/
+
+                        ...
+
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">byName</code>
+                </div>
+                <div class="col-sm-10">
+                    Function returns path (with pattern) declared in <code>app.config.routing</code> for given <code>name</code>
+
+                    Example <code>byName</code> usage:
+                    <pre class="brush: js;">
+
+                        config.js
+                        ...
+
+                            .path('/post/:id/:type', {
+                              controller: 'Post',
+                              name: 'PostWithIdAndType'
+                            })
+
+                        ...
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.byName('PostWithIdAndType');
+                        // Returns '/post/:id/:type'
+
+                        // Can be used instead of $router.redirectByName as
+
+                        $router.redirect($router.byName('PostWithIdAndType'), {
+                            ...
+                        });
+
+                        ...
+
+
+                    </pre>
+
+                </div>
+            </div>
+
+            <h4>Routing events</h4>
+            <p>
+                Spike <code>router</code> has in-build separated events handler which can be used to detect URI change.
+            </p>
+            <p>
+                Route events are fired every time when URI is changing in application context, using <code>redirect</code> and <code>redirectByName</code>
+                functions, no matter if <code>preventReload</code> is setted to <code>true</code> or <code>false</code>.
+            </p>
+            <p>
+                Example of using <code>OnRouteChange</code> event:
+            </p>
+
+            <pre class="brush: js;">
+
+                'import $router as app.router';
+
+                ...
+
+                $router.onRouteChange('RouteChangeEventName', function(event, currentRoute, currentController);
+
+                    if(currentController == 'Home'){
+                        // Remove event when Home controller
+                        $router.offRouteChange('RouteChangeEventName');
+                    }
+
+                });
+
+
+                ...
+
+
+            </pre>
+
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">onRouteChange</code>
+                </div>
+                <div class="col-sm-10">
+                    Function registers new route change event with given <code>eventName</code> and given <code>eventCallback</code>
+
+                    <p>
+                        Passed <code>eventName</code> must be unique around all route events
+                    </p>
+
+                    Accepts arguments:
+                    eventName, eventCallback
+
+                    <ul>
+                        <li>
+                            <code>eventName</code>
+                            <p>
+                                Unique name of event which can be used also to remove event by <code>offRouteChange</code>
+                            </p>
+                        </li>
+                        <li>
+                            <code>eventCallback</code>
+                            <p>
+                                Function which executes every time when route changing.
+                                <br/>
+                                Function accepts arguments:
+                                <ul>
+                                    <li>
+                                        <code>event</code>
+                                        <p>
+                                            Plain jQuery <code>hashchange</code> event
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <code>currentRoute</code>
+                                        <p>
+                                            Current URI given by <code>getCurrentRoute</code> function
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <code>currentController</code>
+                                        <p>
+                                            Current controller name given by <code>app.currentController</code> property
+                                        </p>
+                                    </li>
+                                </ul>
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>onRouteChange</code> usage:
+                    <pre class="brush: js;">
+
+                         'import $router as app.router';
+
+                        ...
+
+                        $router.onRouteChange('RouteChangeEventName', function(event, currentRoute, currentController);
+
+                            // event - jQuery 'hashhange' event
+                            // currentRoute - current URI returned by app.router.getCurrentRoute() function
+                            // currentController - current controller given from app.currentController
+
+                        });
+
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">offRouteChange</code>
+                </div>
+                <div class="col-sm-10">
+                    Function removes route change event with given <code>eventName</code>
+
+                    Accepts arguments:
+                    eventName
+
+                    <ul>
+                        <li>
+                            <code>eventName</code>
+                            <p>
+                                Unique name of event which was used to register event by <code>onRouteChange</code>
+                            </p>
+                        </li>
+                    </ul>
+
+                    Example <code>offRouteChange</code> usage:
+                    <pre class="brush: js;">
+
+                        'import $router as app.router';
+
+                        ...
+
+                        $router.onRouteChange('RouteChangeEventName', function(event, currentRoute, currentController);
+                            // Executed until removed
+                        });
+
+                        $router.offRouteChange('RouteChangeEventName');
+                        // Will not be executed anymore
+
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

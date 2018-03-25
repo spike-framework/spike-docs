@@ -1,0 +1,1529 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nConfig object\nObject designed as storage for common and important variables for application\nCan be extended by custom configuration.\n\nCan be used in another modules.",
+        "visibility": "public",
+        "html": "<p>Config object<br />\nObject designed as storage for common and important variables for application<br />\nCan be extended by custom configuration.</p>\n<p>Can be used in another modules.</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{obj}",
+        "visibility": "public",
+        "html": "<p>{obj}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{log}",
+        "visibility": "public",
+        "html": "<p>{log}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{error}",
+        "visibility": "public",
+        "html": "<p>{error}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{debug}",
+        "visibility": "public",
+        "html": "<p>{debug}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{warn}",
+        "visibility": "public",
+        "html": "<p>{warn}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{ok}",
+        "visibility": "public",
+        "html": "<p>{ok}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__print}",
+        "visibility": "private",
+        "html": "<p>{__print}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{version}",
+        "visibility": "public",
+        "html": "<p>{version}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{con}",
+        "visibility": "public",
+        "html": "<p>{con}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{mod}",
+        "visibility": "public",
+        "html": "<p>{mod}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{com}",
+        "visibility": "public",
+        "html": "<p>{com}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{online}",
+        "visibility": "public",
+        "html": "<p>{online}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{langChanged}",
+        "visibility": "public",
+        "html": "<p>{langChanged}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 29,
+    "code": "var app = {",
+    "ctx": {
+      "type": "declaration",
+      "name": "app",
+      "value": "{",
+      "string": "app"
+    }
+  },
+  {
+    "tags": [],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 31,
+    "codeStart": 34,
+    "code": "__attributes: {\n\n    TRANSLATION: 'spike-translation',\n    VIEW: 'spike-view',\n    MODALS: 'spike-modals',\n\n    LISTER_EVENT: 'event',\n    LISTER_TEXT: 'text',\n\n},",
+    "ctx": {
+      "type": "property",
+      "name": "__attributes",
+      "value": "{",
+      "string": "__attributes"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSpike framework version",
+        "visibility": "public",
+        "html": "<p>Spike framework version</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 45,
+    "codeStart": 50,
+    "code": "version: '1.5',",
+    "ctx": {
+      "type": "property",
+      "name": "version",
+      "value": "'1.5',",
+      "string": "version"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "object",
+        "string": "\nReference to current rendered controller context\nValue is an object of current controller",
+        "html": "<p>Reference to current rendered controller context<br />\nValue is an object of current controller</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 52,
+    "codeStart": 59,
+    "code": "ctx: null,",
+    "ctx": {
+      "type": "property",
+      "name": "ctx",
+      "value": "null,",
+      "string": "ctx"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "",
+        "visibility": "public",
+        "html": ""
+      },
+      {
+        "type": "map",
+        "string": "Reference to current rendered modals contexts\nValue is an map with keys as modal names and values as current hidden/visible\nmodal objects",
+        "html": "<p>Reference to current rendered modals contexts<br />\nValue is an map with keys as modal names and values as current hidden/visible<br />\nmodal objects</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 61,
+    "codeStart": 68,
+    "code": "mCtx: {},",
+    "ctx": {
+      "type": "property",
+      "name": "mCtx",
+      "value": "{},",
+      "string": "mCtx"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nShortcut with references to components from @app.component\nas component has context based on controller (it's transparent)",
+        "visibility": "public",
+        "html": "<p>Shortcut with references to components from @app.component<br />\nas component has context based on controller (it's transparent)</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 70,
+    "codeStart": 76,
+    "code": "com: {},",
+    "ctx": {
+      "type": "property",
+      "name": "com",
+      "value": "{},",
+      "string": "com"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nVariable contains information if application is in @online or @offline state",
+        "visibility": "public",
+        "html": "<p>Variable contains information if application is in @online or @offline state</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 78,
+    "codeStart": 83,
+    "code": "online: false,",
+    "ctx": {
+      "type": "property",
+      "name": "online",
+      "value": "false,",
+      "string": "online"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prints JavaScript @object in console",
+        "visibility": "public",
+        "html": "<p>Function prints JavaScript @object in console</p>"
+      },
+      {
+        "type": "param",
+        "string": "jsObject",
+        "name": "jsObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>jsObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 85,
+    "codeStart": 92,
+    "code": "obj: function (jsObject) {\n    console.log(jsObject);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "obj",
+      "string": "obj()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prints log message",
+        "visibility": "public",
+        "html": "<p>Function prints log message</p>"
+      },
+      {
+        "type": "param",
+        "string": "logMessage",
+        "name": "logMessage",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>logMessage</p>"
+      },
+      {
+        "type": "param",
+        "string": "logData -- optional",
+        "name": "logData",
+        "description": "<p>-- optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 96,
+    "codeStart": 104,
+    "code": "log: function (logMessage, logData) {\n    app.__print(logMessage, logData, 'LOG');\n},",
+    "ctx": {
+      "type": "method",
+      "name": "log",
+      "string": "log()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prints error message",
+        "visibility": "public",
+        "html": "<p>Function prints error message</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorMessage",
+        "name": "errorMessage",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>errorMessage</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorData -- optional",
+        "name": "errorData",
+        "description": "<p>-- optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 108,
+    "codeStart": 116,
+    "code": "error: function (errorMessage, errorData) {\n    app.__print(errorMessage, errorData, 'ERROR');\n},",
+    "ctx": {
+      "type": "method",
+      "name": "error",
+      "string": "error()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prints debug message\nIf @app.config.debug is false then\ndebug message is not print",
+        "visibility": "public",
+        "html": "<p>Function prints debug message<br />\nIf @app.config.debug is false then<br />\ndebug message is not print</p>"
+      },
+      {
+        "type": "param",
+        "string": "debugMessage",
+        "name": "debugMessage",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>debugMessage</p>"
+      },
+      {
+        "type": "param",
+        "string": "debugData -- optional",
+        "name": "debugData",
+        "description": "<p>-- optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 120,
+    "codeStart": 130,
+    "code": "debug: function (debugMessage, debugData) {\n\n    if (app.config.debug) {\n        app.__print(debugMessage, debugData, 'DEBUG');\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "debug",
+      "string": "debug()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prints warn message",
+        "visibility": "public",
+        "html": "<p>Function prints warn message</p>"
+      },
+      {
+        "type": "param",
+        "string": "warnMessage",
+        "name": "warnMessage",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>warnMessage</p>"
+      },
+      {
+        "type": "param",
+        "string": "warnData -- optional",
+        "name": "warnData",
+        "description": "<p>-- optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 138,
+    "codeStart": 146,
+    "code": "warn: function (warnMessage, warnData) {\n    app.__print(warnMessage, warnData, 'WARN');\n},",
+    "ctx": {
+      "type": "method",
+      "name": "warn",
+      "string": "warn()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prints ok message",
+        "visibility": "public",
+        "html": "<p>Function prints ok message</p>"
+      },
+      {
+        "type": "param",
+        "string": "okMessage",
+        "name": "okMessage",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>okMessage</p>"
+      },
+      {
+        "type": "param",
+        "string": "okData -- optional",
+        "name": "okData",
+        "description": "<p>-- optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 150,
+    "codeStart": 158,
+    "code": "ok: function (okMessage, okData) {\n    app.__print(okMessage, okData, 'OK');\n},",
+    "ctx": {
+      "type": "method",
+      "name": "ok",
+      "string": "ok()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prints message in console\nwith custom colors",
+        "visibility": "public",
+        "html": "<p>Function prints message in console<br />\nwith custom colors</p>"
+      },
+      {
+        "type": "param",
+        "string": "message",
+        "name": "message",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>message</p>"
+      },
+      {
+        "type": "param",
+        "string": "data -- optional",
+        "name": "data",
+        "description": "<p>-- optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "type",
+        "name": "type",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>type</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 162,
+    "codeStart": 172,
+    "code": "__print: function (message, data, type) {\n\n    if (typeof message !== 'string') {\n        message = JSON.stringify(message);\n    }\n\n    if (data) {\n        message = app.util.System.bindStringParams(message, data);\n    }\n\n    var color = '';\n    switch (type) {\n        case 'LOG' :\n            color = 'blue';\n            break;\n        case 'ERROR' :\n            color = 'red';\n            break;\n        case 'DEBUG' :\n            color = 'gray';\n            break;\n        case 'WARN' :\n            color = 'orange';\n            break;\n        case 'OK' :\n            color = 'green';\n            break;\n        default:\n            color = 'black';\n    }\n\n    if (type == 'ERROR') {\n\n        var stack = new Error().stack;\n        var lineAccessingLogger = stack.split(\"\\n\");\n\n        var stackStr = '';\n        for (var i = 0; i < lineAccessingLogger.length; i++) {\n            if(i == lineAccessingLogger.length -1){\n                stackStr += \"\\n ERROR HERE: \"+lineAccessingLogger[i];\n            }else{\n                stackStr += \"\\n\"+lineAccessingLogger[i];\n            }\n        }\n\n        console.log('%c' + app.util.System.currentDateLog() + ' Spike Framework: ' + message + ' stacktrace: ', 'color: ' + color);\n        console.log('%c' +stackStr, 'color: ' + color);\n\n    } else {\n        console.log('%c' + app.util.System.currentDateLog() + ' Spike Framework: ' + message, 'color: ' + color);\n    }\n\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__print",
+      "string": "__print()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSystem core object\nObject designed as main object of Spike framework with most important functions\nto rendering views and initializing whole application and Cordova",
+        "visibility": "public",
+        "html": "<p>System core object<br />\nObject designed as main object of Spike framework with most important functions<br />\nto rendering views and initializing whole application and Cordova</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{obj}",
+        "visibility": "public",
+        "html": "<p>{obj}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__filterRestrictedNames}",
+        "visibility": "private",
+        "html": "<p>{__filterRestrictedNames}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__createSelectors}",
+        "visibility": "private",
+        "html": "<p>{__createSelectors}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__filterRestrictedNames}",
+        "visibility": "private",
+        "html": "<p>{__filterRestrictedNames}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__filterRestrictedNames}",
+        "visibility": "private",
+        "html": "<p>{__filterRestrictedNames}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__filterRestrictedNames}",
+        "visibility": "private",
+        "html": "<p>{__filterRestrictedNames}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__messages}",
+        "visibility": "private",
+        "html": "<p>{__messages}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 228,
+    "codeStart": 248,
+    "code": "app.system = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "system",
+      "value": "{",
+      "string": "app.system"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nSet of error/warn messages printed by Spike framework",
+        "visibility": "private",
+        "html": "<p>Set of error/warn messages printed by Spike framework</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 250,
+    "codeStart": 255,
+    "code": "__messages: {\n\n    INITIAL_VIEW_ERROR: 'No initial view with name: {0}',\n    WEBSQL_SUPPORT: 'No WebSQL support in this browser',\n    PATH_DEFINITION: 'Path URI and Path object cannot be empty',\n    PATH_ALREADY_EXIST: 'Path {0} is already defined',\n    PATH_PATTERN_ALREADY_EXIST: 'Path {0} is already defined. Pattern {1} is duplicated',\n    MODULE_NOT_EXIST: 'Try rendering not existing module',\n    RESTRICTED_NAME: 'Name {0} is restricted in usage in application',\n    TRANSLATION_NOT_EXIST: 'No defined language: {0}',\n    TRANSLATION_LOAD_WARN: 'Translation file for language: {0} cannot be downloaded, status: {1}',\n\n},",
+    "ctx": {
+      "type": "property",
+      "name": "__messages",
+      "value": "{",
+      "string": "__messages"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nChecks if passed @param name can break application",
+        "visibility": "private",
+        "html": "<p>Checks if passed @param name can break application</p>"
+      },
+      {
+        "type": "param",
+        "string": "name",
+        "name": "name",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>name</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 269,
+    "codeStart": 276,
+    "code": "__filterRestrictedNames: function (name) {\n\n    var isInvalid = false;\n\n    switch (name) {\n        case 'list' :\n            isInvalid = true;\n            break;\n        case 'add' :\n            isInvalid = true;\n            break;\n        case 'register' :\n            isInvalid = true;\n            break;\n        case 'get' :\n            isInvalid = true;\n            break;\n        case 'extend' :\n            isInvalid = true;\n            break;\n    }\n\n    if (isInvalid) {\n        this.__throwError(this.__messages.RESTRICTED_NAME, [name])\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__filterRestrictedNames",
+      "string": "__filterRestrictedNames()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction creates selectors for passed HTML @string based\non @attr id and @attr name.\nFunction returns set of methods as @jQuery selectors getters\nand processed HTML @string with replaced attributes with\nspecial hashes",
+        "visibility": "private",
+        "html": "<p>Function creates selectors for passed HTML @string based<br />\non @attr id and @attr name.<br />\nFunction returns set of methods as @jQuery selectors getters<br />\nand processed HTML @string with replaced attributes with<br />\nspecial hashes</p>"
+      },
+      {
+        "type": "param",
+        "string": "templateHtml",
+        "name": "templateHtml",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>templateHtml</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 304,
+    "codeStart": 316,
+    "code": "__createSelectors: function (templateHtml) {\n\n    var selectors = {};\n\n    //Retrieving list of identifiers names\n    var idList = app.util.System.findStringBetween(templateHtml, 'id=\"', '\"');\n    //Retrieving list of form elements names\n    var nameList = app.util.System.findStringBetween(templateHtml, 'name=\"', '\"');\n\n    selectors.names = {};\n\n    //Creating names selectors functions\n    $.each(nameList, function (i, name) {\n\n        selectors.names[name] = function () {\n            return $('[name=\"' + name + '\"]');\n        }\n\n    });\n\n    //Creating identifiers selectors functions\n    $.each(idList, function (i, id) {\n\n        //Creating new hash for identifier\n        var newId = id + '-' + app.util.System.hash();\n\n        //Creating handler function for identifier with optional basic events binding by @jQuery\n        selectors[id] = function (eventsToBind) {\n\n            var selector = $('#' + newId);\n            selector.plainId = newId;\n\n            $.each(eventsToBind, function (eventName, eventCallback) {\n\n                if (eventName == 'click') {\n                    selector.click(eventCallback);\n                } else if (eventName == 'change') {\n                    selector.change(eventCallback);\n                } else {\n                    selector.on(eventName, eventCallback);\n                }\n\n            });\n\n            return selector;\n\n        };\n\n        //Replacing identifier with generated hash\n        templateHtml = templateHtml.replace('id=\"' + id + '\"', 'id=\"' + newId + '\"');\n\n    });\n\n    return {\n        html: templateHtml,\n        selectors: selectors\n    };\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__createSelectors",
+      "string": "__createSelectors()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nInvokes @app.events.onRender event if exist",
+        "visibility": "private",
+        "html": "<p>Invokes @app.events.onRender event if exist</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 376,
+    "codeStart": 382,
+    "code": "__onRenderEvent: function () {\n    if (app.events.onRender) {\n        app.events.onRender();\n    }\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onRenderEvent",
+      "string": "__onRenderEvent()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nThrows @error from Spike framework",
+        "visibility": "private",
+        "html": "<p>Throws @error from Spike framework</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorMessage",
+        "name": "errorMessage",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>errorMessage</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorMessageBinding",
+        "name": "errorMessageBinding",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>errorMessageBinding</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 388,
+    "codeStart": 397,
+    "code": "__throwError: function (errorMessage, errorMessageBinding) {\n    throw new Error('Spike Framework: ' + app.util.System.bindStringParams(errorMessage, errorMessageBinding));\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__throwError",
+      "string": "__throwError()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nThrows @error from Spike framework",
+        "visibility": "private",
+        "html": "<p>Throws @error from Spike framework</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorMessage",
+        "name": "errorMessage",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>errorMessage</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorMessageBinding",
+        "name": "errorMessageBinding",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>errorMessageBinding</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 401,
+    "codeStart": 410,
+    "code": "__throwWarn: function (warnMessage, warnMessageBinding) {\n    app.warn('Spike Framework: ' + app.util.System.bindStringParams(warnMessage, warnMessageBinding));\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__throwWarn",
+      "string": "__throwWarn()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction renders @modal object passed from @app.modal\nRenders @modal with @modalInitialData and executes",
+        "visibility": "private",
+        "html": "<p>Function renders @modal object passed from @app.modal<br />\nRenders @modal with @modalInitialData and executes</p>"
+      },
+      {
+        "type": "afterRenderCallback",
+        "string": "after rendering is done",
+        "html": "<p>after rendering is done</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalObject",
+        "name": "modalObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalObject</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalInitialData",
+        "name": "modalInitialData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalInitialData</p>"
+      },
+      {
+        "type": "param",
+        "string": "afterRenderCallback",
+        "name": "afterRenderCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>afterRenderCallback</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 414,
+    "codeStart": 426,
+    "code": "__renderModal: function (modalObject, modalInitialData, afterRenderCallback) {\n    app.debug('Invoke system.__renderModal with params: {0} {1} {2}', [modalObject, modalInitialData, afterRenderCallback]);\n    app.log('Rendering modal {0}', [modalObject.__name]);\n\n    //Scrolling to top of page\n    $(window).scrollTop(0);\n\n    //Checks network status\n    if (modalObject.checkNetwork == true) {\n        app.__cordova.checkNetwork();\n    }\n\n    if (modalInitialData == undefined) {\n        modalInitialData = null;\n    }\n\n    //Renders modal\n    modalObject.__render(modalInitialData);\n\n    app.system.__onRenderEvent();\n\n    if (afterRenderCallback) {\n        afterRenderCallback();\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__renderModal",
+      "string": "__renderModal()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction renders @controller object passed from @app.controller\nRenders @controller with @controllerInitialData and executes",
+        "visibility": "private",
+        "html": "<p>Function renders @controller object passed from @app.controller<br />\nRenders @controller with @controllerInitialData and executes</p>"
+      },
+      {
+        "type": "afterRenderCallback",
+        "string": "after rendering is done",
+        "html": "<p>after rendering is done</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerObject",
+        "name": "controllerObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerObject</p>"
+      },
+      {
+        "type": "param",
+        "string": "controllerInitialData",
+        "name": "controllerInitialData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>controllerInitialData</p>"
+      },
+      {
+        "type": "param",
+        "string": "afterRenderCallback",
+        "name": "afterRenderCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>afterRenderCallback</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 453,
+    "codeStart": 465,
+    "code": "__renderController: function (controllerObject, controllerInitialData, afterRenderCallback) {\n    app.debug('Invoke system._renderController with params: {0} {1} {2}', [controllerObject, controllerInitialData, afterRenderCallback]);\n    app.log('Rendering controller {0}', [controllerObject.__name]);\n\n    //Scrolling to top of page\n    $(window).scrollTop(0);\n\n    //Invalidates all existing modals (even hidden)\n    app.modal.invalidateAll();\n\n    if (controllerObject.checkNetwork == true) {\n        app.__cordova.checkNetwork();\n    }\n\n    if (controllerInitialData == undefined) {\n        controllerInitialData = null;\n    }\n\n    //Renders modal\n    controllerObject.__render(controllerInitialData);\n\n    app.system.__onRenderEvent();\n\n    if (afterRenderCallback) {\n        afterRenderCallback();\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__renderController",
+      "string": "__renderController()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRenders controller based on passed @path param\ndeclared in @app.config.routing\n\nOptionally can apply @pathParams and @urlParams\n\nWindow location will be set",
+        "visibility": "public",
+        "html": "<p>Renders controller based on passed @path param<br />\ndeclared in @app.config.routing</p>\n<p>Optionally can apply @pathParams and @urlParams</p>\n<p>Window location will be set</p>"
+      },
+      {
+        "type": "param",
+        "string": "path",
+        "name": "path",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>path</p>"
+      },
+      {
+        "type": "param",
+        "string": "pathParams",
+        "name": "pathParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>pathParams</p>"
+      },
+      {
+        "type": "param",
+        "string": "urlParams",
+        "name": "urlParams",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>urlParams</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 495,
+    "codeStart": 509,
+    "code": "redirect: function(path, pathParams, urlParams){\n    app.router.__redirectToView(path, pathParams, urlParams);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "redirect",
+      "string": "redirect()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRenders passed @module object with initial data.\nIf object not exists, then throw error.\n\nIf object type is CONTROLLER then invoke @private __renderController\nIf object type is MODAL then invoke @private __renderModal",
+        "visibility": "public",
+        "html": "<p>Renders passed @module object with initial data.<br />\nIf object not exists, then throw error.</p>\n<p>If object type is CONTROLLER then invoke @private __renderController<br />\nIf object type is MODAL then invoke @private __renderModal</p>"
+      },
+      {
+        "type": "param",
+        "string": "moduleObject",
+        "name": "moduleObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>moduleObject</p>"
+      },
+      {
+        "type": "param",
+        "string": "moduleInitialData",
+        "name": "moduleInitialData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>moduleInitialData</p>"
+      },
+      {
+        "type": "param",
+        "string": "afterRenderCallback",
+        "name": "afterRenderCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>afterRenderCallback</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 513,
+    "codeStart": 526,
+    "code": "render: function (moduleObject, moduleInitialData, afterRenderCallback) {\n\n    if (!moduleObject) {\n        app.system.__throwError(app.system.__messages.MODULE_NOT_EXIST);\n    }\n\n    if (moduleObject.__type == 'CONTROLLER') {\n        app.system.__renderController(moduleObject, moduleInitialData, afterRenderCallback);\n    } else if (moduleObject.__type == 'MODAL') {\n        app.system.__renderModal(moduleObject, moduleInitialData, afterRenderCallback);\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "render",
+      "string": "render()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns main view @jQuery selector",
+        "visibility": "public",
+        "html": "<p>Returns main view @jQuery selector</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 540,
+    "codeStart": 546,
+    "code": "getView: function () {\n    return $('[' + app.__attributes.VIEW + ']');\n},",
+    "ctx": {
+      "type": "method",
+      "name": "getView",
+      "string": "getView()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nSets plain (without Spike support) HTML template\nbefore whole application start initializing with Cordova\n\nCan be used as loading screen, splash screen etc.\n\nView is defined in @app.config.initialView",
+        "visibility": "private",
+        "html": "<p>Sets plain (without Spike support) HTML template<br />\nbefore whole application start initializing with Cordova</p>\n<p>Can be used as loading screen, splash screen etc.</p>\n<p>View is defined in @app.config.initialView</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 550,
+    "codeStart": 561,
+    "code": "__initialView: function () {\n    app.debug('Running system.initialView');\n\n    var viewSelector = app.system.getView();\n\n    if (app.config.initialView && app.config.initialView.trim().length > 0) {\n\n        try {\n            var templateHtml = window[templates][app.config.initialView];\n            viewSelector.html(templateHTML);\n        } catch (err) {\n            app.system.__throwError(app.system.__messages.INITIAL_VIEW_ERROR, [app.config.initialView])\n        }\n\n    }\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__initialView",
+      "string": "__initialView()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nMain function initializing Spike framework and Cordova.\nSwitch debug mode and prints jQuery and Spike version.\n\nWaits for @document ready state and initialize Cordova and Spike\nfor local or device mode.",
+        "visibility": "private",
+        "html": "<p>Main function initializing Spike framework and Cordova.<br />\nSwitch debug mode and prints jQuery and Spike version.</p>\n<p>Waits for @document ready state and initialize Cordova and Spike<br />\nfor local or device mode.</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBack --optional",
+        "name": "callBack",
+        "description": "<p>--optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 580,
+    "codeStart": 592,
+    "code": "init: function (callBack) {\n    app.debug('Invoke system.init with params: {0}', [callBack]);\n\n    app.ok('System initializing...');\n\n    if (!app.config.debug) {\n        app.warn('Debug disabled');\n    }\n\n    app.debug('veryfing views');\n    app.modal.__verifyView();\n    app.controller.__verifyView();\n\n    app.warn('jQuery version: {0}', [jQuery.fn.jquery]);\n    app.warn('Spike version: {0}', [app.version]);\n\n    //Waits until document is ready\n    $(document).ready(function () {\n\n        //Registreing router\n        app.router.__registerRouter();\n\n        //Renders defined initial view (loading, splash etc)\n        app.system.__initialView();\n\n        app.__cordova.__initializeCordova(function () {\n\n            app.ok('Cordova initialized with app.config.mobileRun = {0}', [app.config.mobileRun]);\n\n            if (app.config.mobileRun) {\n                app.__cordova.__deviceReadyCallBack = function () {\n                    app.__database.__createDB(callBack);\n                };\n            } else {\n                app.events.onDeviceReady();\n                app.__database.__createDB(callBack);\n            }\n\n        });\n\n\n    });\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "init",
+      "string": "init()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction changes whole application language translations.\nSets app.config.lang with passed new default language code\n\nFunction replacing existing translations in DOM",
+        "visibility": "public",
+        "html": "<p>Function changes whole application language translations.<br />\nSets app.config.lang with passed new default language code</p>\n<p>Function replacing existing translations in DOM</p>"
+      },
+      {
+        "type": "param",
+        "string": "langCode",
+        "name": "langCode",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>langCode</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 638,
+    "codeStart": 649,
+    "code": "changeLanguage: function (langCode) {\n    app.debug('Invoke system.changeLanguage with params: {0}', [langCode]);\n\n    app.config.lang = langCode;\n\n    app.message.__translate();\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "changeLanguage",
+      "string": "changeLanguage()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction exits application",
+        "visibility": "public",
+        "html": "<p>Function exits application</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 658,
+    "codeStart": 664,
+    "code": "exit: function () {\n    app.debug('Invoke system.exit');\n\n    if (app.config.mobileRun) {\n        navigator.app.exitApp();\n    } else {\n        console.warn('EXIT APP');\n        app.modal.invalidateAll();\n    }\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "exit",
+      "string": "exit()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction disables AJAX caching",
+        "visibility": "public",
+        "html": "<p>Function disables AJAX caching</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 677,
+    "codeStart": 683,
+    "code": "disableCache: function () {\n    $.ajaxSetup({cache: false});\n},",
+    "ctx": {
+      "type": "method",
+      "name": "disableCache",
+      "string": "disableCache()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executed when DOM is ready, database is created and Cordova\napplication is ready.\n\nInvokes @event ready and renders @app.config.mainController",
+        "visibility": "private",
+        "html": "<p>Function executed when DOM is ready, database is created and Cordova<br />\napplication is ready.</p>\n<p>Invokes @event ready and renders @app.config.mainController</p>"
+      },
+      {
+        "type": "params",
+        "string": "callBack",
+        "html": "<p>callBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 688,
+    "codeStart": 698,
+    "code": "__mainRender: function (callBack) {\n    app.debug('Invoke system.__mainRender with params: {0}', [callBack]);\n\n    if (app.events.onReady) {\n        app.events.onReady();\n    }\n\n    app.ok('Spike application ready to work...');\n\n    app.debug('Try to invoke system.render with controller: {0}', [app.config.mainController]);\n    app.debug('Main controller');\n    app.obj(app.controller);\n\n    app.system.render(app.controller[app.config.mainController], null, callBack);\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__mainRender",
+      "string": "__mainRender()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executed when Spike cannot create SQLLite\ndatabase using WebSQL or cordova-sqlite-storage\n\nPractically Spike local testing works only with Chrome",
+        "visibility": "private",
+        "html": "<p>Function executed when Spike cannot create SQLLite<br />\ndatabase using WebSQL or cordova-sqlite-storage</p>\n<p>Practically Spike local testing works only with Chrome</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 715,
+    "codeStart": 724,
+    "code": "__noSupport: function () {\n\n    var isChromium = window.chrome, winNav = window.navigator, vendorName = winNav.vendor, isOpera = winNav.userAgent.indexOf(\"OPR\") > -1, isIEedge = winNav.userAgent.indexOf(\"Edge\") > -1, isIOSChrome = winNav.userAgent.match(\"CriOS\");\n\n    if (!isIOSChrome && !isChromium && !isOpera) {\n        $('body').append('<div class=\"no-browser\">Sorry,</br>you can test mobile app only in Chrome</div>');\n        app.system.__throwError(app.system.__messages.WEBSQL_SUPPORT);\n    }\n\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__noSupport",
+      "string": "__noSupport()"
+    }
+  }
+]

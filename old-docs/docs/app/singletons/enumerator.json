@@ -1,0 +1,157 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nEnumerator module\nModule designed for usage as singleton during application lifecycle.\nCan be used in any other modules.\n\nOnly one active instance in time is available",
+        "visibility": "public",
+        "html": "<p>Enumerator module<br />\nModule designed for usage as singleton during application lifecycle.<br />\nCan be used in any other modules.</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 15,
+    "code": "app.enumerator = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "enumerator",
+      "value": "{",
+      "string": "app.enumerator"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "enumeratorName",
+        "name": "enumeratorName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>enumeratorName</p>"
+      },
+      {
+        "type": "param",
+        "string": "enumeratorObject",
+        "name": "enumeratorObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>enumeratorObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 17,
+    "codeStart": 25,
+    "code": "add: function(enumeratorName, enumeratorObject){\n    this.register(enumeratorName, enumeratorObject);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new enumerators in application",
+        "visibility": "public",
+        "html": "<p>Registering new enumerators in application</p>"
+      },
+      {
+        "type": "param",
+        "string": "enumeratorName",
+        "name": "enumeratorName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>enumeratorName</p>"
+      },
+      {
+        "type": "param",
+        "string": "enumeratorObject",
+        "name": "enumeratorObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>enumeratorObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 29,
+    "codeStart": 37,
+    "code": "register: function(enumeratorName, enumeratorObject){\n    app.enumerator[enumeratorName] = enumeratorObject;\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  }
+]

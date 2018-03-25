@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Controller module</h2>
+
+            <p>
+                <code>controller</code> in Spike Framework is equivalent of single HTML page which one can be switched
+                to another
+                without reloading page.
+                <br/>
+                <code>controllers</code> are constructed to be initialized every time when they are renderd, so there's
+                no any
+                behaviour as in singletons to keeping instance.
+            </p>
+
+            <p>
+                Every <code>controller</code> can manage only one single view and directory structure
+                have to be fixed as follows:
+            <ul>
+                <li>src/app (value from <code>app.config.rootPath</code>)
+                    <ul>
+                        <li>
+                            controller (value from <code>app.config.controllerDirectory</code>)
+                            <ul>
+                                <li>home (controller name)
+                                    <ul>
+                                        <li>home.controller.js</li>
+                                        <li>home.view.html</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+
+            <p>
+                Also naming convention must be keeped as:
+                <p>
+                    Controller file name should be named <code>CONTROLLER_NAME.controller.js</code>
+                </p>
+                <p>
+                    Controller view name should be named <code>CONTROLLER_NAME.view.html</code>
+                </p>
+            </p>
+
+
+            <h5>Example controller declaration:</h5>
+            <pre class="brush: js;">
+
+                app.controller.register("Home", {
+
+                    init: function(params) {
+                        ...
+                    }
+
+                });
+
+            </pre>
+
+            <h5>Example controller view:</h5>
+            <pre class="brush: js;">
+                <div class="home-view">
+                </div>
+            </pre>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Controllers container</h4>
+            <p>
+                Controllers to be rendered need declared fixed Spike views container.
+                <br/>
+                Container should be defined in main HTML file ex. <code>index.html</code>
+                <br/>
+            </p>
+
+            <pre class="brush: js;">
+
+                ...
+                    <div spike-view></div>
+                ...
+
+            </pre>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Global controller methods</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.controller.register</code>
+                </div>
+                <div class="col-sm-10">
+                    Registers new controller into Spike application context
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.controller.register("Home", {
+
+                            init: function(params) {
+                                ...
+                            }
+
+                        });
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.controller.add</code>
+                </div>
+                <div class="col-sm-10">
+                    Registers new controller into Spike application context
+                    <br/>
+                    Substitute method for <code>app.controller.register</code>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Controller context</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">components</code>
+                </div>
+                <div class="col-sm-10">
+                    Sets list of <code>component</code> modules to be used in controller context
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.component.register("Menu", {
+                            ...
+                        });
+
+                        app.component.register("SwipeMenu", {
+                            ...
+                        });
+
+                        app.controller.register("Home", {
+
+                            components: ['SwipeMenu','Menu'],
+
+                            init: function(params) {
+                                ...
+                            }
+
+                        });
+
+                    </pre>
+
+                    Components have to be declared in controller view in this way:
+                    <pre class="brush: js;">
+
+                        <div class="home-view">
+
+                            <component name="menu"></component>
+
+                            <component name="swipeMenu"></component>
+
+                        </div>
+
+                    </pre>
+
+                    Also constant parameters can be passed into <code>component.init()</code> function:
+                    <pre class="brush: js;">
+
+                        app.component.register("Menu", {
+                            ...
+                        });
+
+                        app.component.register("SwipeMenu", {
+
+                            init: function(params){
+                                // params.position == 'LEFT'
+                            }
+
+                        });
+
+                        app.controller.register("Home", {
+
+                            components: {
+                                SwipeMenu: {
+                                    position: 'LEFT'
+                                },
+                                Menu: {}
+                            },
+
+                            init: function(params) {
+                                ...
+                            }
+
+                        });
+
+                    </pre>
+
+                    Event you can pass constants into component with inline data:
+                    <pre class="brush: js;">
+
+                        <div class="home-view">
+
+                            <component name="swipeMenu" position="LEFT"></component>
+
+                        </div>
+
+                    </pre>
+
+                    For more about components see <a href="components.html">components page</a>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">inherits</code>
+                </div>
+                <div class="col-sm-10">
+                    Sets list of <code>abstract</code> modules to be inherited from
+                    into declared controller
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.abstract.register("HomeAbstract", {
+                            ...
+                        });
+
+                        'import $homeAbstract as app.abstract.HomeAbstract';
+                        app.controller.register("Home", {
+
+                            inherits: [
+                                $homeAbstract
+                            ],
+
+                            init: function(params) {
+                                ...
+                            }
+
+                        });
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">init</code>
+                </div>
+                <div class="col-sm-10">
+                    Required function in every controller. Is invoked every time when
+                    controller is rendered.
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>params</code>
+                            Object containing
+                            <ul>
+                                <li>urlParams</li>
+                                <li>pathParams</li>
+                                <li>routingParams</li>
+                            </ul>
+                            See more on <a href="routing.html">routing page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">checkNetwork</code>
+                </div>
+                <div class="col-sm-10">
+                    Controller property used in mobile mode <code>app.config.mobileRun</code>.
+                    <br/>
+                    If setted to <code>TRUE</code> then every time controller is rendered, <code>cordova</code>
+                    plugin checks if access to network is available and invokes <code>app.events.online</code> or
+                    <code>app.events.offline</code> callback.
+                    <br/>
+                    Default <code>FALSE</code>
+                    <br/>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">rootSelector</code>
+                </div>
+                <div class="col-sm-10">
+                    Function returns controller jQuery selector
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Rendering controller</h4>
+            <p>
+                Spike Framework allows developer to render controller as well as modal window using simple
+                <code>app.system.render</code> function.
+                <br/>
+                Anyway it's not recommended to render controllers programmatically, you should declare some routing
+                endpoint
+                and then set <code>controller</code> property.
+                <br/>
+                <br/>
+                See <a href="routing.html">routing page</a>
+                <br/>
+                <br/>
+                <code>app.system.render</code> arguments:
+                <br/>
+            <pre class="brush: js;">
+
+                    app.system.render(controllerObject, additionalParams, afterRenderCallback);
+
+                </pre>
+
+            <br/>
+            Example rendering controller programmatically way using <code>app.system.render</code>:
+            <pre class="brush: js;">
+
+                    'import $homeCtrl as app.controller.Home';
+
+                    ...
+
+                    app.system.render($homeCtrl, {
+                        showMenu: true
+                    },
+                    function(){
+                        app.log('controller home rendered...');
+                    });
+
+                    ...
+
+                    ...
+
+                    init: function(params){
+                        //params.showMenu == true
+                    }
+
+                    ...
+
+                </pre>
+
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

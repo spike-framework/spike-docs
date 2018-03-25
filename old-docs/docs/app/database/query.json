@@ -1,0 +1,564 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nQuery module\nModule designed for usage as singleton during application lifecycle.\nCan be used in any other modules.\n\nOnly one active instance in time is available",
+        "visibility": "public",
+        "html": "<p>Query module<br />\nModule designed for usage as singleton during application lifecycle.<br />\nCan be used in any other modules.</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{list}",
+        "visibility": "public",
+        "html": "<p>{list}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 16,
+    "code": "app.query = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "query",
+      "value": "{",
+      "string": "app.query"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering @array of query @object",
+        "visibility": "public",
+        "html": "<p>Registering @array of query @object</p>"
+      },
+      {
+        "type": "param",
+        "string": "queryObjectsList {",
+        "name": "queryObjectsList",
+        "description": "<p>{</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "name",
+        "visibility": "public",
+        "html": "<p>name</p>"
+      },
+      {
+        "type": "public",
+        "string": "sql",
+        "visibility": "public",
+        "html": "<p>sql</p>"
+      },
+      {
+        "type": "public",
+        "string": "group\n}",
+        "visibility": "public",
+        "html": "<p>group<br />\n}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 18,
+    "codeStart": 31,
+    "code": "list: function(queryObjectsList){\n\n    $.each(queryObjectsList, function(i, queryObj){\n        app.query.register(queryObj.name, queryObj.sql, queryObj.group);\n    });\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "list",
+      "string": "list()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "languageName",
+        "name": "languageName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>languageName</p>"
+      },
+      {
+        "type": "param",
+        "string": "laguageFilePath",
+        "name": "laguageFilePath",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>laguageFilePath</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 39,
+    "codeStart": 47,
+    "code": "add: function(queryName, querySQL, queryGroup){\n    this.register(queryName, querySQL, queryGroup);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nCreates new @query object containing binding functions, SQL scripts,\nexecution function.",
+        "visibility": "public",
+        "html": "<p>Creates new @query object containing binding functions, SQL scripts,<br />\nexecution function.</p>"
+      },
+      {
+        "type": "param",
+        "string": "queryName",
+        "name": "queryName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>queryName</p>"
+      },
+      {
+        "type": "param",
+        "string": "querySQL",
+        "name": "querySQL",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>querySQL</p>"
+      },
+      {
+        "type": "param",
+        "string": "queryGroup",
+        "name": "queryGroup",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>queryGroup</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 51,
+    "codeStart": 62,
+    "code": "register: function(queryName, querySQL, queryGroup){\n\n    //If @param querySQL is function, then execute it for final SQL string\n    if(app.util.System.isFunction(querySQL)){\n        querySQL = querySQL();\n    }",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nQuery object with build-in functions to query operations",
+        "visibility": "public",
+        "html": "<p>Query object with build-in functions to query operations</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{bind}",
+        "visibility": "public",
+        "html": "<p>{bind}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{execute}",
+        "visibility": "public",
+        "html": "<p>{execute}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__bindArrayParams}",
+        "visibility": "private",
+        "html": "<p>{__bindArrayParams}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__bindMapParams}",
+        "visibility": "private",
+        "html": "<p>{__bindMapParams}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__sql}",
+        "visibility": "private",
+        "html": "<p>{__sql}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 69,
+    "codeStart": 84,
+    "code": "var queryObj = {",
+    "ctx": {
+      "type": "declaration",
+      "name": "queryObj",
+      "value": "{",
+      "string": "queryObj"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nVariable to store plain SQL query",
+        "visibility": "private",
+        "html": "<p>Variable to store plain SQL query</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 86,
+    "codeStart": 91,
+    "code": "__sql: querySQL,",
+    "ctx": {
+      "type": "property",
+      "name": "__sql",
+      "value": "querySQL,",
+      "string": "__sql"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction returns SQL query with binded params passed as @array or @object\n\nExample:\n\nif SQL is \"select * from person where id = ? \"\n\n\"select * from person where id = 1 \" = app.query.SomeQuery.bind([1])\n\nif SQL is \"select * from person where id = :id \"\n\"select * from person where id = 2 \" = app.query.SomeQuery.bind({ id: 2 })",
+        "visibility": "public",
+        "html": "<p>Function returns SQL query with binded params passed as @array or @object</p>\n<p>Example:</p>\n<p>if SQL is &quot;select * from person where id = ? &quot;</p>\n<p>&quot;select * from person where id = 1 &quot; = app.query.SomeQuery.bind([1])</p>\n<p>if SQL is &quot;select * from person where id = :id &quot;<br />\n&quot;select * from person where id = 2 &quot; = app.query.SomeQuery.bind({ id: 2 })</p>"
+      },
+      {
+        "type": "param",
+        "string": "queryParamsListOrMap",
+        "name": "queryParamsListOrMap",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>queryParamsListOrMap</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 93,
+    "codeStart": 110,
+    "code": "bind: function(queryParamsListOrMap){\n\n    var sql = this.__sql;\n\n    //If @param queryParamsListOrMap is @array then bind as array params\n    if(queryParamsListOrMap instanceof Array) {\n        sql = this.__bindArrayParams(queryParamsListOrMap, sql);\n    }else{\n        sql = this.__bindMapParams(queryParamsListOrMap, sql);\n    }\n\n\n    return sql;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "bind",
+      "string": "bind()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction binds @array of params to passed SQL query @string\nand returns binded @string query",
+        "visibility": "private",
+        "html": "<p>Function binds @array of params to passed SQL query @string<br />\nand returns binded @string query</p>"
+      },
+      {
+        "type": "param",
+        "string": "paramsList",
+        "name": "paramsList",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>paramsList</p>"
+      },
+      {
+        "type": "param",
+        "string": "sql",
+        "name": "sql",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>sql</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 126,
+    "codeStart": 135,
+    "code": "__bindArrayParams: function(paramsList, sql){\n\n    for (var i = 0; i < paramsList.length; i++) {\n\n        if (typeof paramsList[i] == 'string') {\n            sql = sql.replace('?', \"'\" + paramsList[i] + \"'\");\n        } else {\n            sql = sql.replace('?', paramsList[i]);\n        }\n\n    }\n\n    return sql;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__bindArrayParams",
+      "string": "__bindArrayParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction binds params @object to passed SQL query @string\nand returns binded @string query",
+        "visibility": "private",
+        "html": "<p>Function binds params @object to passed SQL query @string<br />\nand returns binded @string query</p>"
+      },
+      {
+        "type": "param",
+        "string": "paramsObject",
+        "name": "paramsObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>paramsObject</p>"
+      },
+      {
+        "type": "param",
+        "string": "sql",
+        "name": "sql",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>sql</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 151,
+    "codeStart": 160,
+    "code": "__bindMapParams: function(paramsObject, sql){\n\n    for (var fieldName in paramsObject){\n\n        var fieldValue = paramsObject[fieldName];\n\n        if (typeof fieldValue == 'string') {\n            sql = sql.replace(':'+fieldName, \"'\" + fieldValue + \"'\");\n        } else {\n            sql = sql.replace(':'+fieldName, fieldValue);\n        }\n\n    }\n\n    return sql;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__bindMapParams",
+      "string": "__bindMapParams()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction executes query on local DB (SQLLite) and invokes",
+        "visibility": "public",
+        "html": "<p>Function executes query on local DB (SQLLite) and invokes</p>"
+      },
+      {
+        "type": "param",
+        "string": "@function successCallback returning query result\nor @param @function errorCallback returning database error\n\nOptionally can handle @param queryParamsListOrMap to bind\nquery params (see @bind)",
+        "name": "@function",
+        "description": "<p>successCallback returning query result or @param @function errorCallback returning database error</p>\n<p>Optionally can handle @param queryParamsListOrMap to bind<br />\nquery params (see @bind)</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "successCallback",
+        "name": "successCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>successCallback</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorCallback",
+        "name": "errorCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>errorCallback</p>"
+      },
+      {
+        "type": "param",
+        "string": "queryParamsListOrMap -- optional for binding",
+        "name": "queryParamsListOrMap",
+        "description": "<p>-- optional for binding</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 178,
+    "codeStart": 192,
+    "code": "execute: function(successCallback, errorCallback, queryParamsListOrMap){\n\n    var sqlToExecute = this.__sql;\n\n    //If @param queryParamsListOrMap exist then bind query params\n    if(!app.util.System.isNull(queryParamsListOrMap)){\n        sqlToExecute = this.bind(queryParamsListOrMap);\n    }\n\n    //Execute query on CRUD @__execute method\n    app.crud.execute(sqlToExecute, successCallback, errorCallback);\n}\n\n\n\n        }\n\n        //If query group not passed, then create typical query\n        if(app.util.System.isNull(queryGroup)){\n\napp.query[queryName] = queryObj;\n\n        }else{\n\n//If query group not exist yet, create empty object\nif(app.util.System.isNull(app.query[queryGroup])){\n    app.query[queryGroup] = {};\n}\n\n//Assign query object to query group\napp.query[queryGroup][queryName] = queryObj;\n        }\n\n    }\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "execute",
+      "string": "execute()"
+    }
+  }
+]

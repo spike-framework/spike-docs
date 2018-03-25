@@ -1,0 +1,157 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nService module\nModule designed for usage as singleton during application lifecycle.\nCan be used in any of another components\n\nOnly one active instance in time is available",
+        "visibility": "public",
+        "html": "<p>Service module<br />\nModule designed for usage as singleton during application lifecycle.<br />\nCan be used in any of another components</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 15,
+    "code": "app.service = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "service",
+      "value": "{",
+      "string": "app.service"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "serviceName",
+        "name": "serviceName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>serviceName</p>"
+      },
+      {
+        "type": "param",
+        "string": "serviceObject",
+        "name": "serviceObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>serviceObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 17,
+    "codeStart": 25,
+    "code": "add: function (serviceName, serviceObject) {\n    this.register(serviceName, serviceObject);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new service in application\nCreates service object",
+        "visibility": "public",
+        "html": "<p>Registering new service in application<br />\nCreates service object</p>"
+      },
+      {
+        "type": "param",
+        "string": "serviceName",
+        "name": "serviceName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>serviceName</p>"
+      },
+      {
+        "type": "param",
+        "string": "serviceObject",
+        "name": "serviceObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>serviceObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 30,
+    "codeStart": 39,
+    "code": "register: function (serviceName, serviceObject) {\n    app.service[serviceName] = serviceObject;\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  }
+]

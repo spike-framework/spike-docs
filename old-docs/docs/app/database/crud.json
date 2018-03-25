@@ -1,0 +1,695 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nCrud module\nModule designed for as globals storage instead of window global during application lifecycle.\nCan be used anywhere.\n\nOnly one active instance in time is available (singleton)",
+        "visibility": "public",
+        "html": "<p>Crud module<br />\nModule designed for as globals storage instead of window global during application lifecycle.<br />\nCan be used anywhere.</p>\n<p>Only one active instance in time is available (singleton)</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__replaceBooleanToString}",
+        "visibility": "private",
+        "html": "<p>{__replaceBooleanToString}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{execute}",
+        "visibility": "private",
+        "html": "<p>{execute}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "builder",
+        "visibility": "public",
+        "html": "<p>builder</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 18,
+    "code": "app.crud = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "crud",
+      "value": "{",
+      "string": "app.crud"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction converts passed sql @string into boolean value for DB operations",
+        "visibility": "private",
+        "html": "<p>Function converts passed sql @string into boolean value for DB operations</p>"
+      },
+      {
+        "type": "param",
+        "string": "sql",
+        "name": "sql",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>sql</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 20,
+    "codeStart": 27,
+    "code": "__replaceBooleanToString: function(sql){\n\n    sql = sql.split(\"'true'\").join(\"'bool_true'\");\n    sql = sql.split(\"'false'\").join(\"'bool_false'\");\n    sql = sql.split(\" true\").join(\"'bool_true'\");\n    sql = sql.split(\" false\").join(\"'bool_false'\");\n\n    return sql;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__replaceBooleanToString",
+      "string": "__replaceBooleanToString()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction prepares and executes given sql @string or @function",
+        "visibility": "public",
+        "html": "<p>Function prepares and executes given sql @string or @function</p>"
+      },
+      {
+        "type": "param",
+        "string": "sql can be @string or @function",
+        "name": "sql",
+        "description": "<p>can be @string or @function</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "successCallback",
+        "name": "successCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>successCallback</p>"
+      },
+      {
+        "type": "param",
+        "string": "errorCallback",
+        "name": "errorCallback",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>errorCallback</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 38,
+    "codeStart": 49,
+    "code": "execute: function (sql, successCallback, errorCallback) {\n\n    //If @param sql is function, then execute it for final SQL string\n    if(app.util.System.isFunction(sql)){\n        sql = sql();\n    }\n\n    //Replace boolean values into special string equivalent\n    sql = this.__replaceBooleanToString(sql);\n\n    //Result array\n    var array = [];\n\n    //Result lastId for insert operation\n    var lastId = null;\n\n    //Executing query with transaction on database\n    app.__database.__dbInstance.transaction(function (tx) {\n\n        tx.executeSql(sql, [], function (tx, results) {\n\n            //If operation is insert then sets lastId\n            if(sql.toLowerCase().indexOf('insert') > -1){\n                lastId =  results.insertId;\n            }else{\n                //Adding result objects into result array\n                var len = results.rows.length, i;\n                for (i = 0; i < len; i++) {\n                    var item = results.rows.item(i);\n                    array.push(item);\n                }\n            }\n\n        }, null);\n\n    }, function (err) {\n\n        //If errorCallback exist then invoke callback\n        if (errorCallback !== undefined) {\n            errorCallback();\n        }\n\n        app.error('Error executing query {0}', [sql]);\n\n    }, function () {\n\n        //If successCallback exist then invoke callback\n        if(successCallback !== undefined){\n\n            //If operation is insert then pass lastId as result\n            if(sql.toLowerCase().indexOf('insert') != -1){\n                successCallback(lastId);\n            }else{\n                //Pass array with result items\n                successCallback(array);\n            }\n\n        }\n\n    });\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "execute",
+      "string": "execute()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nBuilder object containing CRUD functions",
+        "visibility": "public",
+        "html": "<p>Builder object containing CRUD functions</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 112,
+    "codeStart": 118,
+    "code": "builder: {",
+    "ctx": {
+      "type": "property",
+      "name": "builder",
+      "value": "{",
+      "string": "builder"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to find item by id in table",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to find item by id in table</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      },
+      {
+        "type": "param",
+        "string": "id",
+        "name": "id",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>id</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 120,
+    "codeStart": 128,
+    "code": "findById: function(tableName, id){\n    return \"select * from \"+tableName+\" where id = \"+id;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "findById",
+      "string": "findById()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to delete item by id in table",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to delete item by id in table</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      },
+      {
+        "type": "param",
+        "string": "id",
+        "name": "id",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>id</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 132,
+    "codeStart": 140,
+    "code": "deleteById: function(tableName, id){\n    return \"delete from \"+tableName+\" where id = \"+id;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "deleteById",
+      "string": "deleteById()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to drop table",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to drop table</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 144,
+    "codeStart": 151,
+    "code": "drop: function (tableName) {\n    return 'DROP TABLE IF EXISTS ' + tableName;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "drop",
+      "string": "drop()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to count in table",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to count in table</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 155,
+    "codeStart": 162,
+    "code": "count: function(tableName){\n    return 'select count(*) as count from '+tableName;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "count",
+      "string": "count()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to create table with columns",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to create table with columns</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      },
+      {
+        "type": "param",
+        "string": "columns",
+        "name": "columns",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>columns</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 166,
+    "codeStart": 174,
+    "code": "create: function (tableName, columns) {\n\n    var sql = 'CREATE TABLE IF NOT EXISTS ' + tableName + ' (id INTEGER PRIMARY KEY';\n\n    for (var i = 0; i < columns.length; i++) {\n        sql += ', ' + columns[i];\n    }\n\n    sql += ')';\n\n    return sql;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "create",
+      "string": "create()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to find all rows in table",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to find all rows in table</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 188,
+    "codeStart": 195,
+    "code": "findAll: function (tableName) {\n    return 'SELECT * FROM ' + tableName;\n},",
+    "ctx": {
+      "type": "method",
+      "name": "findAll",
+      "string": "findAll()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to select rows from table based on\nspecified columns names and its values",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to select rows from table based on<br />\nspecified columns names and its values</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      },
+      {
+        "type": "param",
+        "string": "values",
+        "name": "values",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>values</p>"
+      },
+      {
+        "type": "param",
+        "string": "columns",
+        "name": "columns",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>columns</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 200,
+    "codeStart": 210,
+    "code": "select: function (tableName, values, columns) {\n\n    var sql = \"\";\n\n\n        sql = \"select * from \" + tableName + \" where \";\n\n\n    for (var i = 0; i < values.length; i++) {\n\n        if(typeof values[i] == 'string' || typeof values[i] == 'boolean'){\n            sql +=  ' '+columns[i]+\"='\"+values[i] + \"' and \";\n        }else{\n            sql +=  ' '+columns[i]+\"=\"+values[i] + \" and \";\n        }\n\n    }\n\n    sql = sql.substr(0, sql.length - 4);\n\n    return sql;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "select",
+      "string": "select()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to insert row into table with\nspecified columns names and its values",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to insert row into table with<br />\nspecified columns names and its values</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      },
+      {
+        "type": "param",
+        "string": "values",
+        "name": "values",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>values</p>"
+      },
+      {
+        "type": "param",
+        "string": "columns",
+        "name": "columns",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>columns</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 234,
+    "codeStart": 244,
+    "code": "insert: function (tableName, values, columns) {\n\n    var sql = \"\";\n\n    if(columns !== undefined){\n\n        sql = \"INSERT INTO \" + tableName + \" (\";\n\n        for (var i = 0; i < columns.length; i++) {\n            sql += columns[i] + ',';\n        }\n\n        sql = sql.substr(0, sql.length - 1);\n\n        sql += \") VALUES (\";\n\n    }else{\n        sql = \"INSERT INTO \" + tableName + \" VALUES (\";\n    }\n\n\n    for (var i = 0; i < values.length; i++) {\n\n        if(typeof values[i] == 'string' || typeof values[i] == 'boolean'){\n            sql +=  \" '\"+values[i] + \"',\";\n        }else{\n            sql +=  \" \"+values[i] + \",\";\n        }\n\n\n    }\n\n    sql = sql.substr(0, sql.length - 1);\n\n    sql += \")\";\n\n    return sql;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "insert",
+      "string": "insert()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nReturns SQL query to update rows in table with\nspecified columns names and its values by row id",
+        "visibility": "public",
+        "html": "<p>Returns SQL query to update rows in table with<br />\nspecified columns names and its values by row id</p>"
+      },
+      {
+        "type": "param",
+        "string": "tableName",
+        "name": "tableName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>tableName</p>"
+      },
+      {
+        "type": "param",
+        "string": "id",
+        "name": "id",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>id</p>"
+      },
+      {
+        "type": "param",
+        "string": "values",
+        "name": "values",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>values</p>"
+      },
+      {
+        "type": "param",
+        "string": "columns",
+        "name": "columns",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>columns</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 284,
+    "codeStart": 295,
+    "code": "update: function (tableName, id, values, columns) {\n\n    var sql = \"\";\n\n    sql = \"UPDATE \" + tableName + \" SET \";\n\n\n    for (var i = 0; i < values.length; i++) {\n\n        if(typeof values[i] == 'string' || typeof values[i] == 'boolean'){\n            sql +=  ' '+ columns[i]+\"= '\"+values[i] + \"',\";\n        }else{\n            sql += ' '+columns[i]+\"= \"+values[i] + \",\";\n        }\n\n\n    }\n\n    sql = sql.substr(0, sql.length - 1);\n\n    sql += \" where id = \"+id;\n\n    return sql;\n\n}\n\n\n    }\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "update",
+      "string": "update()"
+    }
+  }
+]

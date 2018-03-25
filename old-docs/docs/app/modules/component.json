@@ -1,0 +1,362 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nComponent module\nReusable module designed for usage in controllers and modals. Also can be used in another components.",
+        "visibility": "public",
+        "html": "<p>Component module<br />\nReusable module designed for usage in controllers and modals. Also can be used in another components.</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__initComponents}",
+        "visibility": "private",
+        "html": "<p>{__initComponents}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__dataArchive}",
+        "visibility": "private",
+        "html": "<p>{__dataArchive}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 16,
+    "code": "app.component = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "component",
+      "value": "{",
+      "string": "app.component"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nStorage for components instances",
+        "visibility": "private",
+        "html": "<p>Storage for components instances</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 18,
+    "codeStart": 22,
+    "code": "__dataArchive: {},",
+    "ctx": {
+      "type": "property",
+      "name": "__dataArchive",
+      "value": "{},",
+      "string": "__dataArchive"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "componentName",
+        "name": "componentName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>componentName</p>"
+      },
+      {
+        "type": "param",
+        "string": "componentObject",
+        "name": "componentObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>componentObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 24,
+    "codeStart": 32,
+    "code": "add: function (componentName, componentObject) {\n    this.register(componentName, componentObject);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new component in application\nCreates component object",
+        "visibility": "public",
+        "html": "<p>Registering new component in application<br />\nCreates component object</p>"
+      },
+      {
+        "type": "param",
+        "string": "componentName",
+        "name": "componentName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>componentName</p>"
+      },
+      {
+        "type": "param",
+        "string": "componentObject",
+        "name": "componentObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>componentObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 37,
+    "codeStart": 46,
+    "code": "register: function (componentName, componentObject) {\n    app.log('Registering component {0}', [componentName]);\n    app.debug('Invoke component.register with params: {0} {1}', [componentName, componentObject]);\n\n    //Setting type of module\n    componentObject.__type = 'COMPONENT';\n\n    //Setting self helper\n    componentObject.self = function() {\n        return app.component[componentName];\n    }\n\n    //Setting original name of module\n    componentObject.__name = componentName;\n\n    //Setting name starting from lower case, used with templates and directories names of component\n    componentObject.__lowerCaseName = componentName.substring(0, 1).toLowerCase() + componentName.substring(1, componentName.length);\n\n    //Setting variable which is setted to true once if component is global\n    componentObject.__globalRendered = false;\n\n    //Setting @private global variable on component\n    if(componentObject.global){\n        componentObject.__global = true;\n    }else{\n        componentObject.__global = false;\n    }",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction that renders component\nCreates new component object based ond __dataArchive and assign reference to shortcut app.com[componentName]\nCreates component HTML template using @function @private __loadTemplate()\nPassing component processed template to DOM element @element component with it's @attr name attribute\nRendering components used in rendered component\nInitializing component with componentDataPassed",
+        "visibility": "private",
+        "html": "<p>Function that renders component<br />\nCreates new component object based ond __dataArchive and assign reference to shortcut app.com[componentName]<br />\nCreates component HTML template using @function @private __loadTemplate()<br />\nPassing component processed template to DOM element @element component with it's @attr name attribute<br />\nRendering components used in rendered component<br />\nInitializing component with componentDataPassed</p>"
+      },
+      {
+        "type": "param",
+        "string": "componentDataPassed",
+        "name": "componentDataPassed",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>componentDataPassed</p>"
+      },
+      {
+        "type": "private",
+        "string": "",
+        "visibility": "private",
+        "html": ""
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 74,
+    "codeStart": 86,
+    "code": "componentObject.__render = function (componentDataPassed) {\n    app.debug('Invoke componentObject.__render with params: {0}', [componentDataPassed]);\n\n    if(app.component[componentObject.__name] && app.component[componentObject.__name].__global == true && app.component[componentObject.__name].__globalRendered == true){\n        app.debug('Component {0} is already globally rendered. Returning from _render...', [componentObject.__name]);\n        return;\n    }else if(app.component[componentObject.__name] && app.component[componentObject.__name].__global == true && app.component[componentObject.__name].__globalRendered == false){\n        app.debug('Component {0} will be rendered globally', [componentObject.__name]);\n        app.component[componentObject.__name].__globalRendered = true;\n    }\n\n    app.component[componentObject.__name] = $.extend(true, {}, app.component.__dataArchive[componentObject.__name]);\n    app.com[componentObject.__name] = app.component[componentObject.__name];\n\n    app.com[componentObject.__name].__loadTemplate();\n\n    app.debug('Binding component {0} template to DOM', [app.com[componentObject.__name].__name]);\n    $('component[name=\"' + app.com[componentObject.__name].__lowerCaseName + '\"]').replaceWith(app.com[componentObject.__name].__template);\n\n    //Translate DOM\n    app.message.__translate();\n\n    if(componentDataPassed == undefined){\n        componentDataPassed = null;\n    }\n\n    app.component.__initComponents(app.com[componentObject.__name].components);\n    app.debug('Invoke component {0} init() function', [componentObject.__name]);\n    app.com[componentObject.__name].init(componentDataPassed);\n\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "componentObject",
+      "name": "__render",
+      "string": "componentObject.__render()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nCreating path to component view HTML file\nCreates path based on html2js template file and directories structure",
+        "visibility": "private",
+        "html": "<p>Creating path to component view HTML file<br />\nCreates path based on html2js template file and directories structure</p>"
+      },
+      {
+        "type": "param",
+        "string": "componentObject",
+        "name": "componentObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>componentObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 120,
+    "codeStart": 127,
+    "code": "componentObject.__createComponentViewPath = function (componentObject) {\n    app.debug('Invoke componentObject.__createComponentViewPath with params: {0}', [componentObject]);\n\n    componentObject.__view = app.config.viewsPath + \"/\" + app.config.componentDirectory + \"/\" + componentObject.__lowerCaseName + \"/\" + componentObject.__lowerCaseName + \".view.html\"\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "componentObject",
+      "name": "__createComponentViewPath",
+      "string": "componentObject.__createComponentViewPath()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction retrieving component's template from global window[templates] variable based on generated view path\nIf template not specified, throw Error\nCreating dynamic selectors binded to template using @private system.__createSelectors()",
+        "visibility": "private",
+        "html": "<p>Function retrieving component's template from global window[templates] variable based on generated view path<br />\nIf template not specified, throw Error<br />\nCreating dynamic selectors binded to template using @private system.__createSelectors()</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 133,
+    "codeStart": 141,
+    "code": "componentObject.__loadTemplate = function () {\n    app.debug('Invoke componentObject.__loadTemplate');\n\n    var templateHtml = window['templates'][app.component[componentObject.__name].__view];\n\n    if(!templateHtml){\n        app.system.__throwError('No view found for component: {0}, view path: {1}', [componentObject.__name, componentObject.__view]);\n    }\n\n    var selectorsObj = app.system.__createSelectors(templateHtml);\n\n    app.component[componentObject.__name].selector = selectorsObj.selectors;\n    templateHtml = selectorsObj.html;\n\n    app.component[componentObject.__name].__plainTemplate = templateHtml;\n    app.component[componentObject.__name].__template = templateHtml;\n\n    //Commented because of global translation by jQuery\n    //app.component[componentObject.__name].__template = app.message.__replace(templateHtml);\n\n}\n\n//Creating view path once per application initialization\ncomponentObject.__createComponentViewPath(componentObject);\n\n//Creating copy of component object in @private __dataArchive and in component[componentName] variable\napp.component.__dataArchive[componentObject.__name] = $.extend(true, {}, componentObject);\napp.component[componentObject.__name] = $.extend(true, {}, componentObject);\n\n    },",
+    "ctx": {
+      "type": "method",
+      "receiver": "componentObject",
+      "name": "__loadTemplate",
+      "string": "componentObject.__loadTemplate()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to rendering multiple components across DOM",
+        "visibility": "private",
+        "html": "<p>Function to rendering multiple components across DOM</p>"
+      },
+      {
+        "type": "param",
+        "string": "componentsArrayOrMap\ncomponentsArrayOrMap is array of names of components\nExample:\n[ 'COMPONENT_NAME_1', 'COMPONENT_NAME_2' ]\nor\nmap which has components names as keys and any data object as values to be passed to @function init invocation as argument\nExample:\n{\n 'COMPONENT_NAME' : { id: 1111, name: 'Somebody' }\n}",
+        "name": "componentsArrayOrMap",
+        "description": "<p>componentsArrayOrMap is array of names of components<br />\nExample:<br />\n[ 'COMPONENT_NAME_1', 'COMPONENT_NAME_2' ]<br />\nor<br />\nmap which has components names as keys and any data object as values to be passed to @function init invocation as argument<br />\nExample:<br />\n{<br />\n'COMPONENT_NAME' : { id: 1111, name: 'Somebody' }<br />\n}</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 172,
+    "codeStart": 188,
+    "code": "__initComponents: function (componentsArrayOrMap) {\n    app.debug('Invoke component.__initComponents with params: {0}', [componentsArrayOrMap]);\n\n    if(componentsArrayOrMap){\n\n        if (componentsArrayOrMap instanceof Array) {\n\n            $.each(componentsArrayOrMap, function (i, componentName) {\n                app.component[componentName].__render(null);\n\n            });\n\n        } else {\n\n            $.each(componentsArrayOrMap, function (componentName, componentParams) {\n                app.component[componentName].__render(componentParams);\n            });\n\n        }\n\n    }\n\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__initComponents",
+      "string": "__initComponents()"
+    }
+  }
+]

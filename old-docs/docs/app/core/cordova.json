@@ -1,0 +1,354 @@
+[
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nCordova module\nModule designed for usage as cordova provider.\nShould be used only by framework\n\nOnly one active instance in time is available",
+        "visibility": "private",
+        "html": "<p>Cordova module<br />\nModule designed for usage as cordova provider.<br />\nShould be used only by framework</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__initializeCordova}",
+        "visibility": "private",
+        "html": "<p>{__initializeCordova}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__bindDOMEvents}",
+        "visibility": "private",
+        "html": "<p>{__bindDOMEvents}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__checkNetwork}",
+        "visibility": "private",
+        "html": "<p>{__checkNetwork}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onBack}",
+        "visibility": "private",
+        "html": "<p>{__onBack}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onDeviceReady}",
+        "visibility": "private",
+        "html": "<p>{__onDeviceReady}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onOnline}",
+        "visibility": "private",
+        "html": "<p>{__onOnline}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onOffline}",
+        "visibility": "private",
+        "html": "<p>{__onOffline}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__deviceReadyCallBack}",
+        "visibility": "private",
+        "html": "<p>{__deviceReadyCallBack}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 23,
+    "code": "app.__cordova = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "__cordova",
+      "value": "{",
+      "string": "app.__cordova"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nCallback executed when device is ready",
+        "visibility": "private",
+        "html": "<p>Callback executed when device is ready</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 25,
+    "codeStart": 30,
+    "code": "__deviceReadyCallBack: null,",
+    "ctx": {
+      "type": "property",
+      "name": "__deviceReadyCallBack",
+      "value": "null,",
+      "string": "__deviceReadyCallBack"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to initialize Cordova application\nInvokes passed callback function if initialization ends",
+        "visibility": "private",
+        "html": "<p>Function to initialize Cordova application<br />\nInvokes passed callback function if initialization ends</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBack",
+        "name": "callBack",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>callBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 32,
+    "codeStart": 39,
+    "code": "__initializeCordova: function (callBack) {\n    app.debug('Invoke cordova.__initializeCordova with params: {0}', [callBack]);\n    app.__cordova.__bindDOMEvents();\n    callBack();\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__initializeCordova",
+      "string": "__initializeCordova()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction binding Cordova events\nIf @app.events.domEvents exitst then executes",
+        "visibility": "private",
+        "html": "<p>Function binding Cordova events<br />\nIf @app.events.domEvents exitst then executes</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 45,
+    "codeStart": 52,
+    "code": "__bindDOMEvents: function () {\n    app.debug('Invoke cordova.__bindDOMEvents');\n\n    document.addEventListener('deviceready', app.__cordova.__onDeviceReady, false);\n    document.addEventListener('backbutton', app.__cordova.__onBack, false);\n\n    if (app.events.domEvents !== undefined) {\n        app.events.domEvents();\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__bindDOMEvents",
+      "string": "__bindDOMEvents()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to initialize Cordova application",
+        "visibility": "private",
+        "html": "<p>Function to initialize Cordova application</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBack",
+        "name": "callBack",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>callBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 64,
+    "codeStart": 71,
+    "code": "__checkNetwork: function () {\n    app.debug('Invoke cordova.__checkNetwork');\n\n    app.plugins.wrapper.network.connection(function () {\n        app.__cordova.__onOnline();\n    }, function () {\n        app.__cordova.__onOffline();\n    });\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__checkNetwork",
+      "string": "__checkNetwork()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction to realize back @event\n\nIf modal is rendered and has overriden @onBack function\nthen invoke overriden @onBack\n\nIf modal is rendered and has not overriden @onBack function\nthen invoke @app.modal.invalidateAll() function to hide modal\n\nif controller is rendered and has overriden @onBack function\nthen invoke  @app.modal.invalidateAll() function to hide modal\nand then invoke overriden @onBack\n\nIf there aren't rendered modals and current controller has not\noverriden @onBack function then invoke @app.events.onBack",
+        "visibility": "private",
+        "html": "<p>Function to realize back @event</p>\n<p>If modal is rendered and has overriden @onBack function<br />\nthen invoke overriden @onBack</p>\n<p>If modal is rendered and has not overriden @onBack function<br />\nthen invoke @app.modal.invalidateAll() function to hide modal</p>\n<p>if controller is rendered and has overriden @onBack function<br />\nthen invoke  @app.modal.invalidateAll() function to hide modal<br />\nand then invoke overriden @onBack</p>\n<p>If there aren't rendered modals and current controller has not<br />\noverriden @onBack function then invoke @app.events.onBack</p>"
+      },
+      {
+        "type": "param",
+        "string": "e",
+        "name": "e",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>e</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 83,
+    "codeStart": 104,
+    "code": "__onBack: function (e) {\n    app.debug('Invoke cordova.__onBack');\n\n    if (e) {\n        e.preventDefault();\n    }\n\n    if (app.mCtx !== null && app.mCtx.onBack !== undefined) {\n        app.mCtx.onBack();\n    } else if (app.mCtx !== null && app.mCtx.onBack == undefined) {\n        app.modal.invalidateAll()\n    } else if (app.ctx !== null && app.ctx.onBack !== undefined) {\n        app.modal.invalidateAll()\n        app.ctx.onBack();\n    } else {\n\n        if (app.events.onBack) {\n            app.events.onBack();\n        }\n\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onBack",
+      "string": "__onBack()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executed when Cordova app is ready\nInvokes @private __deviceReadyCallBack",
+        "visibility": "private",
+        "html": "<p>Function executed when Cordova app is ready<br />\nInvokes @private __deviceReadyCallBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 128,
+    "codeStart": 135,
+    "code": "__onDeviceReady: function () {\n    app.debug('Invoke cordova.__onDeviceReady');\n\n    if (app.__cordova.__deviceReadyCallBack) {\n        app.__cordova.__deviceReadyCallBack();\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onDeviceReady",
+      "string": "__onDeviceReady()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executes when application is in @online state\nInvokes @app.events.onOnline",
+        "visibility": "private",
+        "html": "<p>Function executes when application is in @online state<br />\nInvokes @app.events.onOnline</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 144,
+    "codeStart": 151,
+    "code": "__onOnline: function () {\n    app.debug('Invoke cordova.__onOnline');\n\n    app.online = true;\n\n    if (app.events.onOnline) {\n        app.events.onOnline();\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onOnline",
+      "string": "__onOnline()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executes when application is in @offline state\nInvokes @app.events.onOffline",
+        "visibility": "private",
+        "html": "<p>Function executes when application is in @offline state<br />\nInvokes @app.events.onOffline</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 162,
+    "codeStart": 169,
+    "code": "__onOffline: function () {\n    app.debug('Invoke cordova.__onOffline');\n\n    app.online = false;\n\n    if (app.events.onOffline) {\n        app.events.onOffline();\n    }\n\n},\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__onOffline",
+      "string": "__onOffline()"
+    }
+  }
+]

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Translations</h2>
+
+            <p>
+                Spike application supports language translations and messages in templates
+                and in whole application JavaScript scripts
+                <br/>
+                It's recommended to use messages defined in file and hosted locally or from
+                server even you use single language because it will be much more easier to
+                add next language support than defining texts as hardcoded in templates and scripts.
+            </p>
+            <p>
+                Default language is defined via <code>app.config.lang</code> with Spike <code>config.js</code> file.
+            </p>
+
+            <h4>Example language in <code>config.js</code></h4>
+
+            <pre class="brush: js;">
+                app.config.extend({
+                    lang: 'en'
+                });
+            </pre>
+
+            <h4>Registering languages files</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.message.register</code>
+                    <code class="property">app.message.add</code>
+                </div>
+                <div class="col-sm-10">
+                    Registers new language translation from hosted file.
+                    File can be hosted locally or from server.
+                    File have to be in <code>JSON</code> format
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>languageName</code>
+                            Language code like defined in <code>app.config.lang</code>
+                        </li>
+                        <li>
+                            <code>languageFilePath</code>
+                            Relative or absolute path to translation file
+                        </li>
+                    </ul>
+
+                    Example usage:
+                    <pre class="brush: js;">
+                        app.message.register('en', '../i18/en.json');
+                        app.message.register('pl', '../i18/pl.json');
+                        app.message.register('ru', '../i18/ru.json');
+                    </pre>
+
+                </div>
+            </div>
+            <h4>Switching current language</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.system.changeLanguage</code>
+                </div>
+                <div class="col-sm-10">
+                    Spike supports easily switch language function.
+                    <br/>
+                    Passed language code is setted to <code>app.config.lang</code>
+                    <br/>
+                    Arguments:
+                    <ul>
+                        <li>
+                            <code>langCode</code>
+                            Language code like defined in <code>app.config.lang</code>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <h4>Using translations in JavaScript</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.message.get</code>
+                </div>
+                <div class="col-sm-10">
+                    You can easily get single translation based on it's name
+                    from translation files using <code>app.message.get(messageName)</code>
+                    function.
+                    <br/>
+                    <p>
+                        Accepts arguments:
+                        <br/>
+                        translationKey, translationParams
+                    </p>
+                    Function uses already setted language code from <code>app.config.lang</code>
+                    <br/> <br/>
+                    Example <code>en.json</code> translation file:
+                    <pre class="brush: js;">
+                        {
+                            "home_page" : "Home page",
+                            "post_id" : "Post with id {0}",
+                            "user_name" : "User with name {username}"
+                        }
+                    </pre>
+                    Example registering translation:
+                    <pre class="brush: js;">
+                        app.message.register('en', 'en.json');
+                    </pre>
+                    Example getting translation:
+                    <pre class="brush: js;">
+                        var translation = app.message.get('home_page');
+                        translation === "Home page"
+                    </pre>
+                    Also <code>translation params</code> can be passed to bind them:
+                    <br/>
+
+                    <pre class="brush: js;">
+                        var translation = app.message.get('post_id', [10]);
+                        translation === "Post with id 10"
+
+                        translation = app.message.get('user_name', { username: 'Michael' });
+                        translation === "User with name Michael"
+
+                    </pre>
+
+                </div>
+            </div>
+            <h4>Using translations in HTML templates</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property-attribute">spike-translation</code>
+                </div>
+                <div class="col-sm-10">
+                    You can easily use translations in Spike HTML templates.
+                    <br/>
+                    Normally Spike translate whole DOM elements containing special attribute
+                    <code>spike-translation</code> setting it's values. Translation is forced
+                    when <code>app.system.changeLanguage(langCode)</code> function is fired and
+                    also when any <code>modal</code>, <code>lister</code>, <code>controller</code> or
+                    <code>component</code> is rendered.
+                    <br/>
+                    Function uses already setted language code from <code>app.config.lang</code>
+                    <br/> <br/>
+                    Example HTML template with translations:
+                    <pre class="brush: js;">
+                       <h1 spike-translation="home_page"></h1>
+                    </pre>
+                    Result would be:
+                    <pre class="brush: js;">
+                       <h1 spike-translation="home_page">Home Page</h1>
+                    </pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

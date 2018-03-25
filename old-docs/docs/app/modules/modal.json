@@ -1,0 +1,1153 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nModal module\nModule designed for usage as independent modal window during application lifecycle.\nCan be rendered in another modules.\n\nOnly one active instance of the same modal is available in same time\nFew instances of modals are available at one moment\n\nRedered once when used @public system.render() until another controller is rendered\nbecause @private system.__renderController invokes @public modal.invalidateAll\n\nIf once rendered, @public system.render only shows modal again if @private modalObject.__hidden\n\nModals templates are binded to DOM element having @attr modals attribute\nand wrapped with DIV element.\n\nExample:\n<div modals></div>\n\nModal events like HIDE and SHOW or INIT could be implemented with custom implementation\nSpike allows to choose between plain jQuery implementation and Bootstrap 3 events implementation\nusing @public config.bootstrapModal variable",
+        "visibility": "public",
+        "html": "<p>Modal module<br />\nModule designed for usage as independent modal window during application lifecycle.<br />\nCan be rendered in another modules.</p>\n<p>Only one active instance of the same modal is available in same time<br />\nFew instances of modals are available at one moment</p>\n<p>Redered once when used @public system.render() until another controller is rendered<br />\nbecause @private system.__renderController invokes @public modal.invalidateAll</p>\n<p>If once rendered, @public system.render only shows modal again if @private modalObject.__hidden</p>\n<p>Modals templates are binded to DOM element having @attr modals attribute<br />\nand wrapped with DIV element.</p>\n<p>Example:</p>\n<div modals></div>\n<p>Modal events like HIDE and SHOW or INIT could be implemented with custom implementation<br />\nSpike allows to choose between plain jQuery implementation and Bootstrap 3 events implementation<br />\nusing @public config.bootstrapModal variable</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{implement}",
+        "visibility": "public",
+        "html": "<p>{implement}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onModalShowEventDefault}",
+        "visibility": "private",
+        "html": "<p>{__onModalShowEventDefault}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onModalHideEventDefault}",
+        "visibility": "private",
+        "html": "<p>{__onModalHideEventDefault}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onModalRegisterEvent}",
+        "visibility": "private",
+        "html": "<p>{__onModalRegisterEvent}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onModalRenderwEvent}",
+        "visibility": "private",
+        "html": "<p>{__onModalRenderwEvent}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onModalShowEvent}",
+        "visibility": "private",
+        "html": "<p>{__onModalShowEvent}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__onModalHideEvent}",
+        "visibility": "private",
+        "html": "<p>{__onModalHideEvent}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__getView}",
+        "visibility": "private",
+        "html": "<p>{__getView}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__verifyView}",
+        "visibility": "private",
+        "html": "<p>{__verifyView}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__invalidate}",
+        "visibility": "private",
+        "html": "<p>{__invalidate}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{invalidateAll}",
+        "visibility": "public",
+        "html": "<p>{invalidateAll}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__dataArchive}",
+        "visibility": "private",
+        "html": "<p>{__dataArchive}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__modalWrappers}",
+        "visibility": "private",
+        "html": "<p>{__modalWrappers}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 48,
+    "code": "app.modal = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "modal",
+      "value": "{",
+      "string": "app.modal"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nStorage for wrapping DIVs\nIf modal wrapper @attr id not in @private __modalWrappers then modal not exist in DOM",
+        "visibility": "private",
+        "html": "<p>Storage for wrapping DIVs<br />\nIf modal wrapper @attr id not in @private __modalWrappers then modal not exist in DOM</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 50,
+    "codeStart": 55,
+    "code": "__modalWrappers: {},",
+    "ctx": {
+      "type": "property",
+      "name": "__modalWrappers",
+      "value": "{},",
+      "string": "__modalWrappers"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\nStorage for modals instances",
+        "visibility": "private",
+        "html": "<p>Storage for modals instances</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 57,
+    "codeStart": 61,
+    "code": "__dataArchive: {},",
+    "ctx": {
+      "type": "property",
+      "name": "__dataArchive",
+      "value": "{},",
+      "string": "__dataArchive"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction allows programmer to implement custom modals overriding",
+        "visibility": "public",
+        "html": "<p>Function allows programmer to implement custom modals overriding</p>"
+      },
+      {
+        "type": "private",
+        "string": "__onModalShowEvent",
+        "visibility": "private",
+        "html": "<p>__onModalShowEvent</p>"
+      },
+      {
+        "type": "private",
+        "string": "__onModalHideEvent",
+        "visibility": "private",
+        "html": "<p>__onModalHideEvent</p>"
+      },
+      {
+        "type": "private",
+        "string": "__onModalRegisterEvent",
+        "visibility": "private",
+        "html": "<p>__onModalRegisterEvent</p>"
+      },
+      {
+        "type": "private",
+        "string": "__onModalRenderEvent",
+        "visibility": "private",
+        "html": "<p>__onModalRenderEvent</p>"
+      },
+      {
+        "type": "param",
+        "string": "eventName",
+        "name": "eventName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>eventName</p>"
+      },
+      {
+        "type": "param",
+        "string": "eventFunction",
+        "name": "eventFunction",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>eventFunction</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 63,
+    "codeStart": 75,
+    "code": "implement: function (eventName, eventFunction) {\n    app.debug('Invoke modal.implement with params: {0} {1}', [eventName, eventFunction]);\n\n    if (!eventName || !eventFunction) {\n        app.system.__throwError('modal.implement(eventName, eventFunction) passed arguments not match required arguments');\n    }\n\n    if (eventName == 'hide') {\n        app.modal.__onModalHideEvent = eventFunction;\n    } else if (eventName == 'show') {\n        app.modal.__onModalShowEvent = eventFunction;\n    } else if (eventName == 'render') {\n        app.modal.__onModalRenderEvent = eventFunction;\n    } else if (eventName == 'register') {\n        app.modal.__onModalRegisterEvent = eventFunction;\n    }else {\n        app.warn('Ignoring event: {0} implementation for modal, no event available', [eventName]);\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "implement",
+      "string": "implement()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nDefault jQuery implementation of modal show event",
+        "visibility": "private",
+        "html": "<p>Default jQuery implementation of modal show event</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalSelector",
+        "name": "modalSelector",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalSelector</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 96,
+    "codeStart": 103,
+    "code": "__onModalShowEventDefault: function(modalSelector){\n    app.debug('Invoke modal.__onModalShowEventDefault');\n    modalSelector.show(200);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onModalShowEventDefault",
+      "string": "__onModalShowEventDefault()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nDefault jQuery implementation of modal hide event",
+        "visibility": "private",
+        "html": "<p>Default jQuery implementation of modal hide event</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalSelector",
+        "name": "modalSelector",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalSelector</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 108,
+    "codeStart": 115,
+    "code": "__onModalHideEventDefault: function(modalSelector){\n    app.debug('Invoke modal.__onModalHideEventDefault');\n    modalSelector.hide(200);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onModalHideEventDefault",
+      "string": "__onModalHideEventDefault()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "",
+        "visibility": "private",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional function executed when modal is registered\nExecutes once per Spike application initialization",
+        "html": "<p>Additional function executed when modal is registered<br />\nExecutes once per Spike application initialization</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalObject",
+        "name": "modalObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 120,
+    "codeStart": 129,
+    "code": "__onModalRegisterEvent: function(modalObject){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onModalRegisterEvent",
+      "string": "__onModalRegisterEvent()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "",
+        "visibility": "private",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nAdditional function executed when modal is rendered\nExecutes every time when new modal instance is rendered\nIs not invoke if modal is already rendered and will be only showed",
+        "html": "<p>Additional function executed when modal is rendered<br />\nExecutes every time when new modal instance is rendered<br />\nIs not invoke if modal is already rendered and will be only showed</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalSelector",
+        "name": "modalSelector",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalSelector</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 132,
+    "codeStart": 142,
+    "code": "__onModalRenderEvent: function(modalSelector, modalObject){\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onModalRenderEvent",
+      "string": "__onModalRenderEvent()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "",
+        "visibility": "private",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nFunction implements modal showing mechanics\nBy default invokes default implementation @private __onModalShowEventDefault",
+        "html": "<p>Function implements modal showing mechanics<br />\nBy default invokes default implementation @private __onModalShowEventDefault</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalSelector",
+        "name": "modalSelector",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalSelector</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalObject",
+        "name": "modalObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalObject</p>"
+      },
+      {
+        "type": "param",
+        "string": "defaultImpl",
+        "name": "defaultImpl",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>defaultImpl</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 145,
+    "codeStart": 156,
+    "code": "__onModalShowEvent: function (modalSelector, modalObject, defaultImpl) {\n    defaultImpl(modalSelector);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onModalShowEvent",
+      "string": "__onModalShowEvent()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "",
+        "visibility": "private",
+        "html": ""
+      },
+      {
+        "type": "toImplement",
+        "string": "\nFunction implements modal hiding mechanics\nBy default invokes default implementation @private __onModalHideEventDefault",
+        "html": "<p>Function implements modal hiding mechanics<br />\nBy default invokes default implementation @private __onModalHideEventDefault</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalSelector",
+        "name": "modalSelector",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalSelector</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalObject",
+        "name": "modalObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalObject</p>"
+      },
+      {
+        "type": "param",
+        "string": "defaultImpl",
+        "name": "defaultImpl",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>defaultImpl</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 160,
+    "codeStart": 171,
+    "code": "__onModalHideEvent: function (modalSelector, modalObject, defaultImpl) {\n    defaultImpl(modalSelector);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__onModalHideEvent",
+      "string": "__onModalHideEvent()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalName",
+        "name": "modalName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalName</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalObject",
+        "name": "modalObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 175,
+    "codeStart": 183,
+    "code": "add: function(modalName, modalObject){\n    this.register(modalName, modalObject);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new modal window in application\nCreates modal object",
+        "visibility": "public",
+        "html": "<p>Registering new modal window in application<br />\nCreates modal object</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalName",
+        "name": "modalName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalName</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalObject",
+        "name": "modalObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 187,
+    "codeStart": 196,
+    "code": "register: function (modalName, modalObject) {\n    app.debug('Invoke modal.register with params: {0} {1}', [modalName, modalObject]);\n\n    //Setting tyope of module\n    modalObject.__type = 'MODAL';\n\n    //Setting self helper\n    modalObject.self = function() {\n        return app.modal[modalName];\n    }\n\n    //Setting default value (modal by default is hidden)\n    modalObject.__hidden = false;\n\n    //Setting original name of module\n    modalObject.__name = modalName;\n\n    //Setting name starting from lower case , used with templates and directories names of controller\n    modalObject.__lowerCaseName = modalName.substring(0, 1).toLowerCase() + modalName.substring(1, modalName.length);\n\n    //Invokes custom implementation of @private __onModalRegisterEvent\n    app.modal.__onModalRegisterEvent(modalObject);",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nCreating path to modal view HTML file\nCreates path based on html2js template file and directories structure",
+        "visibility": "private",
+        "html": "<p>Creating path to modal view HTML file<br />\nCreates path based on html2js template file and directories structure</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalObject",
+        "name": "modalObject",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalObject</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 219,
+    "codeStart": 226,
+    "code": "modalObject.__createModalViewPath = function (modalObject) {\n    app.debug('Invoke modalObject.__createModalViewPath with params: {0}', [modalObject]);\n\n    modalObject.__view = app.config.viewsPath + \"/\" + app.config.modalDirectory + \"/\" + modalObject.__lowerCaseName + \"/\" + modalObject.__lowerCaseName + \".view.html\"\n\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "__createModalViewPath",
+      "string": "modalObject.__createModalViewPath()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction retrieving modal's template from global window[templates] variable based on generated view path\nIf template not specified, throw Error\nCreating dynamic selectors binded to template using @private system.__createSelectors()",
+        "visibility": "private",
+        "html": "<p>Function retrieving modal's template from global window[templates] variable based on generated view path<br />\nIf template not specified, throw Error<br />\nCreating dynamic selectors binded to template using @private system.__createSelectors()</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 233,
+    "codeStart": 241,
+    "code": "modalObject.__loadTemplate = function () {\n    app.debug('Invoke modalObject.__loadTemplate');\n\n    var templateHtml = window['templates'][app.mCtx[modalObject.__name].__view];\n\n    if (!templateHtml) {\n        app.system.__throwError('No view found for modal: {0}, view path: {1}', [modalObject.__name, modalObject.__view]);\n    }\n\n    var selectorsObj = app.system.__createSelectors(templateHtml);\n    app.mCtx[modalObject.__name].selector = selectorsObj.selectors;\n\n    templateHtml = selectorsObj.html;\n\n    app.mCtx[modalObject.__name].__plainTemplate = templateHtml;\n\n    app.mCtx[modalObject.__name].__template = templateHtml;\n    //Commented because of global translation by jQuery\n    //app.mCtx[modalObject.__name].__template = app.message.__replace(templateHtml);\n\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "__loadTemplate",
+      "string": "modalObject.__loadTemplate()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction that renders modal\nChecking if modal is already rendered in DOM and if is hidden - then show again only\nChecking if modal is already rendered in DOM and if is visible - then do nothing\nIn case modal is not rendered then\nCreates new modal object based ond __dataArchive and assign reference to shortcut app.mCtx\nCreates controller HTML template using @function @private __loadTemplate()\nWrapping modal with new DIV element and creating @attr id for modal wrapper and modal view fist child (main)\nPassing modal processed and wrapped template to DOM element with @attr modals attribute\nRendering components used in rendered modal\nInitializing modal with modalPassedData",
+        "visibility": "private",
+        "html": "<p>Function that renders modal<br />\nChecking if modal is already rendered in DOM and if is hidden - then show again only<br />\nChecking if modal is already rendered in DOM and if is visible - then do nothing<br />\nIn case modal is not rendered then<br />\nCreates new modal object based ond __dataArchive and assign reference to shortcut app.mCtx<br />\nCreates controller HTML template using @function @private __loadTemplate()<br />\nWrapping modal with new DIV element and creating @attr id for modal wrapper and modal view fist child (main)<br />\nPassing modal processed and wrapped template to DOM element with @attr modals attribute<br />\nRendering components used in rendered modal<br />\nInitializing modal with modalPassedData</p>"
+      },
+      {
+        "type": "param",
+        "string": "modalPassedData",
+        "name": "modalPassedData",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>modalPassedData</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 263,
+    "codeStart": 279,
+    "code": "modalObject.__render = function (modalPassedData) {\n    app.debug('Invoke modalObject.__render with params: {0}', [modalPassedData]);\n\n    if(app.modal.__modalWrappers[modalObject.__name] && app.modal[modalObject.__name].__hidden == true){\n        app.debug('Modal is already rendered and will be showed again');\n        app.modal[modalObject.__name].show();\n        return;\n    }else if(app.modal.__modalWrappers[modalObject.__name]){\n        app.debug('Modal is already rendered and cannot be rendered twice');\n        return;\n    }\n\n    app.modal[modalObject.__name] = $.extend(true, {}, app.modal.__dataArchive[modalObject.__name]);\n    app.mCtx[modalObject.__name] = app.modal[modalObject.__name];\n\n    app.mCtx[modalObject.__name].__loadTemplate();\n\n    app.debug('Binding modal {0} template to DOM element with \"modals\" attribute ', [app.mCtx[modalObject.__name].__name]);\n\n    app.mCtx[modalObject.__name].__wrapModal();\n\n    app.component.__initComponents(app.mCtx[modalObject.__name].components);\n\n    app.modal.__modalWrappers[modalObject.__name] = app.modal[modalObject.__name].__modalWrapperId;\n\n    app.debug('Invoke modal {0} init() function', [app.mCtx[modalObject.__name].__name]);\n    app.mCtx[modalObject.__name].init(modalPassedData);\n\n};",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "__render",
+      "string": "modalObject.__render()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction creates @private modalObject.__modalWrapperId as @attr id for DIV element wrapping modal template\nAlso first child of modal template has @private modalObject.__modalId as @attr id\nExecuting @private modal.__onModalRenderEvent for custom modal render implementation",
+        "visibility": "private",
+        "html": "<p>Function creates @private modalObject.__modalWrapperId as @attr id for DIV element wrapping modal template<br />\nAlso first child of modal template has @private modalObject.__modalId as @attr id<br />\nExecuting @private modal.__onModalRenderEvent for custom modal render implementation</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 309,
+    "codeStart": 317,
+    "code": "modalObject.__wrapModal = function () {\n\n    app.mCtx[modalObject.__name].__modalWrapperId = 'modal-wrapper-' + app.util.System.hash();\n\n    app.modal.__getView().append('<div id=\"' + app.mCtx[modalObject.__name].__modalWrapperId.replace('#', '') + '\">' + app.mCtx[modalObject.__name].__template + '</div>');\n\n    //Translate DOM\n    app.message.__translate();\n\n    app.mCtx[modalObject.__name].__modalId = 'modal-' + app.util.System.hash();\n\n    var modalSelector = app.mCtx[modalObject.__name].__getWrapperModalSelector();\n    modalSelector.attr('id', app.mCtx[modalObject.__name].__modalId);\n\n    app.modal.__onModalRenderEvent(modalSelector, app.mCtx[modalObject.__name]);\n\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "__wrapModal",
+      "string": "modalObject.__wrapModal()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nReturns modal wrapper DIV element",
+        "visibility": "private",
+        "html": "<p>Returns modal wrapper DIV element</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{jQuery|HTMLElement}",
+        "types": [
+          "jQuery",
+          "HTMLElement"
+        ],
+        "typesDescription": "<a href=\"jQuery.html\">jQuery</a>|<code>HTMLElement</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{jQuery|HTMLElement}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 335,
+    "codeStart": 342,
+    "code": "modalObject.__wrapperSelector = function () {\n    return $('#'+app.modal[modalObject.__name].__modalWrapperId);\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "__wrapperSelector",
+      "string": "modalObject.__wrapperSelector()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nReturns modal element (parent)",
+        "visibility": "private",
+        "html": "<p>Returns modal element (parent)</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{jQuery|HTMLElement}",
+        "types": [
+          "jQuery",
+          "HTMLElement"
+        ],
+        "typesDescription": "<a href=\"jQuery.html\">jQuery</a>|<code>HTMLElement</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{jQuery|HTMLElement}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 346,
+    "codeStart": 353,
+    "code": "modalObject.__selfSelector = function(){\n    return $('#'+app.modal[modalObject.__name].__modalId);\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "__selfSelector",
+      "string": "modalObject.__selfSelector()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nReturns modal wrapper children - modal view parent element\nChecks if modal template has more than one parent elements or if even has",
+        "visibility": "private",
+        "html": "<p>Returns modal wrapper children - modal view parent element<br />\nChecks if modal template has more than one parent elements or if even has</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{jQuery|HTMLElement}",
+        "types": [
+          "jQuery",
+          "HTMLElement"
+        ],
+        "typesDescription": "<a href=\"jQuery.html\">jQuery</a>|<code>HTMLElement</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{jQuery|HTMLElement}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 357,
+    "codeStart": 365,
+    "code": "modalObject.__getWrapperModalSelector = function () {\n\n    var wrapperSelectorChildrens = app.modal[modalObject.__name].__wrapperSelector().children();\n\n    if (wrapperSelectorChildrens.length == 1) {\n        return wrapperSelectorChildrens;\n    } else if (wrapperSelectorChildrens.length > 1) {\n        app.system.__throwError('Modal {0} view can only have one parent DOM element, found {1}', [modalObject.__name, wrapperSelectorChildrens.length]);\n    } else if (wrapperSelectorChildrens.length == 0) {\n        app.system.__throwError('Modal {0} view must have one parent DOM element', [modalObject.__name]);\n    }\n\n}",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "__getWrapperModalSelector",
+      "string": "modalObject.__getWrapperModalSelector()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSets @private modalObject.__hidden to false\nInvokes @private modal.__onModalShowEvent for default or custom implementation of modal showing mechanics",
+        "visibility": "public",
+        "html": "<p>Sets @private modalObject.__hidden to false<br />\nInvokes @private modal.__onModalShowEvent for default or custom implementation of modal showing mechanics</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 379,
+    "codeStart": 386,
+    "code": "modalObject.show = function () {\n\n    app.modal[modalObject.__name].__hidden = false;\n    app.modal.__onModalShowEvent(app.mCtx[modalObject.__name].__selfSelector(), app.mCtx[modalObject.__name], app.modal.__onModalShowEventDefault);\n};",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "show",
+      "string": "modalObject.show()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSets @private modalObject.__hidden to true\nInvokes @private modal.__onModalHideEvent for default or custom implementation of modal hidding mechanics",
+        "visibility": "public",
+        "html": "<p>Sets @private modalObject.__hidden to true<br />\nInvokes @private modal.__onModalHideEvent for default or custom implementation of modal hidding mechanics</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 392,
+    "codeStart": 399,
+    "code": "modalObject.hide = function () {\n\n    app.modal[modalObject.__name].__hidden = true;\n    app.modal.__onModalHideEvent(app.mCtx[modalObject.__name].__selfSelector(), app.mCtx[modalObject.__name], app.modal.__onModalHideEventDefault);\n};\n\nmodalObject.__createModalViewPath(modalObject);\n\n//Creating copy of modal object in @private __dataArchive and in modal[modalName] variable\napp.modal.__dataArchive[modalObject.__name] = $.extend(true, {}, modalObject);\napp.modal[modalObject.__name] = $.extend(true, {}, modalObject);\n\n\n    },",
+    "ctx": {
+      "type": "method",
+      "receiver": "modalObject",
+      "name": "hide",
+      "string": "modalObject.hide()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nReturns modal's DOM element with @attr modals attribute",
+        "visibility": "private",
+        "html": "<p>Returns modal's DOM element with @attr modals attribute</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{jQuery|HTMLElement}",
+        "types": [
+          "jQuery",
+          "HTMLElement"
+        ],
+        "typesDescription": "<a href=\"jQuery.html\">jQuery</a>|<code>HTMLElement</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{jQuery|HTMLElement}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 414,
+    "codeStart": 421,
+    "code": "__getView: function () {\n    return $('['+app.__attributes.MODALS+']');\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__getView",
+      "string": "__getView()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nVerify if DOM element with @attr modals attribute exists",
+        "visibility": "private",
+        "html": "<p>Verify if DOM element with @attr modals attribute exists</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 425,
+    "codeStart": 431,
+    "code": "__verifyView: function () {\n    if (this.__getView().length == 0) {\n        app.system.__throwError('No DOM element with {0} attribute specified',[app.__attributes.MODALS]);\n    }\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__verifyView",
+      "string": "__verifyView()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction removes modal wrapper @attr id @private modalObject.__modalWrapperId from @private modal.__modalWrappers\nRemoves whole wrapper modal DOM element with selector @private modalObject.__wrapperSelector",
+        "visibility": "private",
+        "html": "<p>Function removes modal wrapper @attr id @private modalObject.__modalWrapperId from @private modal.__modalWrappers<br />\nRemoves whole wrapper modal DOM element with selector @private modalObject.__wrapperSelector</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 437,
+    "codeStart": 444,
+    "code": "__invalidate: function(modalObject){\n\n    delete app.modal.__modalWrappers[modalObject.__name];\n    modalObject.__wrapperSelector().remove();\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__invalidate",
+      "string": "__invalidate()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nFunction invalidates all rendered modals.\nIterates over @public modal executes @private modal.__invalidate function to remove modals from DOM and cache",
+        "visibility": "public",
+        "html": "<p>Function invalidates all rendered modals.<br />\nIterates over @public modal executes @private modal.__invalidate function to remove modals from DOM and cache</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 451,
+    "codeStart": 458,
+    "code": "invalidateAll: function(){\n\n    $.each(app.modal, function(modalName, modalObject){\n\n        if(modalObject instanceof Object && modalObject['__type']){\n            app.modal.__invalidate(modalObject);\n        }\n\n    });\n\n}\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "invalidateAll",
+      "string": "invalidateAll()"
+    }
+  }
+]

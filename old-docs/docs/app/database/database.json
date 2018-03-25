@@ -1,0 +1,393 @@
+[
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nDatabase module\nModule designed for usage as local database (SQLLite) provider.\nShould be used only by framework\n\nOnly one active instance in time is available",
+        "visibility": "private",
+        "html": "<p>Database module<br />\nModule designed for usage as local database (SQLLite) provider.<br />\nShould be used only by framework</p>\n<p>Only one active instance in time is available</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__createDB}",
+        "visibility": "private",
+        "html": "<p>{__createDB}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__dbLoadData}",
+        "visibility": "private",
+        "html": "<p>{__dbLoadData}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__dbCreate}",
+        "visibility": "private",
+        "html": "<p>{__dbCreate}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__dbDrop}",
+        "visibility": "private",
+        "html": "<p>{__dbDrop}</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{__dbName}",
+        "visibility": "private",
+        "html": "<p>{__dbName}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__dbVersion}",
+        "visibility": "private",
+        "html": "<p>{__dbVersion}</p>"
+      },
+      {
+        "type": "private",
+        "string": "{__dbSize}",
+        "visibility": "private",
+        "html": "<p>{__dbSize}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 22,
+    "code": "app.__database = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "__database",
+      "value": "{",
+      "string": "app.__database"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nStorage for current instance of database",
+        "visibility": "private",
+        "html": "<p>Storage for current instance of database</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 25,
+    "codeStart": 30,
+    "code": "__dbInstance: null,",
+    "ctx": {
+      "type": "property",
+      "name": "__dbInstance",
+      "value": "null,",
+      "string": "__dbInstance"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nStorage for counting tables",
+        "visibility": "private",
+        "html": "<p>Storage for counting tables</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 32,
+    "codeStart": 37,
+    "code": "__tablesCount: 0,",
+    "ctx": {
+      "type": "property",
+      "name": "__tablesCount",
+      "value": "0,",
+      "string": "__tablesCount"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nDefines database name\nValue is getted from @app.config.dbName on initialization",
+        "visibility": "private",
+        "html": "<p>Defines database name<br />\nValue is getted from @app.config.dbName on initialization</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 39,
+    "codeStart": 45,
+    "code": "__dbName: '',",
+    "ctx": {
+      "type": "property",
+      "name": "__dbName",
+      "value": "'',",
+      "string": "__dbName"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nDefines database version",
+        "visibility": "private",
+        "html": "<p>Defines database version</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 47,
+    "codeStart": 52,
+    "code": "__dbVersion: '1.0',",
+    "ctx": {
+      "type": "property",
+      "name": "__dbVersion",
+      "value": "'1.0',",
+      "string": "__dbVersion"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nDefines maximum database size",
+        "visibility": "private",
+        "html": "<p>Defines maximum database size</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 54,
+    "codeStart": 59,
+    "code": "__dbSize: 2097152,",
+    "ctx": {
+      "type": "property",
+      "name": "__dbSize",
+      "value": "2097152,",
+      "string": "__dbSize"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\n Function initializes local sqllite database depending on device or local running\n and database create mode.\n\n For local running WebSQL in Chrome is used\n For device running cordova-sqlite-storage is used\n https://www.npmjs.com/package/cordova-sqlite-storage\n\n Invokes @app.system.__mainRender when database stuff done",
+        "visibility": "private",
+        "html": "<p>Function initializes local sqllite database depending on device or local running<br />\nand database create mode.</p>\n<p>For local running WebSQL in Chrome is used<br />\nFor device running cordova-sqlite-storage is used<br />\nhttps://www.npmjs.com/package/cordova-sqlite-storage</p>\n<p>Invokes @app.system.__mainRender when database stuff done</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBack",
+        "name": "callBack",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>callBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 61,
+    "codeStart": 75,
+    "code": "__createDB: function (callBack) {\n\n    //Assing database name from config to private field\n    app.__database.__dbName = app.config.dbName;\n\n    //If database mode is not setted, database won't be created\n    if (app.config.dbMode == 'none') {\n\n        app.__database.__dbInstance = null;\n        app.system.__mainRender(callBack);\n\n    } else {\n\n        //If device running then use @sqlitePlugin\n        if (app.config.mobileRun) {\n           app.__database.__dbInstance = window.sqlitePlugin.openDatabase({ name: app.__database.__dbName, location: 'default' });\n        } else {\n\n            //If local running then use @webSQL\n            try {\n                app.__database.__dbInstance = openDatabase(app.__database.__dbName, app.__database.__dbVersion, app.__database.__dbName + '_manager', app.__database.__dbSize);\n            } catch(error){\n                //No support for @webSQL in current browser\n                app.system.__noSupport();\n            }\n        }\n\n\n        //If database mode is 'create-drop' then drop database, create new and insert data\n        if (app.config.dbMode == 'create-drop') {\n\n            app.__database.__dbDrop(function () {\n                app.__database.__dbCreate(function () {\n                    app.__database.__dbLoadData(function () {\n                        app.system.__mainRender(callBack);\n                    });\n                });\n            });\n\n        } else if (app.config.dbMode == 'create') {\n        //If database mode is 'create' then create database and insert data\n\n                app.__database.__dbCreate(function () {\n                    app.__database.__dbLoadData(function () {\n                        app.system.__mainRender(callBack);\n                    });\n                });\n\n        }\n\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__createDB",
+      "string": "__createDB()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\n Function loads SQL script defined in @app.config.dbTestScript and @app.config.dbProductionScript\n into database depending on @app.config.dbTestMode value",
+        "visibility": "private",
+        "html": "<p>Function loads SQL script defined in @app.config.dbTestScript and @app.config.dbProductionScript<br />\ninto database depending on @app.config.dbTestMode value</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBack",
+        "name": "callBack",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>callBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 129,
+    "codeStart": 138,
+    "code": "__dbLoadData: function (callBack) {\n    app.debug('Invoke database.__dbLoadData');\n\n    var finished = false;\n\n    if (app.config.dbTestMode) {\n\n        //Retrieve SQL script with test data\n        $.get(app.config.dbTestScript, function (data) {\n\n            if (data.trim().length == 0) {\n                finished = true;\n                callBack();\n            } else {\n\n                var queries = [];\n                var splitted = data.split(';');\n\n                for (var i = 0; i < splitted.length; i++) {\n\n                    if (splitted[i].trim().length > 0) {\n                        queries.push(splitted[i].trim());\n                    }\n\n                }\n\n\n                for (var i = 0; i < queries.length; i++) {\n\n                    app.crud.execute(queries[i], function (data) {\n\n                        app.__database.__tablesCount++;\n\n                        if (app.__database.__tablesCount >= queries.length) {\n                            app.__database.__tablesCount = 0;\n\n                            if (!finished) {\n                                finished = true;\n                                callBack();\n\n                            }\n\n                        }\n\n                    });\n\n                }\n\n            }\n\n\n        });\n\n    } else {\n\n        //Retrieve SQL script with production data\n        $.get(app.config.dbProductionScript, function (data) {\n\n            if (data.trim().length == 0) {\n                finished = true;\n                callBack();\n\n            } else {\n\n                var queries = [];\n                var splitted = data.split(';');\n\n                for (var i = 0; i < splitted.length; i++) {\n                    if (splitted[i].trim().length > 0) {\n                        queries.push(splitted[i].trim());\n                    }\n                }\n\n                for (var i = 0; i < queries.length; i++) {\n\n                    app.crud.execute(queries[i], function (data) {\n\n                        app.__database.__tablesCount++;\n\n                        if (app.__database.__tablesCount >= queries.length) {\n                            app.__database.__tablesCount = 0;\n\n                            if (!finished) {\n                                finished = true;\n                                callBack();\n\n                            }\n\n                        }\n\n                    });\n\n                }\n\n            }\n\n\n        });\n\n    }\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__dbLoadData",
+      "string": "__dbLoadData()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executes create table scripts",
+        "visibility": "private",
+        "html": "<p>Function executes create table scripts</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBack",
+        "name": "callBack",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>callBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 241,
+    "codeStart": 249,
+    "code": "__dbCreate: function (callBack) {\n    app.debug('Invoke database.__dbCreate');\n\n        if(app.model.__createScripts.length > 0){\n\n            for (var i = 0; i < app.model.__createScripts.length; i++) {\n\n                app.crud.execute(app.model.__createScripts[i], function (data) {\n\n                    app.__database.__tablesCount++;\n\n                    if (app.__database.__tablesCount == app.model.__createScripts.length) {\n                        app.__database.__tablesCount = 0;\n                        callBack();\n                    }\n\n                });\n\n            }\n\n        }else{\n            callBack();\n        }\n\n\n\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__dbCreate",
+      "string": "__dbCreate()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nFunction executes drop table scripts",
+        "visibility": "private",
+        "html": "<p>Function executes drop table scripts</p>"
+      },
+      {
+        "type": "param",
+        "string": "callBack",
+        "name": "callBack",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>callBack</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 278,
+    "codeStart": 286,
+    "code": "__dbDrop: function (callBack) {\n    app.debug('Invoke database.__dbDrop');\n\n\n        if(app.model.__dropScripts.length > 0){\n\n            for (var i = 0; i < app.model.__dropScripts.length; i++) {\n\n                app.crud.execute(app.model.__dropScripts[i], function (data) {\n\n                    app.__database.__tablesCount++;\n\n                    if (app.__database.__tablesCount == app.model.__dropScripts.length) {\n                        app.__database.__tablesCount = 0;\n                        callBack();\n                    }\n\n                });\n\n            }\n\n        }else{\n            callBack();\n        }\n\n\n\n\n}\n\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "__dbDrop",
+      "string": "__dbDrop()"
+    }
+  }
+]

@@ -1,0 +1,450 @@
+[
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nLister module\nModule designed for usage as list renderer.\nCan be used in any another module ex. controller, component, modal.\n\nTemplate function can also handle another lister (beware of infinite loop if the same listers used in each others).\n\nRedered in normal code execution time.\nRendered template is binded to DOM element with passed selector.\n\nExample:\n<ul id=\"listNameXXX\"></ul>",
+        "visibility": "public",
+        "html": "<p>Lister module<br />\nModule designed for usage as list renderer.<br />\nCan be used in any another module ex. controller, component, modal.</p>\n<p>Template function can also handle another lister (beware of infinite loop if the same listers used in each others).</p>\n<p>Redered in normal code execution time.<br />\nRendered template is binded to DOM element with passed selector.</p>\n<p>Example:</p>\n<ul id=\"listNameXXX\"></ul>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{add}",
+        "visibility": "public",
+        "html": "<p>{add}</p>"
+      },
+      {
+        "type": "public",
+        "string": "{register}",
+        "visibility": "public",
+        "html": "<p>{register}</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 1,
+    "codeStart": 21,
+    "code": "app.lister = {",
+    "ctx": {
+      "type": "property",
+      "receiver": "app",
+      "name": "lister",
+      "value": "{",
+      "string": "app.lister"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nSubstitute method for register",
+        "visibility": "public",
+        "html": "<p>Substitute method for register</p>"
+      },
+      {
+        "type": "param",
+        "string": "listerName",
+        "name": "listerName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>listerName</p>"
+      },
+      {
+        "type": "param",
+        "string": "listerTemplate",
+        "name": "listerTemplate",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>listerTemplate</p>"
+      },
+      {
+        "type": "param",
+        "string": "configuration { renderPerContext, transform }",
+        "name": "configuration",
+        "description": "<p>{ renderPerContext, transform }</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 23,
+    "codeStart": 32,
+    "code": "add: function(listerName, listerTemplate, configuration){\n    this.register(listerName, listerTemplate, configuration);\n},",
+    "ctx": {
+      "type": "method",
+      "name": "add",
+      "string": "add()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nRegistering new lister in application\nCreates lister object",
+        "visibility": "public",
+        "html": "<p>Registering new lister in application<br />\nCreates lister object</p>"
+      },
+      {
+        "type": "param",
+        "string": "listerName",
+        "name": "listerName",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>listerName</p>"
+      },
+      {
+        "type": "param",
+        "string": "listerTemplate",
+        "name": "listerTemplate",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>listerTemplate</p>"
+      },
+      {
+        "type": "param",
+        "string": "configuration {\n renderPerContext -- additional but slower way to render list, passing item and index to rendering function\n transform  -- additional function to transform passed list items during rendering template, to modyfiy them\n}",
+        "name": "configuration",
+        "description": "<p>{  renderPerContext -- additional but slower way to render list, passing item and index to rendering function<br />\ntransform  -- additional function to transform passed list items during rendering template, to modyfiy them<br />\n}</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 36,
+    "codeStart": 49,
+    "code": "register: function (listerName, listerTemplate, configuration) {\n\n    var htmlTemplate = null;\n\n    //If no configuration passed, default options is applied\n    if(!configuration){\n        configuration = {\n            renderPerContext: false,\n            transform: null\n        }\n    }\n\n    //If no renderPerContext passed, setted by default to false\n    if (!configuration.renderPerContext) {\n        configuration.renderPerContext = false;\n    }\n\n    //If no transform function passed, setted by default to null\n    if (!configuration.transform) {\n        configuration.transform = null;\n    }\n\n    //If template is another than string version (simplest) and renderPerContext is false then\n    if (typeof listerTemplate !== 'string' &&  configuration.renderPerContext == false) {\n        htmlTemplate = listerTemplate();\n    } else {\n        htmlTemplate = listerTemplate;\n    }\n\n    //Commented because of global translation by jQuery\n    //htmlTemplate = app.message.__replace(htmlTemplate);",
+    "ctx": {
+      "type": "method",
+      "name": "register",
+      "string": "register()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nLister object used to rendering lists",
+        "visibility": "private",
+        "html": "<p>Lister object used to rendering lists</p>"
+      },
+      {
+        "type": "functions",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "public",
+        "string": "{ render }",
+        "visibility": "public",
+        "html": "<p>{ render }</p>"
+      },
+      {
+        "type": "private",
+        "string": "{ __update }",
+        "visibility": "private",
+        "html": "<p>{ __update }</p>"
+      },
+      {
+        "type": "private",
+        "string": "{ __renderElement }",
+        "visibility": "private",
+        "html": "<p>{ __renderElement }</p>"
+      },
+      {
+        "type": "fields",
+        "string": "",
+        "html": ""
+      },
+      {
+        "type": "private",
+        "string": "{ __renderPerContext }",
+        "visibility": "private",
+        "html": "<p>{ __renderPerContext }</p>"
+      },
+      {
+        "type": "private",
+        "string": "{ __template }",
+        "visibility": "private",
+        "html": "<p>{ __template }</p>"
+      },
+      {
+        "type": "private",
+        "string": "{ __dataIds }",
+        "visibility": "private",
+        "html": "<p>{ __dataIds }</p>"
+      },
+      {
+        "type": "private",
+        "string": "{ __bindings }",
+        "visibility": "private",
+        "html": "<p>{ __bindings }</p>"
+      },
+      {
+        "type": "private",
+        "string": "{ __listSelector }",
+        "visibility": "private",
+        "html": "<p>{ __listSelector }</p>"
+      },
+      {
+        "type": "private",
+        "string": "{ __data }",
+        "visibility": "private",
+        "html": "<p>{ __data }</p>"
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 81,
+    "codeStart": 102,
+    "code": "var __listerObject = {\n\n    __renderPerContext: configuration.renderPerContext,\n    __transform: configuration.transform,\n    __template: htmlTemplate,\n    __dataIds: null,\n    __bindings: null,\n    __listSelector: null,\n    __data: null,",
+    "ctx": {
+      "type": "declaration",
+      "name": "__listerObject",
+      "value": "{",
+      "string": "__listerObject"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "private",
+        "string": "\n\nRenders single list element based on passed params\nReplacing plain @attr text and @attr event",
+        "visibility": "private",
+        "html": "<p>Renders single list element based on passed params<br />\nReplacing plain @attr text and @attr event</p>"
+      },
+      {
+        "type": "param",
+        "string": "dataId",
+        "name": "dataId",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>dataId</p>"
+      },
+      {
+        "type": "param",
+        "string": "listElementId",
+        "name": "listElementId",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>listElementId</p>"
+      },
+      {
+        "type": "param",
+        "string": "html",
+        "name": "html",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>html</p>"
+      },
+      {
+        "type": "param",
+        "string": "element",
+        "name": "element",
+        "description": "",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false,
+        "html": "<p>element</p>"
+      },
+      {
+        "type": "returns",
+        "string": "{string|*}",
+        "types": [
+          "string"
+        ],
+        "typesDescription": "<code>*</code>",
+        "optional": false,
+        "nullable": false,
+        "nonNullable": false,
+        "variable": false,
+        "description": "",
+        "html": "<p>{string|*}</p>"
+      },
+      {
+        "type": "private",
+        "string": "",
+        "visibility": "private",
+        "html": ""
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": true,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 112,
+    "codeStart": 125,
+    "code": "__renderElement: function (dataId, listElementId, html, element) {\n\n    html = html.replace('>', ' liId=\"' + listElementId + '\" >');\n    html = html.split(app.__attributes.LISTER_EVENT+'(').join(' dataId=\"' + dataId + '\" '+app.__attributes.LISTER_EVENT+'(');\n\n     for (var prop in element) {\n        html = html.split(app.__attributes.LISTER_TEXT+'(' + prop + ')').join(element[prop]);\n    }\n\n    return html;\n\n},",
+    "ctx": {
+      "type": "method",
+      "name": "__renderElement",
+      "string": "__renderElement()"
+    }
+  },
+  {
+    "tags": [
+      {
+        "type": "public",
+        "string": "\n\nMain function to render whole lister data with passed template and binded events.\nAlso can handle additional callback realized after whole process is done.",
+        "visibility": "public",
+        "html": "<p>Main function to render whole lister data with passed template and binded events.<br />\nAlso can handle additional callback realized after whole process is done.</p>"
+      },
+      {
+        "type": "param",
+        "string": "listSelector -- must be jQuery selector",
+        "name": "listSelector",
+        "description": "<p>-- must be jQuery selector</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "data -- list of objects with fields names as used in text(fieldName) tags in template",
+        "name": "data",
+        "description": "<p>-- list of objects with fields names as used in text(fieldName) tags in template</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "bindings -- optional, object with functions named as used in event(functionName) tags in template",
+        "name": "bindings",
+        "description": "<p>-- optional, object with functions named as used in event(functionName) tags in template</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      },
+      {
+        "type": "param",
+        "string": "callBack -- optional",
+        "name": "callBack",
+        "description": "<p>-- optional</p>",
+        "types": [],
+        "typesDescription": "",
+        "variable": false,
+        "nonNullable": false,
+        "nullable": false,
+        "optional": false
+      }
+    ],
+    "description": {
+      "full": "",
+      "summary": "",
+      "body": ""
+    },
+    "isPrivate": false,
+    "isConstructor": false,
+    "isClass": false,
+    "isEvent": false,
+    "ignore": false,
+    "line": 138,
+    "codeStart": 149,
+    "code": "render: function (listSelector, data, bindings, callBack) {\n\n    var __this = this;\n\n    var elementsHtml = [];\n\n    var dataIds = [];\n\n    var templatehtml = __this.__template;\n\n    var html = templatehtml;\n\n    if(__this.__transform){\n        $.each(data, function(i, item){\n            data[i] = __this.__transform(item);\n        });\n    }\n\n    $.each(data, function (i, element) {\n\n        if (__this.__renderPerContext) {\n            html = templatehtml(i, element);\n        }\n\n        var listElementId = 'li-' + app.util.System.hash() + '-' + app.util.System.hash() + '-' + app.util.System.hash();\n        var dataId = 'element-' + app.util.System.hash() + '-' + app.util.System.hash() + '-' + app.util.System.hash();\n\n        html = __this.__renderElement(dataId, listElementId, html, element);\n\n        dataIds.push({\n            __listElementId: listElementId,\n            __dataId: dataId,\n            __context: element\n        });\n\n        elementsHtml.push(html);\n\n        html = templatehtml;\n\n    });\n\n    html = '';\n\n    for (var i = 0; i < elementsHtml.length; i++) {\n        html += elementsHtml[i];\n    }\n\n    for (var prop in bindings) {\n        html = html.split(app.__attributes.LISTER_EVENT+'(' + prop + ')').join(app.__attributes.LISTER_EVENT+'=\"' + prop + '\"');\n    }\n\n    listSelector.html(html);\n\n    //Translate DOM\n    app.message.__translate();\n\n    if (callBack) {\n        callBack();\n    }\n\n    __this.__bindings = bindings;\n    __this.__listSelector = listSelector;\n    __this.__data = data;\n    __this.__bind(listSelector, dataIds, bindings, data);\n\n},\n\n__bind: function (listSelector, dataIds, bindings, dataList) {\n\n    var dataIdsLocal = dataIds;\n\n    listSelector.unbind();\n    $.each(bindings, function (functionName, functionCallback) {\n\n        listSelector.on('click', '[event=\"' + functionName + '\"]', function (e) {\n\n            var arrtributeDataId = $(e.currentTarget).attr('dataId');\n\n            $.each(dataIdsLocal, function (i, dataId) {\n\n                if (dataId.__dataId == arrtributeDataId) {\n                    e.eCtx = dataId.__context;\n\n                    var selector = $('*[dataId=\"' + dataId.dataId + '\"]');\n                    selector.dataId = dataId.__dataId;\n                    e.eCtxSelector = function () {\n                        return selector;\n                    }\n                }\n\n            });\n\n            e.eCtxList = dataList;\n\n            functionCallback(e);\n\n        });\n\n    });\n\n    this.__dataIds = dataIdsLocal;\n\n\n}\n\n        }\n\n        app.lister[listerName] = __listerObject;\n\n    }\n\n};",
+    "ctx": {
+      "type": "method",
+      "name": "render",
+      "string": "render()"
+    }
+  }
+]

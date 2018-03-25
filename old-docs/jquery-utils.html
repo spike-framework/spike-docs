@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>jQuery build-in utils</h2>
+
+            <p>
+                Spike has build-in jQuery utils which can be very helpful for daily development and are also used by Spike itself.
+            </p>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>jQuery extensions</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">set</code>
+                </div>
+                <div class="col-sm-10">
+                    Abstracted version of set of typical jQuery functions like <code>html</code>,
+                    <code>val</code>, <code>prop</code> and <code>attr</code>
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        ...
+
+                        $this.selector.formTitle().set('Subscribe');
+                        $this.selector.emailLabel().set('E-mail: ');
+                        $this.selector.emailInput().set('heniek@okk.com');
+                        $this.selector.acceptRegulation().set(true);
+                        $this.selector.regulationsLink().set('/regulations');
+                        $this.selector.avatarImage().set('/default_avatar.png');
+
+                        ...
+
+                    </pre>
+
+                    <br/>
+                    Example view:
+                    <pre class="brush: js;">
+
+                        <div>
+                            <h2 id="formTitle"></h2>
+                            <label id="emailLabel"></label>
+                            <input type="email" id="emailInput" />
+                            <input type="checkbox" id="acceptRegulation" />
+                            <a href="" id="regulationsLink">See regulation</a>
+                            <img src="" id="avatarImage" />
+                        </div>
+
+                    </pre>
+
+                    <br/>
+                    Output would be (id's are omitted):
+                    <pre class="brush: js;">
+
+                        <div>
+                            <h2>Subscribe</h2>
+                            <label>E-mail: </label>
+                            <input type="email" value="heniek@okk.com" />
+                            <input type="checkbox" checked="true"/>
+                            <a href="/regulations">See regulation</a>
+                            <img src="/default_avatar.png" />
+                        </div>
+
+                    </pre>
+
+                    <br/>
+
+                    <h5>Also <code>spike-val</code> attribute can be used to setting objects:</h5>
+
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        ...
+
+                        $this.selector.data().set({
+                            id: 10,
+                            name: 'Michael',
+                            surname: 'Jackson'
+                        });
+
+                        ...
+
+                    </pre>
+
+                    <br/>
+                    Example view:
+                    <pre class="brush: js;">
+
+                        <div id="data">
+                            <p spike-val="id"></p>
+                            <input type="text" spike-val="name" />
+                            <input type="text" spike-val="surname" />
+                        </div>
+
+                    </pre>
+
+                    <br/>
+                    Output would be (id's are omitted):
+                    <pre class="brush: js;">
+
+                       <div id="data">
+                            <p spike-val="id">10</p>
+                            <input type="text" spike-val="name" value="Michael"/>
+                            <input type="text" spike-val="surname" value="Jackson"/>
+                        </div>
+
+                    </pre>
+
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">serializeObject</code>
+                </div>
+                <div class="col-sm-10">
+                    <p>
+                        Function serializes <code>form</code> fields into single JavaScript object based on fields names.
+                    </p>
+
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        ...
+
+                        var formData = $this.selector.loginForm().serializeObject()
+
+                        //formData == { email: 'ok@test.com', password: '1111' }
+
+                        ...
+
+                    </pre>
+
+                    <br/>
+                    Example view:
+                    <pre class="brush: js;">
+
+                        <form id="loginForm">
+                            <input type="email" name="email" value="ok@test.com"/>
+                            <input type="password" name="password" value="1111"/>
+                        </form>
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">attrs</code>
+                </div>
+                <div class="col-sm-10">
+                    <p>
+                        Function serializes <code>DOM element</code> <code>attributes</code> into map
+                    </p>
+
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        ...
+
+                        var elementAttrs = $this.selector.person().attrs()
+
+                        //elementAttrs == { personId: 2, personName: 'David' }
+
+                        ...
+
+                    </pre>
+
+                    <br/>
+                    Example view:
+                    <pre class="brush: js;">
+
+                       <div person-id="2" person-name="David" id="person"></div>
+
+                    </pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

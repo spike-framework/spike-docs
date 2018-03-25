@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Partial module</h2>
+
+            <p>
+                <code>partial</code> in Spike Framework is single part of HTML and some additional methods
+                which can be reused in any module like <code>controller</code>, <code>component</code>,
+                <code>modal</code>
+                or even another <code>partial</code>
+                <br/>
+                <code>partials</code> are constructed to be reused so there is no any instance of partial during
+                application lifecycle
+                <br/>
+                Partials should be used only as parts of HTML.
+            </p>
+
+            <p>
+                Partials use special <code>Spike templates engine</code>, for details of writting templates see
+                <a href="templates.html">templates engine</a> and read more blow about usade templates with <code>partial
+                model</code>
+            </p>
+            <p>
+                Every <code>partial</code> can manage only one single view and directory structure
+                have to be fixed as follows:
+            <ul>
+                <li>src/app (value from <code>app.config.rootPath</code>)
+                    <ul>
+                        <li>
+                            partial (value from <code>app.config.partialDirectory</code>)
+                            <ul>
+                                <li>userList (partial name)
+                                    <ul>
+                                        <li>userList.partial.js</li>
+                                        <li>userList.partial.html</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+
+            <p>
+                Also naming convention must be keeped as:
+            <p>
+                Partial file name should be named <code>PARTIAL_NAME.partial.js</code>
+            </p>
+            <p>
+                Partial view name should be named <code>PARTIAL_NAME.partial.html</code>
+            </p>
+            </p>
+
+            <p>
+                In templates, <code>$local</code> word is used to reference to template current model
+            </p>
+
+            <h5>Example partial declaration:</h5>
+            <pre class="brush: js;">
+
+                app.partial.register("UserList", {
+
+                    users: [
+                        { name: 'Jack', surname: 'Strong' },
+                        { name: 'Gerard', surname: 'Ulver' },
+                    ]
+
+                });
+
+            </pre>
+
+            <h5>Example partial view:</h5>
+            <pre class="brush: js;">
+
+                <ul>
+                # for(var i = 0; i < $local.users.length; i++) {
+                # var user = $local.users[i];
+
+                    <li>
+                        <p>Name: [[user.name]]</p>
+                        <p>Name: [[user.surname]]</p>
+                    </li>
+
+                # }
+                </ul>
+
+            </pre>
+
+
+            <h5>After rendering, output would be:</h5>
+            <pre class="brush: js;">
+
+                <ul>
+                    <li>
+                        <p>Name: Jack</p>
+                        <p>Name: Strong</p>
+                    </li>
+                     <li>
+                        <p>Name: Gerard</p>
+                        <p>Name: Ulver</p>
+                    </li>
+                </ul>
+
+            </pre>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Global partial methods</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.partial.register</code>
+                </div>
+                <div class="col-sm-10">
+                    Registers new partial into Spike application context
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.partial.register("TopMenu", {
+                        });
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.partial.add</code>
+                </div>
+                <div class="col-sm-10">
+                    Registers new partial into Spike application context
+                    <br/>
+                    Substitute method for <code>app.partial.register</code>
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">app.partial.include</code>
+                </div>
+                <div class="col-sm-10">
+                    Renders given <code>partial</code> with given <code>model</code> extended by <code>partial static
+                    context</code>
+                    and returns rendered <code>html</code>
+                    <p>
+                        In templates, <code>$local</code> word is used to reference to template current model
+                    </p>
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        'import $userList as app.partial.UserList';
+                        'import $partial as app.partial';
+
+                        app.controller.register("Home", {
+
+                            init: function(params) {
+
+                                var html = $partial.include($userList, [
+                                    {name: 'David', surname: 'Harley'}
+                                ]);
+
+                            }
+
+                        });
+
+                    </pre>
+
+                    Also can be used as <code>@include</code> build-in function in template
+                    to include another partials into current:
+                    <br/>
+                    <pre class="brush: js;">
+
+                        'import $userList as app.partial.UserList';
+
+                        # var users = [
+                        #  {name: 'David', surname: 'Harley'},
+                        #  {name: 'Michael', surname: 'Mrozek'}
+                        #]
+
+                        <div>
+                            [[ @include($userList, users) ]]
+                        </div>
+
+                    </pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Partial context</h4>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">render</code>
+                </div>
+                <div class="col-sm-10">
+                    Renders partial with passed <code>model</code> extended by
+                    <code>partial static context</code>
+
+                    <p>
+                        In templates, <code>$local</code> word is used to reference to template current model
+                    </p>
+
+                    <br/>
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.partial.register("TopMenu", {
+
+                            title: 'Spike Framework'
+
+                        });
+
+                    </pre>
+
+                    Partial view:
+                    <pre class="brush: js;">
+
+                        <p class="footer-title"> [[ $local.title ]] </p>
+
+                        <ul class="footer-items">
+                            # $.each($local.items, function(index, item){
+
+                            <a href="[[item.href]]">[[item.name]]</a>
+
+                            # });
+                        </ul>
+
+                    </pre>
+
+                    Example rendering partial in component:
+                    <pre class="brush: js;">
+
+                        'import $footer as app.partial.Footer';
+
+                        app.component.register("Footer", {
+
+                            init: function(params){
+
+                                $footer.render($this.selector.footerContainer(), [
+
+                                    { name: 'About us', href: '/about-us' },
+                                    { name: 'Contact', href: '/contact' },
+                                    { name: 'License', href: '/license' },
+
+                                ]);
+
+                            }
+
+                        });
+
+
+                    </pre>
+
+                    Component view:
+                    <pre class="brush: js;">
+
+                        <div class="footer" id="footerContainer">
+                        </div>
+
+                    </pre>
+
+                    Output HTML would be:
+                    <pre class="brush: js;">
+
+                        <div class="footer" id="footerContainer">
+
+                            <p class="footer-title"> Spike Framework </p>
+
+                            <ul class="footer-items">
+                                <a href="/about-us">About us</a>
+                                <a href="/contacts">Contact</a>
+                                <a href="/license">License</a>
+                            </ul>
+
+                        </div>
+
+                    </pre>
+
+                    <p>
+                        For details about <code>selector</code> see <a href="selectors.html">selectors page</a>
+                    </p>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">before</code>
+                </div>
+                <div class="col-sm-10">
+                    Function executes before partial starts rendering template
+                    <br/>
+                    <p>
+                        Accepts arguments:
+                        <br/>
+                        model
+                    </p>
+
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.partial.register("TopMenu", {
+
+                            before: function(model){
+
+                                // Here you can manipulate partial passed model from @render or @include
+
+                                return model; // Returning is optionally because of reference
+
+                            }
+
+                        });
+
+                    </pre>
+
+                    Full example rendering partial and using <code>before</code>:
+                    <pre class="brush: js;">
+
+                        partial declaration
+                        ...
+
+                         app.partial.register("TopMenu", {
+
+                            before: function(model){
+                                model.description = 'Id: '+model.id+', Name: '+model.name;
+                            }
+
+                        });
+
+                        partial template
+                        ...
+
+                        <div>
+                            <p>[[$local.id]]</p>
+                            <p>[[$local.name]]</p>
+                            <p>[[$local.description]]</p>
+                        </div>
+
+                        ...
+
+                        Rendering:
+                        ...
+
+                        $topMenu.render($this.selector.topMenu(), {
+                            id: 1,
+                            name: 'Michael'
+                        });
+
+                        ...
+
+                        Result would be:
+                        ...
+
+                        <div>
+                            <p>1</p>
+                            <p>Michael</p>
+                            <p>Id: 1, Name: Michael</p>
+                        </div>
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+            <div class="row margin-top bottom-border">
+                <div class="col-sm-2">
+                    <code class="property">after</code>
+                </div>
+                <div class="col-sm-10">
+                    Function executes after partial renders template
+                    <br/>
+                    <p>
+                        Accepts arguments:
+                        <br/>
+                        model, rootSelector
+                    </p>
+
+                    Example usage:
+                    <pre class="brush: js;">
+
+                        app.partial.register("SomePartial", {
+
+                            after: function(model, rootSelector){
+
+                                // Here you can manipulate partial using rootSelector or get some model data
+
+                            }
+
+                        });
+
+                    </pre>
+
+                    Full example rendering partial and using <code>after</code>:
+                    <pre class="brush: js;">
+
+                        partial declaration
+                        ...
+
+                         app.partial.register("SomePartial", {
+
+                            after: function(model, rootSelector){
+                                rootSelector.hide(200);
+                            }
+
+                        });
+
+                        partial template
+                        ...
+
+                        <div>
+                           <p>Hidding content after rendering</p>
+                        </div>
+
+                        ...
+
+                        Rendering:
+                        ...
+
+                        $somePartial.render($this.selector.somePartial());
+
+                        ...
+
+                        Result after rendering would be:
+                        ...
+
+                        <div style="display: none;">
+                           <p>Hidding content after rendering</p>
+                        </div>
+
+                        ...
+
+                    </pre>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Partial methods</h4>
+            <p>
+                Partials can have own methods which can be used as well as
+                methods to prepare, process some data or even can be used
+                as events handlers.
+
+                <br/>
+
+                For example, if we get partial:
+            <pre class="brush: js;">
+
+                app.partial.register("Pagination", {
+
+                    getPaginationIcon: function(type){
+
+                        switch(name){
+                            case 'ARROW_LEFT' : return '<i class="glyphicon glyphicon-arrow-left"></i>';
+                            case 'ARROW_RIGHT' : return '<i class="glyphicon glyphicon-arrow-right"></i>';
+                        }
+
+                    }
+
+                });
+
+                </pre>
+
+            Then we can use it's methods making <code>$this</code> reference to partial:
+            <pre class="brush: js;">
+                    'import $this as app.partial.Pagination';
+
+                    <a href="/previous">[[ $this.getPaginationIcon('ARROW_LEFT') ]]</a>
+                    <a href="/next">[[ $this.getPaginationIcon('ARROW_RIGHT') ]]</a>
+
+                </pre>
+
+            <p>
+                Partials can also have some constant data, just declared in partial object
+            </p>
+
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Partial events</h4>
+            <p>
+                Partials templates have build-in events handler which can be
+                easily used to bind any events available by <code>jQuery</code>
+                <br/>
+
+                For example declare some partial:
+            <pre class="brush: js;">
+
+                    'import $router as app.router';
+
+                    app.partial.register("PeopleList", {
+
+                        people: [
+                            { id: 1, name: 'Mark' },
+                            { id: 2, name: 'Jeff' }
+                        ],
+
+                        selectPerson: function(personId){
+                            app.log('selected person $[[personId]]');
+                        }
+
+                    });
+
+                </pre>
+
+            Then we can use it's methods making <code>$this</code> reference to partial
+            and simply bind event to <code>tag</code> using <code>[eventName]</code> constructor:
+            <pre class="brush: js;">
+                    'import $this as app.partial.PeopleList';
+
+                    # $.each($local.people, function(i, person) {
+
+                        <p>
+                            Name: [[person.name]]
+                            <button type="button" [click]="$this.selectPerson([[person.id]])">Select</button>
+                        </p>
+
+                    # });
+
+                </pre>
+
+            <p>
+                <code>events</code> can be binded using <code>[]</code> single brackets containing event name for
+                example:
+                <br/>
+                <ul>
+                    <li>[click]</li>
+                    <li>[change]</li>
+                    <li>[blur]</li>
+                    <li>[dblclick]</li>
+                    <li>[focus]</li>
+                    <li>[load]</li>
+                    <li>[mouseover]</li>
+                </ul>
+                <p>
+                    Probably all standard <code>jQuery</code> events are possible to use: <a href="https://www.w3schools.com/jquery/jquery_ref_events.asp">jQuery events</a>
+                </p>
+            </p>
+
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

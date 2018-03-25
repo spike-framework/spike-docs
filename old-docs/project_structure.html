@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spike Framework Docs</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+</head>
+
+<body>
+
+<div id="contentToApply" style="display: none;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Project structure</h2>
+
+            <p>
+                Spike Framework forces developer to keep consistent MVC architecture in project by
+                using strict naming conventions for directories and files, even it's extensions.
+            </p>
+            <p>
+                Below is presented example project tree:
+            </p>
+
+            <ul>
+                <li class="dir">
+                    <i class="fa fa-folder-open" aria-hidden="true"></i>
+                    app
+                    <ul>
+                        <li class="dir">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                            component
+                            <ul>
+                                <li class="dir">
+                                    <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                    personList
+                                    <ul>
+                                        <li class="js">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            personList.component.js
+                                        </li>
+                                        <li class="html">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            personList.view.html
+                                        </li>
+                                        <li class="html">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            noResult.template.html
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dir">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                            controller
+                            <ul>
+                                <li class="dir">
+                                    <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                    home
+                                    <ul>
+                                        <li class="js">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            home.controller.js
+                                        </li>
+                                        <li class="html">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            home.view.html
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dir">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                            modal
+                            <ul>
+                                <li class="dir">
+                                    <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                    loginModal
+                                    <ul>
+                                        <li class="js">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            loginModal.modal.js
+                                        </li>
+                                        <li class="html">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            loginModal.view.html
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dir">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                            partial
+                            <ul>
+                                <li class="dir">
+                                    <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                    loginForm
+                                    <ul>
+
+                                        <li class="js">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            loginForm.partial.js
+                                        </li>
+                                        <li class="html">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            loginForm.partial.html
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dir">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                            service
+                            <ul>
+                                <li class="js">
+                                    <i class="fa fa-file" aria-hidden="true"></i>
+                                    person.service.js
+                                </li>
+                                <li class="js">
+                                    <i class="fa fa-file" aria-hidden="true"></i>
+                                    auth.service.js
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dir">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                            util
+                            <ul>
+                                <li class="js">
+                                    <i class="fa fa-file" aria-hidden="true"></i>
+                                    list.util.js
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="js">
+                            <i class="fa fa-file" aria-hidden="true"></i>
+                            config.js
+                        </li>
+                        <li class="js">
+                            <i class="fa fa-file" aria-hidden="true"></i>
+                            main.js
+                        </li>
+                    </ul>
+
+
+                </li>
+            </ul>
+
+            <p>
+                There is few rules creating project structure:
+            </p>
+
+            <ul>
+                <li>1. <code>component</code>, <code>controller</code>, <code>modal</code> and <code>partial</code> directories can have another names but then names should be defined in <code>app.config</code>
+                using <code>componentDirectory</code>, <code>controller</code>, <code>modal</code> and <code>partial</code>. Of course names must be defined in <code>gruntfile</code> project tree.</li>
+                <li>2. Rest of names may be any but must be defined in <code>gruntfile</code> project tree.</li>
+                <li>3. In general all <code>html</code> files should be named with extension <code>view.html</code>, for example <code>personList.view.html</code></li>
+                <li>4. <code>partials</code> templates should be named with extension <code>partial.html</code>, for example <code>loginForm.partial.html</code></li>
+                <li>5. Static <code>templates</code> should be named with extension <code>template.html</code>, for example <code>noResult.template.html</code></li>
+                <li>6. All <code>javascript</code> files should be named with extension telling which module is, for example <code>person.service.js</code></li>
+            </ul>
+
+
+        </div>
+    </div>
+
+</div>
+
+<div id="wholeWrapper"></div>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-97087619-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>
