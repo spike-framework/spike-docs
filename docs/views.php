@@ -19,6 +19,7 @@
         </div>
         <ul class="docs-menu">
             <li href="introduction" class="star">Introduction</li>
+            <li href="selectors" class="star">Unique selectors</li>
             <li href="expressions" class="star">Expressions</li>
             <li href="processors" class="star">Processors</li>
             <li href="sp-print" class="sub star">sp-print</li>

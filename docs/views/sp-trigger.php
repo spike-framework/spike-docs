@@ -6,6 +6,10 @@
             <i class="ion ion-alert"></i> Can be used only with <b>spike</b> element
         </p>
 
+        <p class="alert">
+            <i class="ion ion-alert"></i> You cannot use <b>sp-params</b> with <b>sp-trigger</b>
+        </p>
+
         <p>
             <b>sp-trigger</b> processor is used to include <b>elements</b> or <b>template</b> instances without immediate evaluation.
             <br/>Normally, during <b>element</b> instance creation, every child <b>elements</b> and <b>templates</b> are included and evaluated.
@@ -35,7 +39,6 @@
 
                    import Element from spike.core.Element;
                    import Rest from spike.core.Rest;
-                   import Watchers from spike.core.Watchers;
 
                    class TopMenu extends Element {
 
@@ -44,140 +47,58 @@
                             Rest.get('/api/login')
                                 .then(function(response){
 
-                                    Watchers.trigger('whenLogged', this);
-                                    Watchers.trigger('whenNotify', this);
+                                    $this.trigger('whenLogged');
+                                    $this.trigger('whenNotify');
 
                                 });
 
                         }
 
                    }
-
                </code>
             </pre>
         </p>
         <p>
-            Then let's have simple template for controller <b>List</b> in package <b>app.controller.list.List</b> :
-            <pre>
-               <code class="language-markup">
-                   <script type="prism-html-markup">
-                       import ListItem from app.elements.list.listItem.ListItem;
-
-                       <div class="listController">
-
-                           <spike sp-for="item in items">
-                               <spike sp-element="ListItem" sp-param="item"></spike>
-                           </spike>
-
-                       </div>
-                   </script>
-               </code>
-            </pre>
-        </p>
-        <p>
-            Finally we declare controller and element classes:
-            <pre>
-               <code class="language-js">
-                package app.controller.home;
-
-                import Controller from spike.core.Controller;
-                import Log from spike.core.Log;
-                import Router from spike.core.Router;
-
-                class Home extends Controller {
-
-                    items: [
-                        { name: 'Jack' },
-                        { name: 'Bob' }
-                    ],
-
-                    Home: function () {
-                    }
-
-                }
-               </code>
-            </pre>
-            <pre>
-               <code class="language-js">
-                package app.elements.list.listItem;
-
-                import Element from spike.core.Element;
-                import Log from spike.core.Log;
-
-                class ListItem extends Element {
-
-                    ListItem: function () {
-                    }
-
-                }
-               </code>
-            </pre>
-        </p>
-
-        <p>
-            Summarize our example on few complete files:
+            By default, <b>trigger</b> passes current element <b>scope</b> into <b>sp-template</b>:
             <div class="files">
-                <pre file="Home.spike">
+                <pre file="TopMenu.spike">
                    <code class="language-js">
-                    package app.controller.home;
+                    package app.element.topMenu;
 
-                    import Controller from spike.core.Controller;
-                    import Log from spike.core.Log;
-                    import Router from spike.core.Router;
+                    import Element from spike.core.Element;
 
-                    class Home extends Controller {
+                    class TopMenu extends Element {
 
-                        items: [
-                            { name: 'Jack' },
-                            { name: 'Bob' }
-                        ],
+                        isLogged: false,
 
-                        Home: function () {
+                        TopMenu: function () {
+
+                            setTimeout(function(){
+                                $this.trigger('whenLogged');
+                            });
+
                         }
 
                     }
                    </code>
                 </pre>
-                <pre file="home.html">
+                <pre file="topMenu.html">
                    <code class="language-markup">
                        <script type="prism-html-markup">
-                           import ListItem from app.elements.list.listItem.ListItem;
+                           <div class="topMenuElement">
 
-                           <div class="listController">
-
-                               <spike sp-for="item in items">
-                                   <spike sp-element="ListItem" sp-param="item"></spike>
-                               </spike>
+                              <spike sp-template="app.element.topMenu.logged" sp-trigger="whenLogged"></spike>
 
                            </div>
                        </script>
                    </code>
                 </pre>
-                <pre file="ListItem.spike">
-                   <code class="language-js">
-                    package app.elements.list.listItem;
-
-                    import Element from spike.core.Element;
-                    import Log from spike.core.Log;
-
-                    class ListItem extends Element {
-
-                        ListItem: function () {
-                        }
-
-                    }
-                   </code>
-                </pre>
-                <pre file="listItem.html">
+                <pre file="topMenu.html">
                    <code class="language-markup">
                        <script type="prism-html-markup">
-                           import ListItem from app.elements.list.listItem.ListItem;
+                           <div class="loggedTemplate">
 
-                           <div class="listController">
-
-                               <spike sp-for="item in items">
-                                   <spike sp-element="ListItem" sp-param="item"></spike>
-                               </spike>
+                              User is {{ (scope.isLogged ? 'logged' : 'not logged') }}
 
                            </div>
                        </script>
@@ -187,14 +108,72 @@
                    <code class="language-treeview">
                         app/
                         |-- elements/
-                        |   |-- list/
-                        |       |-- listItem/
-                        |           |-- ListItem.spike
-                        |           `-- listItem.html
-                        |-- controller/
-                        |   |-- list/
-                        |       |-- List.spike
-                        |       `-- list.html
+                        |   |-- topMenu/
+                        |       |-- TopMenu.spike
+                        |       |-- logged.html
+                        |       `-- topMenu.html
+                        </code>
+                </pre>
+            </div>
+        </p>
+        <p>
+            You can also pass additional data as <b>second argument</b>.
+            <br/>This works for <b>sp-element</b> and <b>sp-template</b> both:
+            <div class="files">
+                <pre file="TopMenu.spike">
+                   <code class="language-js">
+                    package app.element.topMenu;
+
+                    import Element from spike.core.Element;
+
+                    class TopMenu extends Element {
+
+                        isLogged: false,
+
+                        TopMenu: function () {
+
+                            setTimeout(function(){
+                                $this.trigger('whenLogged', {
+                                    username: 'Jack'
+                                });
+                            });
+
+                        }
+
+                    }
+                   </code>
+                </pre>
+                <pre file="topMenu.html">
+                   <code class="language-markup">
+                       <script type="prism-html-markup">
+                           <div class="topMenuElement">
+
+                              <spike sp-template="app.element.topMenu.logged" sp-trigger="whenLogged"></spike>
+
+                           </div>
+                       </script>
+                   </code>
+                </pre>
+                <pre file="topMenu.html">
+                   <code class="language-markup">
+                       <script type="prism-html-markup">
+                           <div class="loggedTemplate">
+
+                              User is {{ (scope.isLogged ? 'logged' : 'not logged') }}
+                              Username: {{ scope.username }}
+
+                           </div>
+                       </script>
+                   </code>
+                </pre>
+                <pre file="Files structure">
+                   <code class="language-treeview">
+                        app/
+                        |-- elements/
+                        |   |-- topMenu/
+                        |       |-- TopMenu.spike
+                        |       |-- logged.html
+                        |       `-- topMenu.html
                         </code>
                 </pre>
             </div>
